@@ -1,4 +1,4 @@
-# woleet_api
+# woleet-openapi-js-client
 
 WoleetApi - Woleet's Swagger/OpenAPI official JavaScript client.
 
