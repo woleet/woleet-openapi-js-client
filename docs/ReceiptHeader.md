@@ -7,6 +7,6 @@ Name | Type | Description | Notes
 **hashType** | **String** |  | [default to &#39;SHA-256&#39;]
 **merkleRoot** | **String** |  | 
 **txId** | **String** |  | 
-**timestamp** | **Integer** |  | 
+**timestamp** | **Number** |  | 
 
 

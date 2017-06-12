@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new WoleetApi.AnchorApi();
+    instance = new WoleetApi.IdentityVerificationStatus();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,67 +47,31 @@
       object[property] = value;
   }
 
-  describe('AnchorApi', function() {
-    describe('createAnchor', function() {
-      it('should call createAnchor successfully', function(done) {
-        //uncomment below and update the code to test createAnchor
-        //instance.createAnchor(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+  describe('IdentityVerificationStatus', function() {
+    it('should create an instance of IdentityVerificationStatus', function() {
+      // uncomment below and update the code to test IdentityVerificationStatus
+      //var instane = new WoleetApi.IdentityVerificationStatus();
+      //expect(instance).to.be.a(WoleetApi.IdentityVerificationStatus);
     });
-    describe('deleteAnchor', function() {
-      it('should call deleteAnchor successfully', function(done) {
-        //uncomment below and update the code to test deleteAnchor
-        //instance.deleteAnchor(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property code (base name: "code")', function() {
+      // uncomment below and update the code to test the property code
+      //var instane = new WoleetApi.IdentityVerificationStatus();
+      //expect(instance).to.be();
     });
-    describe('getAnchor', function() {
-      it('should call getAnchor successfully', function(done) {
-        //uncomment below and update the code to test getAnchor
-        //instance.getAnchor(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property text (base name: "text")', function() {
+      // uncomment below and update the code to test the property text
+      //var instane = new WoleetApi.IdentityVerificationStatus();
+      //expect(instance).to.be();
     });
-    describe('searchAnchorIds', function() {
-      it('should call searchAnchorIds successfully', function(done) {
-        //uncomment below and update the code to test searchAnchorIds
-        //instance.searchAnchorIds(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property certificates (base name: "certificates")', function() {
+      // uncomment below and update the code to test the property certificates
+      //var instane = new WoleetApi.IdentityVerificationStatus();
+      //expect(instance).to.be();
     });
-    describe('searchAnchors', function() {
-      it('should call searchAnchors successfully', function(done) {
-        //uncomment below and update the code to test searchAnchors
-        //instance.searchAnchors(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateAnchor', function() {
-      it('should call updateAnchor successfully', function(done) {
-        //uncomment below and update the code to test updateAnchor
-        //instance.updateAnchor(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
+
   });
 
 }));

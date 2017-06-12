@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new WoleetApi.AnchorApi();
+    instance = new WoleetApi.ReceiptSignature();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,67 +47,37 @@
       object[property] = value;
   }
 
-  describe('AnchorApi', function() {
-    describe('createAnchor', function() {
-      it('should call createAnchor successfully', function(done) {
-        //uncomment below and update the code to test createAnchor
-        //instance.createAnchor(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+  describe('ReceiptSignature', function() {
+    it('should create an instance of ReceiptSignature', function() {
+      // uncomment below and update the code to test ReceiptSignature
+      //var instane = new WoleetApi.ReceiptSignature();
+      //expect(instance).to.be.a(WoleetApi.ReceiptSignature);
     });
-    describe('deleteAnchor', function() {
-      it('should call deleteAnchor successfully', function(done) {
-        //uncomment below and update the code to test deleteAnchor
-        //instance.deleteAnchor(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property signedHash (base name: "signedHash")', function() {
+      // uncomment below and update the code to test the property signedHash
+      //var instane = new WoleetApi.ReceiptSignature();
+      //expect(instance).to.be();
     });
-    describe('getAnchor', function() {
-      it('should call getAnchor successfully', function(done) {
-        //uncomment below and update the code to test getAnchor
-        //instance.getAnchor(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property pubKey (base name: "pubKey")', function() {
+      // uncomment below and update the code to test the property pubKey
+      //var instane = new WoleetApi.ReceiptSignature();
+      //expect(instance).to.be();
     });
-    describe('searchAnchorIds', function() {
-      it('should call searchAnchorIds successfully', function(done) {
-        //uncomment below and update the code to test searchAnchorIds
-        //instance.searchAnchorIds(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property signature (base name: "signature")', function() {
+      // uncomment below and update the code to test the property signature
+      //var instane = new WoleetApi.ReceiptSignature();
+      //expect(instance).to.be();
     });
-    describe('searchAnchors', function() {
-      it('should call searchAnchors successfully', function(done) {
-        //uncomment below and update the code to test searchAnchors
-        //instance.searchAnchors(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property identityURL (base name: "identityURL")', function() {
+      // uncomment below and update the code to test the property identityURL
+      //var instane = new WoleetApi.ReceiptSignature();
+      //expect(instance).to.be();
     });
-    describe('updateAnchor', function() {
-      it('should call updateAnchor successfully', function(done) {
-        //uncomment below and update the code to test updateAnchor
-        //instance.updateAnchor(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
+
   });
 
 }));

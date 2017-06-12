@@ -13,101 +13,94 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
+    // AMD. Register as an anonymous module.
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.WoleetApi);
+    if (!root.WoleetApi) {
+      root.WoleetApi = {};
+    }
+    root.WoleetApi.ReceiptSignature = factory(root.WoleetApi.ApiClient);
   }
-}(this, function(expect, WoleetApi) {
+}(this, function(ApiClient) {
   'use strict';
 
-  var instance;
 
-  beforeEach(function() {
-    instance = new WoleetApi.AnchorApi();
-  });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
+
+  /**
+   * The ReceiptSignature model module.
+   * @module model/ReceiptSignature
+   * @version 1.2.2
+   */
+
+  /**
+   * Constructs a new <code>ReceiptSignature</code>.
+   * @alias module:model/ReceiptSignature
+   * @class
+   * @param signedHash {String} 
+   * @param pubKey {String} 
+   * @param signature {String} 
+   */
+  var exports = function(signedHash, pubKey, signature) {
+    var _this = this;
+
+    _this['signedHash'] = signedHash;
+    _this['pubKey'] = pubKey;
+    _this['signature'] = signature;
+
+  };
+
+  /**
+   * Constructs a <code>ReceiptSignature</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/ReceiptSignature} obj Optional instance to populate.
+   * @return {module:model/ReceiptSignature} The populated <code>ReceiptSignature</code> instance.
+   */
+  exports.constructFromObject = function(data, obj) {
+    if (data) {
+      obj = obj || new exports();
+
+      if (data.hasOwnProperty('signedHash')) {
+        obj['signedHash'] = ApiClient.convertToType(data['signedHash'], 'String');
+      }
+      if (data.hasOwnProperty('pubKey')) {
+        obj['pubKey'] = ApiClient.convertToType(data['pubKey'], 'String');
+      }
+      if (data.hasOwnProperty('signature')) {
+        obj['signature'] = ApiClient.convertToType(data['signature'], 'String');
+      }
+      if (data.hasOwnProperty('identityURL')) {
+        obj['identityURL'] = ApiClient.convertToType(data['identityURL'], 'String');
+      }
+    }
+    return obj;
   }
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  /**
+   * @member {String} signedHash
+   */
+  exports.prototype['signedHash'] = undefined;
+  /**
+   * @member {String} pubKey
+   */
+  exports.prototype['pubKey'] = undefined;
+  /**
+   * @member {String} signature
+   */
+  exports.prototype['signature'] = undefined;
+  /**
+   * @member {String} identityURL
+   */
+  exports.prototype['identityURL'] = undefined;
 
-  describe('AnchorApi', function() {
-    describe('createAnchor', function() {
-      it('should call createAnchor successfully', function(done) {
-        //uncomment below and update the code to test createAnchor
-        //instance.createAnchor(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deleteAnchor', function() {
-      it('should call deleteAnchor successfully', function(done) {
-        //uncomment below and update the code to test deleteAnchor
-        //instance.deleteAnchor(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getAnchor', function() {
-      it('should call getAnchor successfully', function(done) {
-        //uncomment below and update the code to test getAnchor
-        //instance.getAnchor(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('searchAnchorIds', function() {
-      it('should call searchAnchorIds successfully', function(done) {
-        //uncomment below and update the code to test searchAnchorIds
-        //instance.searchAnchorIds(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('searchAnchors', function() {
-      it('should call searchAnchors successfully', function(done) {
-        //uncomment below and update the code to test searchAnchors
-        //instance.searchAnchors(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateAnchor', function() {
-      it('should call updateAnchor successfully', function(done) {
-        //uncomment below and update the code to test updateAnchor
-        //instance.updateAnchor(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-  });
 
+
+  return exports;
 }));
+
+

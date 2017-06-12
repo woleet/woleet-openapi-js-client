@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Get the proof receipt of an anchor.
 
-Use this operation to retrieve the ChainPoint standard receipt associated to a given anchor. This endpoint can be accessed publicly: authentication is required only to retreive private anchors&#39; receipts. Public anchors&#39; receipts can be retreived without authentication. 
+Use this operation to retrieve the ChainPoint standard receipt associated to a given anchor. This endpoint can be accessed publicly: authentication is required only to retrieve private anchors&#39; receipts. Public anchors&#39; receipts can be retrieved with or without authentication. 
 
 ### Example
 ```javascript
@@ -28,7 +28,7 @@ BasicAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new WoleetApi.ReceiptApi();
 
-var anchorid = "anchorid_example"; // String | Identifier of the anchor for which to build the proof receipt. 
+var anchorid = "anchorid_example"; // String | Identifier of the anchor for which to build the proof receipt.
 
 
 var callback = function(error, data, response) {
@@ -45,7 +45,7 @@ apiInstance.getReceipt(anchorid, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **anchorid** | **String**| Identifier of the anchor for which to build the proof receipt.  | 
+ **anchorid** | **String**| Identifier of the anchor for which to build the proof receipt. | 
 
 ### Return type
 
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 Verify a proof receipt.
 
-Use this operation to verify a ChainPoint standard receipt.&lt;br&gt; This is a publicly accessible endpoint: authentication is not required to verify a receipt. 
+Use this operation to verify a ChainPoint standard receipt.&lt;br&gt; This is a publicly accessible endpoint: authentication is not required to verify a proof receipt. 
 
 ### Example
 ```javascript
@@ -74,7 +74,7 @@ var WoleetApi = require('woleet_api');
 
 var apiInstance = new WoleetApi.ReceiptApi();
 
-var receipt = new WoleetApi.Receipt(); // Receipt | Chainpoint standard receipt to verify. 
+var receipt = new WoleetApi.Receipt(); // Receipt | Chainpoint standard receipt to verify.
 
 
 var callback = function(error, data, response) {
@@ -91,7 +91,7 @@ apiInstance.verifyReceipt(receipt, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **receipt** | [**Receipt**](Receipt.md)| Chainpoint standard receipt to verify.  | 
+ **receipt** | [**Receipt**](Receipt.md)| Chainpoint standard receipt to verify. | 
 
 ### Return type
 

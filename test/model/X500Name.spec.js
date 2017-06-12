@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new WoleetApi.AnchorApi();
+    instance = new WoleetApi.X500Name();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,67 +47,49 @@
       object[property] = value;
   }
 
-  describe('AnchorApi', function() {
-    describe('createAnchor', function() {
-      it('should call createAnchor successfully', function(done) {
-        //uncomment below and update the code to test createAnchor
-        //instance.createAnchor(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+  describe('X500Name', function() {
+    it('should create an instance of X500Name', function() {
+      // uncomment below and update the code to test X500Name
+      //var instane = new WoleetApi.X500Name();
+      //expect(instance).to.be.a(WoleetApi.X500Name);
     });
-    describe('deleteAnchor', function() {
-      it('should call deleteAnchor successfully', function(done) {
-        //uncomment below and update the code to test deleteAnchor
-        //instance.deleteAnchor(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property C (base name: "C")', function() {
+      // uncomment below and update the code to test the property C
+      //var instane = new WoleetApi.X500Name();
+      //expect(instance).to.be();
     });
-    describe('getAnchor', function() {
-      it('should call getAnchor successfully', function(done) {
-        //uncomment below and update the code to test getAnchor
-        //instance.getAnchor(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property ST (base name: "ST")', function() {
+      // uncomment below and update the code to test the property ST
+      //var instane = new WoleetApi.X500Name();
+      //expect(instance).to.be();
     });
-    describe('searchAnchorIds', function() {
-      it('should call searchAnchorIds successfully', function(done) {
-        //uncomment below and update the code to test searchAnchorIds
-        //instance.searchAnchorIds(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property L (base name: "L")', function() {
+      // uncomment below and update the code to test the property L
+      //var instane = new WoleetApi.X500Name();
+      //expect(instance).to.be();
     });
-    describe('searchAnchors', function() {
-      it('should call searchAnchors successfully', function(done) {
-        //uncomment below and update the code to test searchAnchors
-        //instance.searchAnchors(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property O (base name: "O")', function() {
+      // uncomment below and update the code to test the property O
+      //var instane = new WoleetApi.X500Name();
+      //expect(instance).to.be();
     });
-    describe('updateAnchor', function() {
-      it('should call updateAnchor successfully', function(done) {
-        //uncomment below and update the code to test updateAnchor
-        //instance.updateAnchor(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property OU (base name: "OU")', function() {
+      // uncomment below and update the code to test the property OU
+      //var instane = new WoleetApi.X500Name();
+      //expect(instance).to.be();
     });
+
+    it('should have the property CN (base name: "CN")', function() {
+      // uncomment below and update the code to test the property CN
+      //var instane = new WoleetApi.X500Name();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

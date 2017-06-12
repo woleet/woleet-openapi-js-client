@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new WoleetApi.AnchorApi();
+    instance = new WoleetApi.X509SubjectIssuer();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,67 +47,25 @@
       object[property] = value;
   }
 
-  describe('AnchorApi', function() {
-    describe('createAnchor', function() {
-      it('should call createAnchor successfully', function(done) {
-        //uncomment below and update the code to test createAnchor
-        //instance.createAnchor(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+  describe('X509SubjectIssuer', function() {
+    it('should create an instance of X509SubjectIssuer', function() {
+      // uncomment below and update the code to test X509SubjectIssuer
+      //var instane = new WoleetApi.X509SubjectIssuer();
+      //expect(instance).to.be.a(WoleetApi.X509SubjectIssuer);
     });
-    describe('deleteAnchor', function() {
-      it('should call deleteAnchor successfully', function(done) {
-        //uncomment below and update the code to test deleteAnchor
-        //instance.deleteAnchor(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property subject (base name: "subject")', function() {
+      // uncomment below and update the code to test the property subject
+      //var instane = new WoleetApi.X509SubjectIssuer();
+      //expect(instance).to.be();
     });
-    describe('getAnchor', function() {
-      it('should call getAnchor successfully', function(done) {
-        //uncomment below and update the code to test getAnchor
-        //instance.getAnchor(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property issuer (base name: "issuer")', function() {
+      // uncomment below and update the code to test the property issuer
+      //var instane = new WoleetApi.X509SubjectIssuer();
+      //expect(instance).to.be();
     });
-    describe('searchAnchorIds', function() {
-      it('should call searchAnchorIds successfully', function(done) {
-        //uncomment below and update the code to test searchAnchorIds
-        //instance.searchAnchorIds(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('searchAnchors', function() {
-      it('should call searchAnchors successfully', function(done) {
-        //uncomment below and update the code to test searchAnchors
-        //instance.searchAnchors(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateAnchor', function() {
-      it('should call updateAnchor successfully', function(done) {
-        //uncomment below and update the code to test updateAnchor
-        //instance.updateAnchor(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
+
   });
 
 }));

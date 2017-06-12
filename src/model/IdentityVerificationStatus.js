@@ -13,101 +13,108 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
+    // AMD. Register as an anonymous module.
+    define(['ApiClient', 'model/X509SubjectIssuer'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
+    module.exports = factory(require('../ApiClient'), require('./X509SubjectIssuer'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.WoleetApi);
+    if (!root.WoleetApi) {
+      root.WoleetApi = {};
+    }
+    root.WoleetApi.IdentityVerificationStatus = factory(root.WoleetApi.ApiClient, root.WoleetApi.X509SubjectIssuer);
   }
-}(this, function(expect, WoleetApi) {
+}(this, function(ApiClient, X509SubjectIssuer) {
   'use strict';
 
-  var instance;
 
-  beforeEach(function() {
-    instance = new WoleetApi.AnchorApi();
-  });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
+
+  /**
+   * The IdentityVerificationStatus model module.
+   * @module model/IdentityVerificationStatus
+   * @version 1.2.2
+   */
+
+  /**
+   * Constructs a new <code>IdentityVerificationStatus</code>.
+   * @alias module:model/IdentityVerificationStatus
+   * @class
+   */
+  var exports = function() {
+    var _this = this;
+
+
+
+
+  };
+
+  /**
+   * Constructs a <code>IdentityVerificationStatus</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/IdentityVerificationStatus} obj Optional instance to populate.
+   * @return {module:model/IdentityVerificationStatus} The populated <code>IdentityVerificationStatus</code> instance.
+   */
+  exports.constructFromObject = function(data, obj) {
+    if (data) {
+      obj = obj || new exports();
+
+      if (data.hasOwnProperty('code')) {
+        obj['code'] = ApiClient.convertToType(data['code'], 'String');
+      }
+      if (data.hasOwnProperty('text')) {
+        obj['text'] = ApiClient.convertToType(data['text'], 'String');
+      }
+      if (data.hasOwnProperty('certificates')) {
+        obj['certificates'] = ApiClient.convertToType(data['certificates'], [X509SubjectIssuer]);
+      }
+    }
+    return obj;
   }
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  /**
+   * Identity verification status code:<br> - VERIFIED: the identity is verified: the identity URL succeeded to sign a secret using the receipt's `pubKey` public key<br> - HTTP_ERROR: the identity URL returned an HTTP error<br> - INVALID_SIGNATURE: the identity URL returned an invalid signature (and thus failed to prove the ownership of the receipt's `pubKey` public key)<br> 
+   * @member {module:model/IdentityVerificationStatus.CodeEnum} code
+   */
+  exports.prototype['code'] = undefined;
+  /**
+   * Identity verification status text giving more insight about verification errors.
+   * @member {String} text
+   */
+  exports.prototype['text'] = undefined;
+  /**
+   * Array of X500 subject and issuer distinguished names of all X509 certificates of the identity URL.
+   * @member {Array.<module:model/X509SubjectIssuer>} certificates
+   */
+  exports.prototype['certificates'] = undefined;
 
-  describe('AnchorApi', function() {
-    describe('createAnchor', function() {
-      it('should call createAnchor successfully', function(done) {
-        //uncomment below and update the code to test createAnchor
-        //instance.createAnchor(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deleteAnchor', function() {
-      it('should call deleteAnchor successfully', function(done) {
-        //uncomment below and update the code to test deleteAnchor
-        //instance.deleteAnchor(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getAnchor', function() {
-      it('should call getAnchor successfully', function(done) {
-        //uncomment below and update the code to test getAnchor
-        //instance.getAnchor(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('searchAnchorIds', function() {
-      it('should call searchAnchorIds successfully', function(done) {
-        //uncomment below and update the code to test searchAnchorIds
-        //instance.searchAnchorIds(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('searchAnchors', function() {
-      it('should call searchAnchors successfully', function(done) {
-        //uncomment below and update the code to test searchAnchors
-        //instance.searchAnchors(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateAnchor', function() {
-      it('should call updateAnchor successfully', function(done) {
-        //uncomment below and update the code to test updateAnchor
-        //instance.updateAnchor(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-  });
 
+  /**
+   * Allowed values for the <code>code</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.CodeEnum = {
+    /**
+     * value: "VERIFIED"
+     * @const
+     */
+    "VERIFIED": "VERIFIED",
+    /**
+     * value: "HTTP_ERROR"
+     * @const
+     */
+    "HTTP_ERROR": "HTTP_ERROR",
+    /**
+     * value: "INVALID_SIGNATURE"
+     * @const
+     */
+    "INVALID_SIGNATURE": "INVALID_SIGNATURE"  };
+
+
+  return exports;
 }));
+
+

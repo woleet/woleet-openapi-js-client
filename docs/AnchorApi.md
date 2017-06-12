@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 Create a new anchor.
 
-Use this operation to create a new anchor.&lt;br&gt; The properties &#x60;id&#x60;, &#x60;created&#x60;, &#x60;lastModified&#x60;, &#x60;status&#x60;, &#x60;timestamp&#x60; and &#x60;confirmations&#x60; are read-only and so must not be provided: they are managed by the platform and added to the returned anchor.&lt;br&gt; Only the properties &#x60;name&#x60; and &#x60;hash&#x60; are required. 
+Use this operation to create a new anchor.&lt;br&gt; An anchor can be: - a data anchor (generating a proof of existence receipt) allows to prove the existence of some data at some point in time.&lt;br&gt; - a signature anchor (generating a proof of signature receipt) allows to prove the existence of the signature of some data at some point in time, the validity of the signature and the identity of the signee.&lt;br&gt; The properties &#x60;id&#x60;, &#x60;created&#x60;, &#x60;lastModified&#x60;, &#x60;status&#x60;, &#x60;timestamp&#x60; and &#x60;confirmations&#x60; are read-only and so must not be provided: they are managed by the platform and added to the returned anchor.&lt;br&gt; For data anchors, only the properties &#x60;name&#x60; and &#x60;hash&#x60; are required: the &#x60;hash&#x60; property must be the SHA256 hash of the data to anchor, and must be computed caller side. This allows not to leak the original data.&lt;br&gt; For signature anchors, only the properties &#x60;name&#x60;, &#x60;signedHash&#x60;, &#x60;signature&#x60; and &#x60;pubKey&#x60; are required (though the property &#x60;identityURL&#x60; is highly recommended): the &#x60;signedHash&#x60; property must be the SHA256 hash of the data to sign. This allows not to leak the original data and to keep the actual signed data small (signing the digest is equivalent to signing the original data).&lt;br&gt; Be sure to have at least 1 anchoring credit on your account. The &#x60;signature&#x60; property must contains a valid signature of the &#x60;data&#x60; property using the private key paired with the &#x60;pubKey&#x60; public key. 
 
 ### Example
 ```javascript
@@ -32,7 +32,7 @@ BasicAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new WoleetApi.AnchorApi();
 
-var anchor = new WoleetApi.Anchor(); // Anchor | Anchor object to create. 
+var anchor = new WoleetApi.Anchor(); // Anchor | Anchor object to create.
 
 
 var callback = function(error, data, response) {
@@ -49,7 +49,7 @@ apiInstance.createAnchor(anchor, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **anchor** | [**Anchor**](Anchor.md)| Anchor object to create.  | 
+ **anchor** | [**Anchor**](Anchor.md)| Anchor object to create. | 
 
 ### Return type
 
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 
 Delete an existing anchor.
 
-Use this operation to delete a given anchor.&lt;br&gt; *WARNING*: You should never delete an anchor, overwise you will no longer be able to download its proof receipt.&lt;br&gt; Use this for test purpose only. 
+Use this operation to delete a given anchor.&lt;br&gt; **WARNING: You should never delete an anchor, otherwise you will no longer be able to download its proof receipt.&lt;br&gt; Use this for test purpose only.** 
 
 ### Example
 ```javascript
@@ -122,7 +122,7 @@ null (empty response body)
 
 Get an anchor by its identifier.
 
-Use this operation to retrieve an anchor by its identifier. 
+Use this operation to retrieve an anchor by its identifier.
 
 ### Example
 ```javascript
@@ -170,11 +170,11 @@ Name | Type | Description  | Notes
 
 <a name="searchAnchorIds"></a>
 # **searchAnchorIds**
-> AnchorIds searchAnchorIds(hash, opts)
+> AnchorIds searchAnchorIds(opts)
 
 Search for public anchors&#39; identifiers.
 
-Use this operation to retreive the identifiers of all public anchors having a given hash.&lt;br&gt; Only public anchors&#39; identifiers are returned.&lt;br&gt; Paging is supported. 
+Use this operation to retrieve the identifiers of all public anchors having a given &#x60;hash&#x60; and/or &#x60;signedHash&#x60; property.&lt;br&gt; Only public anchors&#39; identifiers are returned.&lt;br&gt; Paging is supported. 
 
 ### Example
 ```javascript
@@ -182,11 +182,11 @@ var WoleetApi = require('woleet_api');
 
 var apiInstance = new WoleetApi.AnchorApi();
 
-var hash = "hash_example"; // String | Hash to search for: all anchors whose hash is exactly the same are returned. 
-
 var opts = { 
-  'page': 0, // Integer | Index of the page to retreive (from 0). 
-  'size': 20 // Integer | Number of anchors per page. 
+  'page': 0, // Number | Index of the page to retrieve (from 0).
+  'size': 20, // Number | Number of anchors per page.
+  'hash': "hash_example", // String | `hash` to search for: all public anchors whose `hash` property is equal are returned. 
+  'signedHash': "signedHash_example" // String | `signedHash` to search for: all public anchors whose `signedHash` property is equal are returned. 
 };
 
 var callback = function(error, data, response) {
@@ -196,16 +196,17 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.searchAnchorIds(hash, opts, callback);
+apiInstance.searchAnchorIds(opts, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **hash** | **String**| Hash to search for: all anchors whose hash is exactly the same are returned.  | 
- **page** | **Integer**| Index of the page to retreive (from 0).  | [optional] [default to 0]
- **size** | **Integer**| Number of anchors per page.  | [optional] [default to 20]
+ **page** | **Number**| Index of the page to retrieve (from 0). | [optional] [default to 0]
+ **size** | **Number**| Number of anchors per page. | [optional] [default to 20]
+ **hash** | **String**| &#x60;hash&#x60; to search for: all public anchors whose &#x60;hash&#x60; property is equal are returned.  | [optional] 
+ **signedHash** | **String**| &#x60;signedHash&#x60; to search for: all public anchors whose &#x60;signedHash&#x60; property is equal are returned.  | [optional] 
 
 ### Return type
 
@@ -226,7 +227,7 @@ No authorization required
 
 Search for anchors.
 
-Use this operation to retreive all anchors having a given name, hash and/or tags.&lt;br&gt; Only anchors belonging to the authenticated user are returned.&lt;br&gt; Paging and sorting is supported. 
+Use this operation to retrieve all anchors having a given &#x60;name&#x60;, &#x60;hash&#x60;, &#x60;signedHash&#x60; and/or &#x60;tags&#x60; property.&lt;br&gt; Only anchors belonging to the authenticated user are returned.&lt;br&gt; Paging and sorting is supported. 
 
 ### Example
 ```javascript
@@ -241,13 +242,14 @@ BasicAuth.password = 'YOUR PASSWORD';
 var apiInstance = new WoleetApi.AnchorApi();
 
 var opts = { 
-  'page': 0, // Integer | Index of the page to retreive (from 0). 
-  'size': 20, // Integer | Number of anchors per page. 
+  'page': 0, // Number | Index of the page to retrieve (from 0).
+  'size': 20, // Number | Number of anchors per page.
   'direction': "ASC", // String | Sorting direction: ASC for ascending DESC for descending. 
-  'sort': "created", // String | Sorting property: possbile values are `created`, `lastModified`, `name`, `hash`. 
-  'name': "name_example", // String | Name to search for: a sub-string like `My file` or a regex like `/[mM]y.*file/` can be used. All anchors whose name contains the sub-string or match the regex are returned. 
-  'hash': "hash_example", // String | Hash to search for: all anchors whose hash is exactly the same are returned. 
-  'tags': ["tags_example"] // [String] | List of tags to search for. Only anchors having all these tags sets are returned. 
+  'sort': "created", // String | Sorting property: possible values are limited to `id`, `created`, `hash` and `signedHash`. 
+  'name': "name_example", // String | `name` to search for: all anchors whose `name` property contains this sub-string are returned.<br> **WARNING: searching by name is not optimized and so is not recommended on a large anchor set.** 
+  'hash': "hash_example", // String | `hash` to search for: all anchors whose `hash` property is equal are returned. 
+  'signedHash': "signedHash_example", // String | `signedHash` to search for: all anchors whose `signedHash` property is equal are returned. 
+  'tags': ["tags_example"] // [String] | `tags` to search for: all anchors having all of these tags sets are returned. 
 };
 
 var callback = function(error, data, response) {
@@ -264,13 +266,14 @@ apiInstance.searchAnchors(opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **Integer**| Index of the page to retreive (from 0).  | [optional] [default to 0]
- **size** | **Integer**| Number of anchors per page.  | [optional] [default to 20]
+ **page** | **Number**| Index of the page to retrieve (from 0). | [optional] [default to 0]
+ **size** | **Number**| Number of anchors per page. | [optional] [default to 20]
  **direction** | **String**| Sorting direction: ASC for ascending DESC for descending.  | [optional] [default to ASC]
- **sort** | **String**| Sorting property: possbile values are &#x60;created&#x60;, &#x60;lastModified&#x60;, &#x60;name&#x60;, &#x60;hash&#x60;.  | [optional] [default to created]
- **name** | **String**| Name to search for: a sub-string like &#x60;My file&#x60; or a regex like &#x60;/[mM]y.*file/&#x60; can be used. All anchors whose name contains the sub-string or match the regex are returned.  | [optional] 
- **hash** | **String**| Hash to search for: all anchors whose hash is exactly the same are returned.  | [optional] 
- **tags** | [**[String]**](String.md)| List of tags to search for. Only anchors having all these tags sets are returned.  | [optional] 
+ **sort** | **String**| Sorting property: possible values are limited to &#x60;id&#x60;, &#x60;created&#x60;, &#x60;hash&#x60; and &#x60;signedHash&#x60;.  | [optional] [default to created]
+ **name** | **String**| &#x60;name&#x60; to search for: all anchors whose &#x60;name&#x60; property contains this sub-string are returned.&lt;br&gt; **WARNING: searching by name is not optimized and so is not recommended on a large anchor set.**  | [optional] 
+ **hash** | **String**| &#x60;hash&#x60; to search for: all anchors whose &#x60;hash&#x60; property is equal are returned.  | [optional] 
+ **signedHash** | **String**| &#x60;signedHash&#x60; to search for: all anchors whose &#x60;signedHash&#x60; property is equal are returned.  | [optional] 
+ **tags** | [**[String]**](String.md)| &#x60;tags&#x60; to search for: all anchors having all of these tags sets are returned.  | [optional] 
 
 ### Return type
 
@@ -291,7 +294,7 @@ Name | Type | Description  | Notes
 
 Update an existing anchor.
 
-Use this operation to update a given anchor.&lt;br&gt; Only the properties &#x60;name&#x60;, &#x60;public&#x60;, &#x60;tags&#x60;, &#x60;metadata&#x60; &#x60;targetURI&#x60; and &#x60;callbackURL&#x60; can be modified. 
+Use this operation to update a given anchor.&lt;br&gt; Only the properties &#x60;name&#x60;, &#x60;public&#x60;, &#x60;tags&#x60;, &#x60;metadata&#x60; and &#x60;callbackURL&#x60; can be modified. 
 
 ### Example
 ```javascript
@@ -305,9 +308,9 @@ BasicAuth.password = 'YOUR PASSWORD';
 
 var apiInstance = new WoleetApi.AnchorApi();
 
-var anchorid = "anchorid_example"; // String | Identifier of anchor to update. 
+var anchorid = "anchorid_example"; // String | Identifier of anchor to update.
 
-var anchor = new WoleetApi.Anchor(); // Anchor | Anchor object to update. 
+var anchor = new WoleetApi.Anchor(); // Anchor | Anchor object to update.
 
 
 var callback = function(error, data, response) {
@@ -324,8 +327,8 @@ apiInstance.updateAnchor(anchorid, anchor, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **anchorid** | **String**| Identifier of anchor to update.  | 
- **anchor** | [**Anchor**](Anchor.md)| Anchor object to update.  | 
+ **anchorid** | **String**| Identifier of anchor to update. | 
+ **anchor** | [**Anchor**](Anchor.md)| Anchor object to update. | 
 
 ### Return type
 
