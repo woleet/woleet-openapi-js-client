@@ -5,11 +5,11 @@ All URIs are relative to *https://api.woleet.io/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createAnchor**](AnchorApi.md#createAnchor) | **POST** /anchor | Create a new anchor.
-[**deleteAnchor**](AnchorApi.md#deleteAnchor) | **DELETE** /anchor/{anchorid} | Delete an existing anchor.
+[**deleteAnchor**](AnchorApi.md#deleteAnchor) | **DELETE** /anchor/{anchorid} | Delete an anchor.
 [**getAnchor**](AnchorApi.md#getAnchor) | **GET** /anchor/{anchorid} | Get an anchor by its identifier.
 [**searchAnchorIds**](AnchorApi.md#searchAnchorIds) | **GET** /anchorids | Search for public anchors&#39; identifiers.
 [**searchAnchors**](AnchorApi.md#searchAnchors) | **GET** /anchors | Search for anchors.
-[**updateAnchor**](AnchorApi.md#updateAnchor) | **PUT** /anchor/{anchorid} | Update an existing anchor.
+[**updateAnchor**](AnchorApi.md#updateAnchor) | **PUT** /anchor/{anchorid} | Update an anchor.
 
 
 <a name="createAnchor"></a>
@@ -18,17 +18,23 @@ Method | HTTP request | Description
 
 Create a new anchor.
 
-Use this operation to create a new anchor.&lt;br&gt; An anchor can be: - a data anchor (generating a proof of existence receipt) allows to prove the existence of some data at some point in time.&lt;br&gt; - a signature anchor (generating a proof of signature receipt) allows to prove the existence of the signature of some data at some point in time, the validity of the signature and the identity of the signee.&lt;br&gt; The properties &#x60;id&#x60;, &#x60;created&#x60;, &#x60;lastModified&#x60;, &#x60;status&#x60;, &#x60;timestamp&#x60; and &#x60;confirmations&#x60; are read-only and so must not be provided: they are managed by the platform and added to the returned anchor.&lt;br&gt; For data anchors, only the properties &#x60;name&#x60; and &#x60;hash&#x60; are required: the &#x60;hash&#x60; property must be the SHA256 hash of the data to anchor, and must be computed caller side. This allows not to leak the original data.&lt;br&gt; For signature anchors, only the properties &#x60;name&#x60;, &#x60;signedHash&#x60;, &#x60;signature&#x60; and &#x60;pubKey&#x60; are required (though the property &#x60;identityURL&#x60; is highly recommended): the &#x60;signedHash&#x60; property must be the SHA256 hash of the data to sign. This allows not to leak the original data and to keep the actual signed data small (signing the digest is equivalent to signing the original data).&lt;br&gt; Be sure to have at least 1 anchoring credit on your account. The &#x60;signature&#x60; property must contains a valid signature of the &#x60;data&#x60; property using the private key paired with the &#x60;pubKey&#x60; public key. 
+Use this operation to create a new anchor.&lt;br&gt; An anchor can be:&lt;br&gt; - a data anchor (generating a proof of existence receipt) allows to prove the existence of some data at some point in time.&lt;br&gt; - a signature anchor (generating a proof of signature receipt) allows to prove the existence of the signature of some data at some point in time, the validity of the signature and the signee&#39;s identity.&lt;br&gt; The properties &#x60;id&#x60;, &#x60;created&#x60;, &#x60;lastModified&#x60;, &#x60;status&#x60;, &#x60;timestamp&#x60; and &#x60;confirmations&#x60; are read-only and so must not be provided: they are managed by the platform and added to the returned anchor.&lt;br&gt; For data anchors, only the properties &#x60;name&#x60; and &#x60;hash&#x60; are required: the &#x60;hash&#x60; property must be the SHA256 hash of the data to anchor, and must be computed caller side. This allows not to leak the original data.&lt;br&gt; For signature anchors, only the properties &#x60;name&#x60;, &#x60;signedHash&#x60;, &#x60;signature&#x60; and &#x60;pubKey&#x60; are required (though the property &#x60;identityURL&#x60; is highly recommended): the &#x60;signedHash&#x60; property must be the SHA256 hash of the data to sign. This allows not to leak the original data and to keep the actual signed data small (signing the digest is equivalent to signing the original data).&lt;br&gt; Be sure to have at least 1 anchoring credit on your account. The &#x60;signature&#x60; property must contains a valid signature of the &#x60;data&#x60; property using the private key paired with the &#x60;pubKey&#x60; public key. 
 
 ### Example
 ```javascript
 var WoleetApi = require('woleet_api');
-var defaultClient = WoleetApi.ApiClient.default;
+var defaultClient = WoleetApi.ApiClient.instance;
 
 // Configure HTTP basic authorization: BasicAuth
 var BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
+
+// Configure API key authorization: JWTAuth
+var JWTAuth = defaultClient.authentications['JWTAuth'];
+JWTAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.AnchorApi();
 
@@ -57,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [JWTAuth](../README.md#JWTAuth)
 
 ### HTTP request headers
 
@@ -68,19 +74,25 @@ Name | Type | Description  | Notes
 # **deleteAnchor**
 > deleteAnchor(anchorid)
 
-Delete an existing anchor.
+Delete an anchor.
 
-Use this operation to delete a given anchor.&lt;br&gt; **WARNING: You should never delete an anchor, otherwise you will no longer be able to download its proof receipt.&lt;br&gt; Use this for test purpose only.** 
+Use this operation to delete an anchor.&lt;br&gt; **WARNING: You should never delete an anchor, otherwise you will no longer be able to download its proof receipt.&lt;br&gt; Use this for test purpose only.** 
 
 ### Example
 ```javascript
 var WoleetApi = require('woleet_api');
-var defaultClient = WoleetApi.ApiClient.default;
+var defaultClient = WoleetApi.ApiClient.instance;
 
 // Configure HTTP basic authorization: BasicAuth
 var BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
+
+// Configure API key authorization: JWTAuth
+var JWTAuth = defaultClient.authentications['JWTAuth'];
+JWTAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.AnchorApi();
 
@@ -109,12 +121,12 @@ null (empty response body)
 
 ### Authorization
 
-[BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [JWTAuth](../README.md#JWTAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 <a name="getAnchor"></a>
 # **getAnchor**
@@ -127,12 +139,18 @@ Use this operation to retrieve an anchor by its identifier.
 ### Example
 ```javascript
 var WoleetApi = require('woleet_api');
-var defaultClient = WoleetApi.ApiClient.default;
+var defaultClient = WoleetApi.ApiClient.instance;
 
 // Configure HTTP basic authorization: BasicAuth
 var BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
+
+// Configure API key authorization: JWTAuth
+var JWTAuth = defaultClient.authentications['JWTAuth'];
+JWTAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.AnchorApi();
 
@@ -161,11 +179,11 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [JWTAuth](../README.md#JWTAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 <a name="searchAnchorIds"></a>
@@ -218,7 +236,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 <a name="searchAnchors"></a>
@@ -232,12 +250,18 @@ Use this operation to retrieve all anchors having a given &#x60;name&#x60;, &#x6
 ### Example
 ```javascript
 var WoleetApi = require('woleet_api');
-var defaultClient = WoleetApi.ApiClient.default;
+var defaultClient = WoleetApi.ApiClient.instance;
 
 // Configure HTTP basic authorization: BasicAuth
 var BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
+
+// Configure API key authorization: JWTAuth
+var JWTAuth = defaultClient.authentications['JWTAuth'];
+JWTAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.AnchorApi();
 
@@ -281,30 +305,36 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [JWTAuth](../README.md#JWTAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 <a name="updateAnchor"></a>
 # **updateAnchor**
 > Anchor updateAnchor(anchorid, anchor)
 
-Update an existing anchor.
+Update an anchor.
 
-Use this operation to update a given anchor.&lt;br&gt; Only the properties &#x60;name&#x60;, &#x60;public&#x60;, &#x60;tags&#x60;, &#x60;metadata&#x60; and &#x60;callbackURL&#x60; can be modified. 
+Use this operation to update an anchor.&lt;br&gt; Only the properties &#x60;name&#x60;, &#x60;public&#x60;, &#x60;tags&#x60;, &#x60;metadata&#x60; and &#x60;callbackURL&#x60; can be modified. 
 
 ### Example
 ```javascript
 var WoleetApi = require('woleet_api');
-var defaultClient = WoleetApi.ApiClient.default;
+var defaultClient = WoleetApi.ApiClient.instance;
 
 // Configure HTTP basic authorization: BasicAuth
 var BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
+
+// Configure API key authorization: JWTAuth
+var JWTAuth = defaultClient.authentications['JWTAuth'];
+JWTAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.AnchorApi();
 
@@ -336,7 +366,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [JWTAuth](../README.md#JWTAuth)
 
 ### HTTP request headers
 

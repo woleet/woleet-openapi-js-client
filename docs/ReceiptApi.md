@@ -19,12 +19,18 @@ Use this operation to retrieve the ChainPoint standard receipt associated to a g
 ### Example
 ```javascript
 var WoleetApi = require('woleet_api');
-var defaultClient = WoleetApi.ApiClient.default;
+var defaultClient = WoleetApi.ApiClient.instance;
 
 // Configure HTTP basic authorization: BasicAuth
 var BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
+
+// Configure API key authorization: JWTAuth
+var JWTAuth = defaultClient.authentications['JWTAuth'];
+JWTAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.ReceiptApi();
 
@@ -53,11 +59,11 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [JWTAuth](../README.md#JWTAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 <a name="verifyReceipt"></a>
