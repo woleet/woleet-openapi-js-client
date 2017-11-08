@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**left** | **String** |  | 
-**parent** | **String** |  | 
-**right** | **String** |  | 
+**left** | **String** |  | [optional] 
+**parent** | **String** |  | [optional] 
+**right** | **String** |  | [optional] 
 
 

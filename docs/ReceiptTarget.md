@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**targetHash** | **String** |  | 
-**targetProof** | [**[ReceiptTargetProofNode]**](ReceiptTargetProofNode.md) |  | 
+**targetHash** | **String** |  | [optional] 
+**targetProof** | [**[ReceiptTargetProofNode]**](ReceiptTargetProofNode.md) |  | [optional] 
 
 

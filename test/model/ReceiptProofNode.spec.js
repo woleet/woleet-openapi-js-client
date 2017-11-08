@@ -16,131 +16,59 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.WoleetApi) {
-      root.WoleetApi = {};
-    }
-    root.WoleetApi.AnchorIds = factory(root.WoleetApi.ApiClient);
+    factory(root.expect, root.WoleetApi);
   }
-}(this, function(ApiClient) {
+}(this, function(expect, WoleetApi) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new WoleetApi.ReceiptProofNode();
+  });
 
-
-  /**
-   * The AnchorIds model module.
-   * @module model/AnchorIds
-   * @version 1.3.1
-   */
-
-  /**
-   * Constructs a new <code>AnchorIds</code>.
-   * @alias module:model/AnchorIds
-   * @class
-   */
-  var exports = function() {
-    var _this = this;
-
-
-
-
-
-
-
-
-
-  };
-
-  /**
-   * Constructs a <code>AnchorIds</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/AnchorIds} obj Optional instance to populate.
-   * @return {module:model/AnchorIds} The populated <code>AnchorIds</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('content')) {
-        obj['content'] = ApiClient.convertToType(data['content'], ['String']);
-      }
-      if (data.hasOwnProperty('first')) {
-        obj['first'] = ApiClient.convertToType(data['first'], 'Boolean');
-      }
-      if (data.hasOwnProperty('last')) {
-        obj['last'] = ApiClient.convertToType(data['last'], 'Boolean');
-      }
-      if (data.hasOwnProperty('totalPages')) {
-        obj['totalPages'] = ApiClient.convertToType(data['totalPages'], 'Number');
-      }
-      if (data.hasOwnProperty('totalElements')) {
-        obj['totalElements'] = ApiClient.convertToType(data['totalElements'], 'Number');
-      }
-      if (data.hasOwnProperty('numberOfElements')) {
-        obj['numberOfElements'] = ApiClient.convertToType(data['numberOfElements'], 'Number');
-      }
-      if (data.hasOwnProperty('size')) {
-        obj['size'] = ApiClient.convertToType(data['size'], 'Number');
-      }
-      if (data.hasOwnProperty('number')) {
-        obj['number'] = ApiClient.convertToType(data['number'], 'Number');
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * Array of identifiers of anchors matching the search criteria.
-   * @member {Array.<String>} content
-   */
-  exports.prototype['content'] = undefined;
-  /**
-   * `true` if this is the first page. 
-   * @member {Boolean} first
-   */
-  exports.prototype['first'] = undefined;
-  /**
-   * `true` if this is the last page. 
-   * @member {Boolean} last
-   */
-  exports.prototype['last'] = undefined;
-  /**
-   * Total number of pages available.
-   * @member {Number} totalPages
-   */
-  exports.prototype['totalPages'] = undefined;
-  /**
-   * Total number of anchors matching the search criteria.
-   * @member {Number} totalElements
-   */
-  exports.prototype['totalElements'] = undefined;
-  /**
-   * Number of anchors in the retrieved page.
-   * @member {Number} numberOfElements
-   */
-  exports.prototype['numberOfElements'] = undefined;
-  /**
-   * Number of anchors per page.
-   * @member {Number} size
-   */
-  exports.prototype['size'] = undefined;
-  /**
-   * Index of the retrieved page (from 0).
-   * @member {Number} number
-   */
-  exports.prototype['number'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('ReceiptProofNode', function() {
+    it('should create an instance of ReceiptProofNode', function() {
+      // uncomment below and update the code to test ReceiptProofNode
+      //var instane = new WoleetApi.ReceiptProofNode();
+      //expect(instance).to.be.a(WoleetApi.ReceiptProofNode);
+    });
 
+    it('should have the property left (base name: "left")', function() {
+      // uncomment below and update the code to test the property left
+      //var instane = new WoleetApi.ReceiptProofNode();
+      //expect(instance).to.be();
+    });
 
-  return exports;
+    it('should have the property right (base name: "right")', function() {
+      // uncomment below and update the code to test the property right
+      //var instane = new WoleetApi.ReceiptProofNode();
+      //expect(instance).to.be();
+    });
+
+  });
+
 }));
-
-

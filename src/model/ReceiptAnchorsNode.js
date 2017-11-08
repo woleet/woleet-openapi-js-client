@@ -26,7 +26,7 @@
     if (!root.WoleetApi) {
       root.WoleetApi = {};
     }
-    root.WoleetApi.AnchorIds = factory(root.WoleetApi.ApiClient);
+    root.WoleetApi.ReceiptAnchorsNode = factory(root.WoleetApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,108 +35,54 @@
 
 
   /**
-   * The AnchorIds model module.
-   * @module model/AnchorIds
+   * The ReceiptAnchorsNode model module.
+   * @module model/ReceiptAnchorsNode
    * @version 1.3.1
    */
 
   /**
-   * Constructs a new <code>AnchorIds</code>.
-   * @alias module:model/AnchorIds
+   * Constructs a new <code>ReceiptAnchorsNode</code>.
+   * @alias module:model/ReceiptAnchorsNode
    * @class
+   * @param type {String} 
+   * @param sourceId {String} 
    */
-  var exports = function() {
+  var exports = function(type, sourceId) {
     var _this = this;
 
-
-
-
-
-
-
-
-
+    _this['type'] = type;
+    _this['sourceId'] = sourceId;
   };
 
   /**
-   * Constructs a <code>AnchorIds</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>ReceiptAnchorsNode</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/AnchorIds} obj Optional instance to populate.
-   * @return {module:model/AnchorIds} The populated <code>AnchorIds</code> instance.
+   * @param {module:model/ReceiptAnchorsNode} obj Optional instance to populate.
+   * @return {module:model/ReceiptAnchorsNode} The populated <code>ReceiptAnchorsNode</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('content')) {
-        obj['content'] = ApiClient.convertToType(data['content'], ['String']);
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
-      if (data.hasOwnProperty('first')) {
-        obj['first'] = ApiClient.convertToType(data['first'], 'Boolean');
-      }
-      if (data.hasOwnProperty('last')) {
-        obj['last'] = ApiClient.convertToType(data['last'], 'Boolean');
-      }
-      if (data.hasOwnProperty('totalPages')) {
-        obj['totalPages'] = ApiClient.convertToType(data['totalPages'], 'Number');
-      }
-      if (data.hasOwnProperty('totalElements')) {
-        obj['totalElements'] = ApiClient.convertToType(data['totalElements'], 'Number');
-      }
-      if (data.hasOwnProperty('numberOfElements')) {
-        obj['numberOfElements'] = ApiClient.convertToType(data['numberOfElements'], 'Number');
-      }
-      if (data.hasOwnProperty('size')) {
-        obj['size'] = ApiClient.convertToType(data['size'], 'Number');
-      }
-      if (data.hasOwnProperty('number')) {
-        obj['number'] = ApiClient.convertToType(data['number'], 'Number');
+      if (data.hasOwnProperty('sourceId')) {
+        obj['sourceId'] = ApiClient.convertToType(data['sourceId'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * Array of identifiers of anchors matching the search criteria.
-   * @member {Array.<String>} content
+   * @member {String} type
    */
-  exports.prototype['content'] = undefined;
+  exports.prototype['type'] = undefined;
   /**
-   * `true` if this is the first page. 
-   * @member {Boolean} first
+   * @member {String} sourceId
    */
-  exports.prototype['first'] = undefined;
-  /**
-   * `true` if this is the last page. 
-   * @member {Boolean} last
-   */
-  exports.prototype['last'] = undefined;
-  /**
-   * Total number of pages available.
-   * @member {Number} totalPages
-   */
-  exports.prototype['totalPages'] = undefined;
-  /**
-   * Total number of anchors matching the search criteria.
-   * @member {Number} totalElements
-   */
-  exports.prototype['totalElements'] = undefined;
-  /**
-   * Number of anchors in the retrieved page.
-   * @member {Number} numberOfElements
-   */
-  exports.prototype['numberOfElements'] = undefined;
-  /**
-   * Number of anchors per page.
-   * @member {Number} size
-   */
-  exports.prototype['size'] = undefined;
-  /**
-   * Index of the retrieved page (from 0).
-   * @member {Number} number
-   */
-  exports.prototype['number'] = undefined;
+  exports.prototype['sourceId'] = undefined;
 
 
 
