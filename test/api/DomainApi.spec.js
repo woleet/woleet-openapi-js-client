@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new WoleetApi.IdentityVerificationStatus();
+    instance = new WoleetApi.DomainApi();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,31 +50,57 @@
       object[property] = value;
   }
 
-  describe('IdentityVerificationStatus', function() {
-    it('should create an instance of IdentityVerificationStatus', function() {
-      // uncomment below and update the code to test IdentityVerificationStatus
-      //var instane = new WoleetApi.IdentityVerificationStatus();
-      //expect(instance).to.be.a(WoleetApi.IdentityVerificationStatus);
+  describe('DomainApi', function() {
+    describe('createDomainUser', function() {
+      it('should call createDomainUser successfully', function(done) {
+        //uncomment below and update the code to test createDomainUser
+        //instance.createDomainUser(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
     });
-
-    it('should have the property code (base name: "code")', function() {
-      // uncomment below and update the code to test the property code
-      //var instane = new WoleetApi.IdentityVerificationStatus();
-      //expect(instance).to.be();
+    describe('deleteDomainUser', function() {
+      it('should call deleteDomainUser successfully', function(done) {
+        //uncomment below and update the code to test deleteDomainUser
+        //instance.deleteDomainUser(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
     });
-
-    it('should have the property text (base name: "text")', function() {
-      // uncomment below and update the code to test the property text
-      //var instane = new WoleetApi.IdentityVerificationStatus();
-      //expect(instance).to.be();
+    describe('getDomainUser', function() {
+      it('should call getDomainUser successfully', function(done) {
+        //uncomment below and update the code to test getDomainUser
+        //instance.getDomainUser(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
     });
-
-    it('should have the property certificates (base name: "certificates")', function() {
-      // uncomment below and update the code to test the property certificates
-      //var instane = new WoleetApi.IdentityVerificationStatus();
-      //expect(instance).to.be();
+    describe('getDomainUsers', function() {
+      it('should call getDomainUsers successfully', function(done) {
+        //uncomment below and update the code to test getDomainUsers
+        //instance.getDomainUsers(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
     });
-
+    describe('updateDomainUser', function() {
+      it('should call updateDomainUser successfully', function(done) {
+        //uncomment below and update the code to test updateDomainUser
+        //instance.updateDomainUser(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
   });
 
 }));

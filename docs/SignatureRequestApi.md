@@ -134,7 +134,7 @@ null (empty response body)
 
 Get a signature request by its identifier.
 
-Use this operation to retrieve a signature request by its identifier.
+Use this operation to retrieve a signature request by its identifier.&lt;br&gt; When accessed with no authentication, only public attributes of the signature request are returned. 
 
 ### Example
 ```javascript
@@ -217,7 +217,7 @@ var opts = {
   'size': 20, // Number | Number of anchors per page.
   'direction': "ASC", // String | Sorting direction: ASC for ascending DESC for descending. 
   'sort': "created", // String | Sorting property: possible values are limited to `id`, `created` and `hashToSign`. 
-  'name': "name_example", // String | `name` to search for: all signature requests whose `name` property contains this sub-string are returned.<br> **WARNING: searching by name is not optimized and so is not recommended on a large request set.** 
+  'name': "name_example", // String | `name` to search for: all signature requests whose `name` property contains this sub-string are returned.<br> **WARNING: searching by name can timeout on a large signature request set.** 
   'hashToSign': "hashToSign_example" // String | `hashToSign` to search for: all signature requests whose `hashToSign` property is equal are returned. 
 };
 
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
  **size** | **Number**| Number of anchors per page. | [optional] [default to 20]
  **direction** | **String**| Sorting direction: ASC for ascending DESC for descending.  | [optional] [default to ASC]
  **sort** | **String**| Sorting property: possible values are limited to &#x60;id&#x60;, &#x60;created&#x60; and &#x60;hashToSign&#x60;.  | [optional] [default to created]
- **name** | **String**| &#x60;name&#x60; to search for: all signature requests whose &#x60;name&#x60; property contains this sub-string are returned.&lt;br&gt; **WARNING: searching by name is not optimized and so is not recommended on a large request set.**  | [optional] 
+ **name** | **String**| &#x60;name&#x60; to search for: all signature requests whose &#x60;name&#x60; property contains this sub-string are returned.&lt;br&gt; **WARNING: searching by name can timeout on a large signature request set.**  | [optional] 
  **hashToSign** | **String**| &#x60;hashToSign&#x60; to search for: all signature requests whose &#x60;hashToSign&#x60; property is equal are returned.  | [optional] 
 
 ### Return type

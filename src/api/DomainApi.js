@@ -17,29 +17,29 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Receipt', 'model/ReceiptVerificationStatus'], factory);
+    define(['ApiClient', 'model/User', 'model/Users'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/Receipt'), require('../model/ReceiptVerificationStatus'));
+    module.exports = factory(require('../ApiClient'), require('../model/User'), require('../model/Users'));
   } else {
     // Browser globals (root is window)
     if (!root.WoleetApi) {
       root.WoleetApi = {};
     }
-    root.WoleetApi.ReceiptApi = factory(root.WoleetApi.ApiClient, root.WoleetApi.Receipt, root.WoleetApi.ReceiptVerificationStatus);
+    root.WoleetApi.DomainApi = factory(root.WoleetApi.ApiClient, root.WoleetApi.User, root.WoleetApi.Users);
   }
-}(this, function(ApiClient, Receipt, ReceiptVerificationStatus) {
+}(this, function(ApiClient, User, Users) {
   'use strict';
 
   /**
-   * Receipt service.
-   * @module api/ReceiptApi
+   * Domain service.
+   * @module api/DomainApi
    * @version 1.5.0
    */
 
   /**
-   * Constructs a new ReceiptApi. 
-   * @alias module:api/ReceiptApi
+   * Constructs a new DomainApi. 
+   * @alias module:api/DomainApi
    * @class
    * @param {module:ApiClient} [apiClient] Optional API client implementation to use,
    * default to {@link module:ApiClient#instance} if unspecified.
@@ -49,31 +49,30 @@
 
 
     /**
-     * Callback function to receive the result of the getReceipt operation.
-     * @callback module:api/ReceiptApi~getReceiptCallback
+     * Callback function to receive the result of the createDomainUser operation.
+     * @callback module:api/DomainApi~createDomainUserCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/Receipt} data The data returned by the service call.
+     * @param {module:model/User} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Get the proof receipt of an anchor.
-     * Use this operation to retrieve the Chainpoint proof receipt associated to a given anchor. This is a publicly accessible endpoint: authentication is not required to retrieve a proof receipt (but the anchor identifier need to be known). 
-     * @param {String} anchorid Identifier of the anchor for which to build the proof receipt.
-     * @param {module:api/ReceiptApi~getReceiptCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/Receipt}
+     * Create a new domain user.
+     * Use this operation to create a new user for a domain.
+     * @param {module:model/User} user User object to create (password must be provided).
+     * @param {module:api/DomainApi~createDomainUserCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/User}
      */
-    this.getReceipt = function(anchorid, callback) {
-      var postBody = null;
+    this.createDomainUser = function(user, callback) {
+      var postBody = user;
 
-      // verify the required parameter 'anchorid' is set
-      if (anchorid === undefined || anchorid === null) {
-        throw new Error("Missing the required parameter 'anchorid' when calling getReceipt");
+      // verify the required parameter 'user' is set
+      if (user === undefined || user === null) {
+        throw new Error("Missing the required parameter 'user' when calling createDomainUser");
       }
 
 
       var pathParams = {
-        'anchorid': anchorid
       };
       var queryParams = {
       };
@@ -84,43 +83,43 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['BasicAuth', 'JWTAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = Receipt;
+      var returnType = User;
 
       return this.apiClient.callApi(
-        '/receipt/{anchorid}', 'GET',
+        '/domain/admin/user', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
     }
 
     /**
-     * Callback function to receive the result of the verifyReceipt operation.
-     * @callback module:api/ReceiptApi~verifyReceiptCallback
+     * Callback function to receive the result of the deleteDomainUser operation.
+     * @callback module:api/DomainApi~deleteDomainUserCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/ReceiptVerificationStatus} data The data returned by the service call.
+     * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Verify a proof receipt.
-     * Use this operation to verify a Chainpoint proof receipt.&lt;br&gt; This is a publicly accessible endpoint: authentication is not required to verify a proof receipt. 
-     * @param {module:model/Receipt} receipt Chainpoint proof receipt to verify.
-     * @param {module:api/ReceiptApi~verifyReceiptCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ReceiptVerificationStatus}
+     * Delete a user.
+     * Use this operation to delete a user.
+     * @param {String} userid Identifier of the user to delete.
+     * @param {module:api/DomainApi~deleteDomainUserCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.verifyReceipt = function(receipt, callback) {
-      var postBody = receipt;
+    this.deleteDomainUser = function(userid, callback) {
+      var postBody = null;
 
-      // verify the required parameter 'receipt' is set
-      if (receipt === undefined || receipt === null) {
-        throw new Error("Missing the required parameter 'receipt' when calling verifyReceipt");
+      // verify the required parameter 'userid' is set
+      if (userid === undefined || userid === null) {
+        throw new Error("Missing the required parameter 'userid' when calling deleteDomainUser");
       }
 
 
       var pathParams = {
+        'userid': userid
       };
       var queryParams = {
       };
@@ -131,13 +130,168 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['BasicAuth', 'JWTAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = ReceiptVerificationStatus;
+      var returnType = null;
 
       return this.apiClient.callApi(
-        '/receipt/verify', 'POST',
+        '/domain/admin/user/{userid}', 'DELETE',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getDomainUser operation.
+     * @callback module:api/DomainApi~getDomainUserCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/User} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get a user by its identifier.
+     * Use this operation to retrieve a user by its identifier.
+     * @param {String} userid Identifier of the user to retrieve.
+     * @param {module:api/DomainApi~getDomainUserCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/User}
+     */
+    this.getDomainUser = function(userid, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'userid' is set
+      if (userid === undefined || userid === null) {
+        throw new Error("Missing the required parameter 'userid' when calling getDomainUser");
+      }
+
+
+      var pathParams = {
+        'userid': userid
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['BasicAuth', 'JWTAuth'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = User;
+
+      return this.apiClient.callApi(
+        '/domain/admin/user/{userid}', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getDomainUsers operation.
+     * @callback module:api/DomainApi~getDomainUsersCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/Users} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Search for users.
+     * Use this operation to retrieve all users having a given &#x60;email&#x60; property.&lt;br&gt; Paging and sorting is supported. 
+     * @param {Object} opts Optional parameters
+     * @param {Number} opts.page Index of the page to retrieve (from 0). (default to 0)
+     * @param {Number} opts.size Number of users per page. (default to 20)
+     * @param {module:model/String} opts.direction Sorting direction: ASC for ascending DESC for descending.  (default to ASC)
+     * @param {module:model/String} opts.sort Sorting property: possible values are limited to &#x60;created&#x60;, &#x60;email&#x60;, &#x60;status&#x60; and &#x60;roles&#x60;.  (default to created)
+     * @param {String} opts.email email to search for: a sub-string or regex of the email. 
+     * @param {module:api/DomainApi~getDomainUsersCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/Users}
+     */
+    this.getDomainUsers = function(opts, callback) {
+      opts = opts || {};
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+        'page': opts['page'],
+        'size': opts['size'],
+        'direction': opts['direction'],
+        'sort': opts['sort'],
+        'email': opts['email'],
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['BasicAuth', 'JWTAuth'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = Users;
+
+      return this.apiClient.callApi(
+        '/domain/admin/users', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the updateDomainUser operation.
+     * @callback module:api/DomainApi~updateDomainUserCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/User} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Update a user.
+     * Use this operation to update a user.
+     * @param {String} userid Identifier of the user to update.
+     * @param {module:model/User} user User object to update.
+     * @param {module:api/DomainApi~updateDomainUserCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/User}
+     */
+    this.updateDomainUser = function(userid, user, callback) {
+      var postBody = user;
+
+      // verify the required parameter 'userid' is set
+      if (userid === undefined || userid === null) {
+        throw new Error("Missing the required parameter 'userid' when calling updateDomainUser");
+      }
+
+      // verify the required parameter 'user' is set
+      if (user === undefined || user === null) {
+        throw new Error("Missing the required parameter 'user' when calling updateDomainUser");
+      }
+
+
+      var pathParams = {
+        'userid': userid
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['BasicAuth', 'JWTAuth'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = User;
+
+      return this.apiClient.callApi(
+        '/domain/admin/user/{userid}', 'PUT',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

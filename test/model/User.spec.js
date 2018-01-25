@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new WoleetApi.IdentityVerificationStatus();
+    instance = new WoleetApi.User();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,28 +50,58 @@
       object[property] = value;
   }
 
-  describe('IdentityVerificationStatus', function() {
-    it('should create an instance of IdentityVerificationStatus', function() {
-      // uncomment below and update the code to test IdentityVerificationStatus
-      //var instane = new WoleetApi.IdentityVerificationStatus();
-      //expect(instance).to.be.a(WoleetApi.IdentityVerificationStatus);
+  describe('User', function() {
+    it('should create an instance of User', function() {
+      // uncomment below and update the code to test User
+      //var instane = new WoleetApi.User();
+      //expect(instance).to.be.a(WoleetApi.User);
     });
 
-    it('should have the property code (base name: "code")', function() {
-      // uncomment below and update the code to test the property code
-      //var instane = new WoleetApi.IdentityVerificationStatus();
+    it('should have the property id (base name: "id")', function() {
+      // uncomment below and update the code to test the property id
+      //var instane = new WoleetApi.User();
       //expect(instance).to.be();
     });
 
-    it('should have the property text (base name: "text")', function() {
-      // uncomment below and update the code to test the property text
-      //var instane = new WoleetApi.IdentityVerificationStatus();
+    it('should have the property email (base name: "email")', function() {
+      // uncomment below and update the code to test the property email
+      //var instane = new WoleetApi.User();
       //expect(instance).to.be();
     });
 
-    it('should have the property certificates (base name: "certificates")', function() {
-      // uncomment below and update the code to test the property certificates
-      //var instane = new WoleetApi.IdentityVerificationStatus();
+    it('should have the property password (base name: "password")', function() {
+      // uncomment below and update the code to test the property password
+      //var instane = new WoleetApi.User();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property roles (base name: "roles")', function() {
+      // uncomment below and update the code to test the property roles
+      //var instane = new WoleetApi.User();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property info (base name: "info")', function() {
+      // uncomment below and update the code to test the property info
+      //var instane = new WoleetApi.User();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property status (base name: "status")', function() {
+      // uncomment below and update the code to test the property status
+      //var instane = new WoleetApi.User();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property created (base name: "created")', function() {
+      // uncomment below and update the code to test the property created
+      //var instane = new WoleetApi.User();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property lastModified (base name: "lastModified")', function() {
+      // uncomment below and update the code to test the property lastModified
+      //var instane = new WoleetApi.User();
       //expect(instance).to.be();
     });
 
