@@ -26,12 +26,6 @@ var BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
-// Configure API key authorization: JWTAuth
-var JWTAuth = defaultClient.authentications['JWTAuth'];
-JWTAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWTAuth.apiKeyPrefix = 'Token';
-
 var apiInstance = new WoleetApi.TokenApi();
 
 var opts = { 
@@ -60,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[BasicAuth](../README.md#BasicAuth), [JWTAuth](../README.md#JWTAuth)
+[BasicAuth](../README.md#BasicAuth)
 
 ### HTTP request headers
 

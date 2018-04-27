@@ -5,10 +5,10 @@ All URIs are relative to *https://api.woleet.io/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createDomainUser**](DomainApi.md#createDomainUser) | **POST** /domain/admin/user | Create a new domain user.
-[**deleteDomainUser**](DomainApi.md#deleteDomainUser) | **DELETE** /domain/admin/user/{userid} | Delete a user.
-[**getDomainUser**](DomainApi.md#getDomainUser) | **GET** /domain/admin/user/{userid} | Get a user by its identifier.
-[**getDomainUsers**](DomainApi.md#getDomainUsers) | **GET** /domain/admin/users | Search for users.
-[**updateDomainUser**](DomainApi.md#updateDomainUser) | **PUT** /domain/admin/user/{userid} | Update a user.
+[**deleteDomainUser**](DomainApi.md#deleteDomainUser) | **DELETE** /domain/admin/user/{userid} | Delete a domain user.
+[**getDomainUser**](DomainApi.md#getDomainUser) | **GET** /domain/admin/user/{userid} | Get a domain user by its identifier.
+[**searchDomainUsers**](DomainApi.md#searchDomainUsers) | **GET** /domain/admin/users | Search for domain users.
+[**updateDomainUser**](DomainApi.md#updateDomainUser) | **PUT** /domain/admin/user/{userid} | Update a domain user.
 
 
 <a name="createDomainUser"></a>
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 Create a new domain user.
 
-Use this operation to create a new user for a domain.
+Use this operation to create a new domain user.&lt;br&gt;  The properties &#x60;id&#x60;, &#x60;created&#x60;, &#x60;lastModified&#x60;, &#x60;status&#x60;, &#x60;timestamp&#x60; and &#x60;confirmations&#x60; are read-only and so must not be provided: they are managed by the platform and added to the returned anchor. 
 
 ### Example
 ```javascript
@@ -73,9 +73,9 @@ Name | Type | Description  | Notes
 # **deleteDomainUser**
 > deleteDomainUser(userid)
 
-Delete a user.
+Delete a domain user.
 
-Use this operation to delete a user.
+Use this operation to delete a domain user.
 
 ### Example
 ```javascript
@@ -95,7 +95,7 @@ JWTAuth.apiKey = 'YOUR API KEY';
 
 var apiInstance = new WoleetApi.DomainApi();
 
-var userid = "userid_example"; // String | Identifier of the user to delete.
+var userid = "userid_example"; // String | Identifier of the domain user to delete.
 
 
 var callback = function(error, data, response) {
@@ -112,7 +112,7 @@ apiInstance.deleteDomainUser(userid, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userid** | **String**| Identifier of the user to delete. | 
+ **userid** | **String**| Identifier of the domain user to delete. | 
 
 ### Return type
 
@@ -131,9 +131,9 @@ null (empty response body)
 # **getDomainUser**
 > User getDomainUser(userid)
 
-Get a user by its identifier.
+Get a domain user by its identifier.
 
-Use this operation to retrieve a user by its identifier.
+Use this operation to retrieve a domain user by its identifier.
 
 ### Example
 ```javascript
@@ -153,7 +153,7 @@ JWTAuth.apiKey = 'YOUR API KEY';
 
 var apiInstance = new WoleetApi.DomainApi();
 
-var userid = "userid_example"; // String | Identifier of the user to retrieve.
+var userid = "userid_example"; // String | Identifier of the domain user to retrieve.
 
 
 var callback = function(error, data, response) {
@@ -170,7 +170,7 @@ apiInstance.getDomainUser(userid, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userid** | **String**| Identifier of the user to retrieve. | 
+ **userid** | **String**| Identifier of the domain user to retrieve. | 
 
 ### Return type
 
@@ -185,13 +185,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="getDomainUsers"></a>
-# **getDomainUsers**
-> Users getDomainUsers(opts)
+<a name="searchDomainUsers"></a>
+# **searchDomainUsers**
+> Users searchDomainUsers(opts)
 
-Search for users.
+Search for domain users.
 
-Use this operation to retrieve all users having a given &#x60;email&#x60; property.&lt;br&gt; Paging and sorting is supported. 
+Use this operation to retrieve all domain users having a given &#x60;email&#x60; property.&lt;br&gt; Paging and sorting is supported. 
 
 ### Example
 ```javascript
@@ -226,7 +226,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getDomainUsers(opts, callback);
+apiInstance.searchDomainUsers(opts, callback);
 ```
 
 ### Parameters
@@ -256,9 +256,9 @@ Name | Type | Description  | Notes
 # **updateDomainUser**
 > User updateDomainUser(userid, user)
 
-Update a user.
+Update a domain user.
 
-Use this operation to update a user.
+Use this operation to update a domain user.
 
 ### Example
 ```javascript
@@ -278,7 +278,7 @@ JWTAuth.apiKey = 'YOUR API KEY';
 
 var apiInstance = new WoleetApi.DomainApi();
 
-var userid = "userid_example"; // String | Identifier of the user to update.
+var userid = "userid_example"; // String | Identifier of the domain user to update.
 
 var user = new WoleetApi.User(); // User | User object to update.
 
@@ -297,7 +297,7 @@ apiInstance.updateDomainUser(userid, user, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userid** | **String**| Identifier of the user to update. | 
+ **userid** | **String**| Identifier of the domain user to update. | 
  **user** | [**User**](User.md)| User object to update. | 
 
 ### Return type
