@@ -58,7 +58,7 @@
 
     /**
      * Create a new domain user.
-     * Use this operation to create a new domain user.&lt;br&gt;  The properties &#x60;id&#x60;, &#x60;created&#x60;, &#x60;lastModified&#x60;, &#x60;status&#x60;, &#x60;timestamp&#x60; and &#x60;confirmations&#x60; are read-only and so must not be provided: they are managed by the platform and added to the returned anchor. 
+     * Use this operation to create a new domain user.&lt;br&gt; The properties &#x60;id&#x60;, &#x60;created&#x60;, &#x60;lastModified&#x60;, &#x60;info&#x60; and &#x60;status&#x60; are read-only and so must not be provided: they are managed by the platform and added to the returned anchor. 
      * @param {module:model/User} user User object to create (password must be provided).
      * @param {module:api/DomainApi~createDomainUserCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/User}
@@ -205,7 +205,7 @@
      * @param {Number} opts.page Index of the page to retrieve (from 0). (default to 0)
      * @param {Number} opts.size Number of users per page. (default to 20)
      * @param {module:model/String} opts.direction Sorting direction: ASC for ascending DESC for descending.  (default to ASC)
-     * @param {module:model/String} opts.sort Sorting property: possible values are limited to &#x60;created&#x60;, &#x60;email&#x60;, &#x60;status&#x60; and &#x60;roles&#x60;.  (default to created)
+     * @param {module:model/String} opts.sort Sorting property: possible values are limited to &#x60;created&#x60;, &#x60;email&#x60;, &#x60;roles&#x60; and &#x60;status&#x60;.  (default to created)
      * @param {String} opts.email email to search for: a sub-string or regex of the email. 
      * @param {module:api/DomainApi~searchDomainUsersCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Users}

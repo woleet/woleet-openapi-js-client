@@ -210,7 +210,7 @@
    */
   exports.prototype['callbackURL'] = undefined;
   /**
-   * Status of the anchor:<br> - WAIT: waiting to be processed. The proof receipt is not yet available for download.<br> - NEW: to be sent to the blockchain. The proof receipt is not yet available for download.<br> - SENT: sent to the blockchain. The proof receipt is available for download.<br> - CONFIRMED: confirmed at least 6 times by the blockchain. The proof receipt is available for download.<br> 
+   * Status of the anchor:<br> - WAIT: waiting to be processed by the platform (the proof receipt is not yet available for download)<br> - NEW: waiting to be sent to the blockchain (the proof receipt is not yet available for download)<br> - SENT: sent to the blockchain (the proof receipt is available for download)<br> - CONFIRMED: confirmed at least 6 times by the blockchain (the proof receipt is available for download)<br> 
    * @member {module:model/Anchor.StatusEnum} status
    */
   exports.prototype['status'] = undefined;
