@@ -26,7 +26,7 @@
     if (!root.WoleetApi) {
       root.WoleetApi = {};
     }
-    root.WoleetApi.ReceiptAnchorsNode = factory(root.WoleetApi.ApiClient);
+    root.WoleetApi.OtsReceipt = factory(root.WoleetApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,53 +35,36 @@
 
 
   /**
-   * The ReceiptAnchorsNode model module.
-   * @module model/ReceiptAnchorsNode
+   * The OtsReceipt model module.
+   * @module model/OtsReceipt
    * @version 1.5.2
    */
 
   /**
-   * Constructs a new <code>ReceiptAnchorsNode</code>.
-   * @alias module:model/ReceiptAnchorsNode
+   * Constructs a new <code>OtsReceipt</code>.
+   * @alias module:model/OtsReceipt
    * @class
    */
   var exports = function() {
     var _this = this;
 
-
-
   };
 
   /**
-   * Constructs a <code>ReceiptAnchorsNode</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>OtsReceipt</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ReceiptAnchorsNode} obj Optional instance to populate.
-   * @return {module:model/ReceiptAnchorsNode} The populated <code>ReceiptAnchorsNode</code> instance.
+   * @param {module:model/OtsReceipt} obj Optional instance to populate.
+   * @return {module:model/OtsReceipt} The populated <code>OtsReceipt</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('type')) {
-        obj['type'] = ApiClient.convertToType(data['type'], 'String');
-      }
-      if (data.hasOwnProperty('sourceId')) {
-        obj['sourceId'] = ApiClient.convertToType(data['sourceId'], 'String');
-      }
     }
     return obj;
   }
 
-  /**
-   * @member {String} type
-   * @default 'BTCOpReturn'
-   */
-  exports.prototype['type'] = 'BTCOpReturn';
-  /**
-   * @member {String} sourceId
-   */
-  exports.prototype['sourceId'] = undefined;
 
 
 

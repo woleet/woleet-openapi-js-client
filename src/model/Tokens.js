@@ -26,7 +26,7 @@
     if (!root.WoleetApi) {
       root.WoleetApi = {};
     }
-    root.WoleetApi.ReceiptAnchorsNode = factory(root.WoleetApi.ApiClient);
+    root.WoleetApi.Tokens = factory(root.WoleetApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -35,53 +35,44 @@
 
 
   /**
-   * The ReceiptAnchorsNode model module.
-   * @module model/ReceiptAnchorsNode
+   * The Tokens model module.
+   * @module model/Tokens
    * @version 1.5.2
    */
 
   /**
-   * Constructs a new <code>ReceiptAnchorsNode</code>.
-   * @alias module:model/ReceiptAnchorsNode
+   * Constructs a new <code>Tokens</code>.
+   * @alias module:model/Tokens
    * @class
    */
   var exports = function() {
     var _this = this;
 
 
-
   };
 
   /**
-   * Constructs a <code>ReceiptAnchorsNode</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Tokens</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ReceiptAnchorsNode} obj Optional instance to populate.
-   * @return {module:model/ReceiptAnchorsNode} The populated <code>ReceiptAnchorsNode</code> instance.
+   * @param {module:model/Tokens} obj Optional instance to populate.
+   * @return {module:model/Tokens} The populated <code>Tokens</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('type')) {
-        obj['type'] = ApiClient.convertToType(data['type'], 'String');
-      }
-      if (data.hasOwnProperty('sourceId')) {
-        obj['sourceId'] = ApiClient.convertToType(data['sourceId'], 'String');
+      if (data.hasOwnProperty('tokens')) {
+        obj['tokens'] = ApiClient.convertToType(data['tokens'], ['String']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {String} type
-   * @default 'BTCOpReturn'
+   * @member {Array.<String>} tokens
    */
-  exports.prototype['type'] = 'BTCOpReturn';
-  /**
-   * @member {String} sourceId
-   */
-  exports.prototype['sourceId'] = undefined;
+  exports.prototype['tokens'] = undefined;
 
 
 

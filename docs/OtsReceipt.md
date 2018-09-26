@@ -1,9 +1,7 @@
-# WoleetApi.ReceiptProofNode
+# WoleetApi.OtsReceipt
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**left** | **String** |  | [optional] 
-**right** | **String** |  | [optional] 
 
 

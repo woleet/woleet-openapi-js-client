@@ -26,6 +26,12 @@ var BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
+// Configure API key authorization: JWTAuth
+var JWTAuth = defaultClient.authentications['JWTAuth'];
+JWTAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWTAuth.apiKeyPrefix = 'Token';
+
 var apiInstance = new WoleetApi.TokenApi();
 
 var opts = { 
@@ -54,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [JWTAuth](../README.md#JWTAuth)
 
 ### HTTP request headers
 
@@ -87,7 +93,7 @@ JWTAuth.apiKey = 'YOUR API KEY';
 
 var apiInstance = new WoleetApi.TokenApi();
 
-var token = new WoleetApi.Token(); // Token | Token to revoke.
+var token = "token_example"; // String | Token to revoke.
 
 
 var callback = function(error, data, response) {
@@ -104,7 +110,7 @@ apiInstance.revokeToken(token, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **token** | [**Token**](Token.md)| Token to revoke. | 
+ **token** | **String**| Token to revoke. | 
 
 ### Return type
 

@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new WoleetApi.SignatureRequestSign();
+    instance = new WoleetApi.OtsReceipt();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,23 +50,11 @@
       object[property] = value;
   }
 
-  describe('SignatureRequestSign', function() {
-    it('should create an instance of SignatureRequestSign', function() {
-      // uncomment below and update the code to test SignatureRequestSign
-      //var instane = new WoleetApi.SignatureRequestSign();
-      //expect(instance).to.be.a(WoleetApi.SignatureRequestSign);
-    });
-
-    it('should have the property signature (base name: "signature")', function() {
-      // uncomment below and update the code to test the property signature
-      //var instane = new WoleetApi.SignatureRequestSign();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property pubKey (base name: "pubKey")', function() {
-      // uncomment below and update the code to test the property pubKey
-      //var instane = new WoleetApi.SignatureRequestSign();
-      //expect(instance).to.be();
+  describe('OtsReceipt', function() {
+    it('should create an instance of OtsReceipt', function() {
+      // uncomment below and update the code to test OtsReceipt
+      //var instane = new WoleetApi.OtsReceipt();
+      //expect(instance).to.be.a(WoleetApi.OtsReceipt);
     });
 
   });

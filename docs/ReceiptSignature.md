@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**signedHash** | **String** |  | 
-**pubKey** | **String** |  | 
-**signature** | **String** |  | 
-**identityURL** | **String** |  | [optional] 
+**signedHash** | **String** | SHA256 hash (ie. the fingerprint) of the original signed data. | [optional] 
+**pubKey** | **String** | Public key of the signee. | [optional] 
+**signature** | **String** | Signature of the &#x60;signedHash&#x60; property using the public key stored in the &#x60;pubKey&#x60; property. | [optional] 
+**identityURL** | **String** | Web hook to use to verify the signee&#39;s identity. | [optional] 
 
 
