@@ -1,4 +1,4 @@
-# WoleetApi.Tokens
+# WoleetApi.InlineObject
 
 ## Properties
 Name | Type | Description | Notes

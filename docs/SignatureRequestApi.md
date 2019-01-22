@@ -29,7 +29,6 @@ var defaultClient = WoleetApi.ApiClient.instance;
 var BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
-
 // Configure API key authorization: JWTAuth
 var JWTAuth = defaultClient.authentications['JWTAuth'];
 JWTAuth.apiKey = 'YOUR API KEY';
@@ -37,10 +36,7 @@ JWTAuth.apiKey = 'YOUR API KEY';
 //JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.SignatureRequestApi();
-
 var signatureRequest = new WoleetApi.SignatureRequest(); // SignatureRequest | SignatureRequest object to create.
-
-
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -87,7 +83,6 @@ var defaultClient = WoleetApi.ApiClient.instance;
 var BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
-
 // Configure API key authorization: JWTAuth
 var JWTAuth = defaultClient.authentications['JWTAuth'];
 JWTAuth.apiKey = 'YOUR API KEY';
@@ -95,10 +90,7 @@ JWTAuth.apiKey = 'YOUR API KEY';
 //JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.SignatureRequestApi();
-
 var requestid = "requestid_example"; // String | Identifier of the signature request to delete.
-
-
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -125,8 +117,8 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
 
 <a name="getSignatureRequest"></a>
 # **getSignatureRequest**
@@ -145,7 +137,6 @@ var defaultClient = WoleetApi.ApiClient.instance;
 var BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
-
 // Configure API key authorization: JWTAuth
 var JWTAuth = defaultClient.authentications['JWTAuth'];
 JWTAuth.apiKey = 'YOUR API KEY';
@@ -153,10 +144,7 @@ JWTAuth.apiKey = 'YOUR API KEY';
 //JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.SignatureRequestApi();
-
 var requestid = "requestid_example"; // String | Identifier of the signature request to retrieve.
-
-
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -183,7 +171,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="searchSignatureRequests"></a>
@@ -203,7 +191,6 @@ var defaultClient = WoleetApi.ApiClient.instance;
 var BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
-
 // Configure API key authorization: JWTAuth
 var JWTAuth = defaultClient.authentications['JWTAuth'];
 JWTAuth.apiKey = 'YOUR API KEY';
@@ -211,16 +198,14 @@ JWTAuth.apiKey = 'YOUR API KEY';
 //JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.SignatureRequestApi();
-
-var opts = { 
+var opts = {
   'page': 0, // Number | Index of the page to retrieve (from 0).
   'size': 20, // Number | Number of anchors per page.
-  'direction': "ASC", // String | Sorting direction: ASC for ascending DESC for descending. 
-  'sort': "created", // String | Sorting property: possible values are limited to `id`, `created` and `hashToSign`. 
+  'direction': "'ASC'", // String | Sorting direction: ASC for ascending DESC for descending. 
+  'sort': "'created'", // String | Sorting property: possible values are limited to `id`, `created` and `hashToSign`. 
   'name': "name_example", // String | `name` to search for: all signature requests whose `name` property contains this sub-string are returned.<br> **WARNING: searching by name can timeout on a large signature request set.** 
   'hashToSign': "hashToSign_example" // String | `hashToSign` to search for: all signature requests whose `hashToSign` property is equal are returned. 
 };
-
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -237,8 +222,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **Number**| Index of the page to retrieve (from 0). | [optional] [default to 0]
  **size** | **Number**| Number of anchors per page. | [optional] [default to 20]
- **direction** | **String**| Sorting direction: ASC for ascending DESC for descending.  | [optional] [default to ASC]
- **sort** | **String**| Sorting property: possible values are limited to &#x60;id&#x60;, &#x60;created&#x60; and &#x60;hashToSign&#x60;.  | [optional] [default to created]
+ **direction** | **String**| Sorting direction: ASC for ascending DESC for descending.  | [optional] [default to &#39;ASC&#39;]
+ **sort** | **String**| Sorting property: possible values are limited to &#x60;id&#x60;, &#x60;created&#x60; and &#x60;hashToSign&#x60;.  | [optional] [default to &#39;created&#39;]
  **name** | **String**| &#x60;name&#x60; to search for: all signature requests whose &#x60;name&#x60; property contains this sub-string are returned.&lt;br&gt; **WARNING: searching by name can timeout on a large signature request set.**  | [optional] 
  **hashToSign** | **String**| &#x60;hashToSign&#x60; to search for: all signature requests whose &#x60;hashToSign&#x60; property is equal are returned.  | [optional] 
 
@@ -252,12 +237,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="signSignatureRequest"></a>
 # **signSignatureRequest**
-> SignatureRequestSignResult signSignatureRequest(requestid, signature)
+> SignatureRequestSignResult signSignatureRequest(requestid, signatureRequestSign)
 
 Sign a signature request.
 
@@ -266,14 +251,21 @@ Use this operation to register a signature for a signature request.&lt;br&gt; Th
 ### Example
 ```javascript
 var WoleetApi = require('woleet_api');
+var defaultClient = WoleetApi.ApiClient.instance;
+
+// Configure HTTP basic authorization: BasicAuth
+var BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
+// Configure API key authorization: JWTAuth
+var JWTAuth = defaultClient.authentications['JWTAuth'];
+JWTAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.SignatureRequestApi();
-
 var requestid = "requestid_example"; // String | Identifier of the signature request.
-
-var signature = new WoleetApi.SignatureRequestSign(); // SignatureRequestSign | Signature to register.
-
-
+var signatureRequestSign = new WoleetApi.SignatureRequestSign(); // SignatureRequestSign | Signature to register.
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -281,7 +273,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.signSignatureRequest(requestid, signature, callback);
+apiInstance.signSignatureRequest(requestid, signatureRequestSign, callback);
 ```
 
 ### Parameters
@@ -289,7 +281,7 @@ apiInstance.signSignatureRequest(requestid, signature, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **requestid** | **String**| Identifier of the signature request. | 
- **signature** | [**SignatureRequestSign**](SignatureRequestSign.md)| Signature to register. | 
+ **signatureRequestSign** | [**SignatureRequestSign**](SignatureRequestSign.md)| Signature to register. | 
 
 ### Return type
 
@@ -297,7 +289,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[BasicAuth](../README.md#BasicAuth), [JWTAuth](../README.md#JWTAuth)
 
 ### HTTP request headers
 
@@ -306,7 +298,7 @@ No authorization required
 
 <a name="updateSignatureRequest"></a>
 # **updateSignatureRequest**
-> SignatureRequest updateSignatureRequest(requestid, request)
+> SignatureRequest updateSignatureRequest(requestid, signatureRequest)
 
 Update a signature request.
 
@@ -321,7 +313,6 @@ var defaultClient = WoleetApi.ApiClient.instance;
 var BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
-
 // Configure API key authorization: JWTAuth
 var JWTAuth = defaultClient.authentications['JWTAuth'];
 JWTAuth.apiKey = 'YOUR API KEY';
@@ -329,12 +320,8 @@ JWTAuth.apiKey = 'YOUR API KEY';
 //JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.SignatureRequestApi();
-
 var requestid = "requestid_example"; // String | Identifier of signature request to update.
-
-var request = new WoleetApi.SignatureRequest(); // SignatureRequest | SignatureRequest object to update.
-
-
+var signatureRequest = new WoleetApi.SignatureRequest(); // SignatureRequest | SignatureRequest object to update.
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -342,7 +329,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.updateSignatureRequest(requestid, request, callback);
+apiInstance.updateSignatureRequest(requestid, signatureRequest, callback);
 ```
 
 ### Parameters
@@ -350,7 +337,7 @@ apiInstance.updateSignatureRequest(requestid, request, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **requestid** | **String**| Identifier of signature request to update. | 
- **request** | [**SignatureRequest**](SignatureRequest.md)| SignatureRequest object to update. | 
+ **signatureRequest** | [**SignatureRequest**](SignatureRequest.md)| SignatureRequest object to update. | 
 
 ### Return type
 

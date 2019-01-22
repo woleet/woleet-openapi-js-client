@@ -29,7 +29,6 @@ var defaultClient = WoleetApi.ApiClient.instance;
 var BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
-
 // Configure API key authorization: JWTAuth
 var JWTAuth = defaultClient.authentications['JWTAuth'];
 JWTAuth.apiKey = 'YOUR API KEY';
@@ -37,10 +36,7 @@ JWTAuth.apiKey = 'YOUR API KEY';
 //JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.AnchorApi();
-
 var anchor = new WoleetApi.Anchor(); // Anchor | Anchor object to create.
-
-
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -87,7 +83,6 @@ var defaultClient = WoleetApi.ApiClient.instance;
 var BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
-
 // Configure API key authorization: JWTAuth
 var JWTAuth = defaultClient.authentications['JWTAuth'];
 JWTAuth.apiKey = 'YOUR API KEY';
@@ -95,10 +90,7 @@ JWTAuth.apiKey = 'YOUR API KEY';
 //JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.AnchorApi();
-
 var anchorid = "anchorid_example"; // String | Identifier of the anchor to delete.
-
-
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -125,8 +117,8 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
 
 <a name="getAnchor"></a>
 # **getAnchor**
@@ -145,7 +137,6 @@ var defaultClient = WoleetApi.ApiClient.instance;
 var BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
-
 // Configure API key authorization: JWTAuth
 var JWTAuth = defaultClient.authentications['JWTAuth'];
 JWTAuth.apiKey = 'YOUR API KEY';
@@ -153,10 +144,7 @@ JWTAuth.apiKey = 'YOUR API KEY';
 //JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.AnchorApi();
-
 var anchorid = "anchorid_example"; // String | Identifier of the anchor to retrieve.
-
-
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -183,7 +171,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="searchAnchorIds"></a>
@@ -197,16 +185,25 @@ Use this operation to retrieve the identifiers of all public anchors having a gi
 ### Example
 ```javascript
 var WoleetApi = require('woleet_api');
+var defaultClient = WoleetApi.ApiClient.instance;
+
+// Configure HTTP basic authorization: BasicAuth
+var BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
+// Configure API key authorization: JWTAuth
+var JWTAuth = defaultClient.authentications['JWTAuth'];
+JWTAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.AnchorApi();
-
-var opts = { 
+var opts = {
   'page': 0, // Number | Index of the page to retrieve (from 0).
   'size': 20, // Number | Number of anchors per page.
   'hash': "hash_example", // String | `hash` to search for: all public anchors whose `hash` property is equal are returned. 
   'signedHash': "signedHash_example" // String | `signedHash` to search for: all public anchors whose `signedHash` property is equal are returned. 
 };
-
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -232,11 +229,11 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[BasicAuth](../README.md#BasicAuth), [JWTAuth](../README.md#JWTAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="searchAnchors"></a>
@@ -256,7 +253,6 @@ var defaultClient = WoleetApi.ApiClient.instance;
 var BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
-
 // Configure API key authorization: JWTAuth
 var JWTAuth = defaultClient.authentications['JWTAuth'];
 JWTAuth.apiKey = 'YOUR API KEY';
@@ -264,18 +260,16 @@ JWTAuth.apiKey = 'YOUR API KEY';
 //JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.AnchorApi();
-
-var opts = { 
+var opts = {
   'page': 0, // Number | Index of the page to retrieve (from 0).
   'size': 20, // Number | Number of anchors per page.
-  'direction': "ASC", // String | Sorting direction: ASC for ascending DESC for descending. 
-  'sort': "created", // String | Sorting property: possible values are limited to `id`, `created`, `hash` and `signedHash`. 
+  'direction': "'ASC'", // String | Sorting direction: ASC for ascending DESC for descending. 
+  'sort': "'created'", // String | Sorting property: possible values are limited to `id`, `created`, `hash` and `signedHash`. 
   'name': "name_example", // String | `name` to search for: all anchors whose `name` property contains this sub-string are returned.<br> **WARNING: searching by name can timeout on a large anchor set.** 
   'hash': "hash_example", // String | `hash` to search for: all anchors whose `hash` property is equal are returned. 
   'signedHash': "signedHash_example", // String | `signedHash` to search for: all anchors whose `signedHash` property is equal are returned. 
-  'tags': ["tags_example"] // [String] | `tags` to search for: all anchors having all of these tags sets are returned. 
+  'tags': ["null"] // [String] | `tags` to search for: all anchors having all of these tags sets are returned. 
 };
-
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -292,8 +286,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **Number**| Index of the page to retrieve (from 0). | [optional] [default to 0]
  **size** | **Number**| Number of anchors per page. | [optional] [default to 20]
- **direction** | **String**| Sorting direction: ASC for ascending DESC for descending.  | [optional] [default to ASC]
- **sort** | **String**| Sorting property: possible values are limited to &#x60;id&#x60;, &#x60;created&#x60;, &#x60;hash&#x60; and &#x60;signedHash&#x60;.  | [optional] [default to created]
+ **direction** | **String**| Sorting direction: ASC for ascending DESC for descending.  | [optional] [default to &#39;ASC&#39;]
+ **sort** | **String**| Sorting property: possible values are limited to &#x60;id&#x60;, &#x60;created&#x60;, &#x60;hash&#x60; and &#x60;signedHash&#x60;.  | [optional] [default to &#39;created&#39;]
  **name** | **String**| &#x60;name&#x60; to search for: all anchors whose &#x60;name&#x60; property contains this sub-string are returned.&lt;br&gt; **WARNING: searching by name can timeout on a large anchor set.**  | [optional] 
  **hash** | **String**| &#x60;hash&#x60; to search for: all anchors whose &#x60;hash&#x60; property is equal are returned.  | [optional] 
  **signedHash** | **String**| &#x60;signedHash&#x60; to search for: all anchors whose &#x60;signedHash&#x60; property is equal are returned.  | [optional] 
@@ -309,7 +303,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="updateAnchor"></a>
@@ -329,7 +323,6 @@ var defaultClient = WoleetApi.ApiClient.instance;
 var BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
-
 // Configure API key authorization: JWTAuth
 var JWTAuth = defaultClient.authentications['JWTAuth'];
 JWTAuth.apiKey = 'YOUR API KEY';
@@ -337,12 +330,8 @@ JWTAuth.apiKey = 'YOUR API KEY';
 //JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.AnchorApi();
-
 var anchorid = "anchorid_example"; // String | Identifier of anchor to update.
-
 var anchor = new WoleetApi.Anchor(); // Anchor | Anchor object to update.
-
-
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);

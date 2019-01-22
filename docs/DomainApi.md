@@ -28,7 +28,6 @@ var defaultClient = WoleetApi.ApiClient.instance;
 var BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
-
 // Configure API key authorization: JWTAuth
 var JWTAuth = defaultClient.authentications['JWTAuth'];
 JWTAuth.apiKey = 'YOUR API KEY';
@@ -36,10 +35,7 @@ JWTAuth.apiKey = 'YOUR API KEY';
 //JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.DomainApi();
-
 var user = new WoleetApi.User(); // User | User object to create (password must be provided).
-
-
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -86,7 +82,6 @@ var defaultClient = WoleetApi.ApiClient.instance;
 var BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
-
 // Configure API key authorization: JWTAuth
 var JWTAuth = defaultClient.authentications['JWTAuth'];
 JWTAuth.apiKey = 'YOUR API KEY';
@@ -94,10 +89,7 @@ JWTAuth.apiKey = 'YOUR API KEY';
 //JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.DomainApi();
-
 var userid = "userid_example"; // String | Identifier of the domain user to delete.
-
-
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -124,8 +116,8 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
 
 <a name="getDomainUser"></a>
 # **getDomainUser**
@@ -144,7 +136,6 @@ var defaultClient = WoleetApi.ApiClient.instance;
 var BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
-
 // Configure API key authorization: JWTAuth
 var JWTAuth = defaultClient.authentications['JWTAuth'];
 JWTAuth.apiKey = 'YOUR API KEY';
@@ -152,10 +143,7 @@ JWTAuth.apiKey = 'YOUR API KEY';
 //JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.DomainApi();
-
 var userid = "userid_example"; // String | Identifier of the domain user to retrieve.
-
-
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -182,7 +170,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="searchDomainUsers"></a>
@@ -191,7 +179,7 @@ Name | Type | Description  | Notes
 
 Search for domain users.
 
-Use this operation to retrieve all domain users having a given &#x60;email&#x60; property.&lt;br&gt; Paging and sorting is supported. 
+Use this operation to list all domain users or search for domain users given their email.&lt;br&gt; Paging and sorting is supported. 
 
 ### Example
 ```javascript
@@ -202,7 +190,6 @@ var defaultClient = WoleetApi.ApiClient.instance;
 var BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
-
 // Configure API key authorization: JWTAuth
 var JWTAuth = defaultClient.authentications['JWTAuth'];
 JWTAuth.apiKey = 'YOUR API KEY';
@@ -210,15 +197,13 @@ JWTAuth.apiKey = 'YOUR API KEY';
 //JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.DomainApi();
-
-var opts = { 
+var opts = {
   'page': 0, // Number | Index of the page to retrieve (from 0).
   'size': 20, // Number | Number of users per page.
-  'direction': "ASC", // String | Sorting direction: ASC for ascending DESC for descending. 
-  'sort': "created", // String | Sorting property: possible values are limited to `created`, `email`, `roles` and `status`. 
-  'email': "email_example" // String | email to search for: a sub-string or regex of the email. 
+  'direction': "'ASC'", // String | Sorting direction: ASC for ascending DESC for descending. 
+  'sort': "'created'", // String | Sorting property: possible values are `email`, `created`, `roles`, `info.firstName`, `info.lastName`, `status`. 
+  'email': "email_example" // String | email to search for: a sub-string of the email. 
 };
-
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -235,9 +220,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **Number**| Index of the page to retrieve (from 0). | [optional] [default to 0]
  **size** | **Number**| Number of users per page. | [optional] [default to 20]
- **direction** | **String**| Sorting direction: ASC for ascending DESC for descending.  | [optional] [default to ASC]
- **sort** | **String**| Sorting property: possible values are limited to &#x60;created&#x60;, &#x60;email&#x60;, &#x60;roles&#x60; and &#x60;status&#x60;.  | [optional] [default to created]
- **email** | **String**| email to search for: a sub-string or regex of the email.  | [optional] 
+ **direction** | **String**| Sorting direction: ASC for ascending DESC for descending.  | [optional] [default to &#39;ASC&#39;]
+ **sort** | **String**| Sorting property: possible values are &#x60;email&#x60;, &#x60;created&#x60;, &#x60;roles&#x60;, &#x60;info.firstName&#x60;, &#x60;info.lastName&#x60;, &#x60;status&#x60;.  | [optional] [default to &#39;created&#39;]
+ **email** | **String**| email to search for: a sub-string of the email.  | [optional] 
 
 ### Return type
 
@@ -249,7 +234,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="updateDomainUser"></a>
@@ -269,7 +254,6 @@ var defaultClient = WoleetApi.ApiClient.instance;
 var BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
-
 // Configure API key authorization: JWTAuth
 var JWTAuth = defaultClient.authentications['JWTAuth'];
 JWTAuth.apiKey = 'YOUR API KEY';
@@ -277,12 +261,8 @@ JWTAuth.apiKey = 'YOUR API KEY';
 //JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.DomainApi();
-
 var userid = "userid_example"; // String | Identifier of the domain user to update.
-
 var user = new WoleetApi.User(); // User | User object to update.
-
-
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);

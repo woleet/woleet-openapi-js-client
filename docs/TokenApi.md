@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Generate a JWT token.
 
-Use this operation to generate a new JWT token.&lt;br&gt; Then, use this token to authenticate using the &#x60;Bearer&#x60; scheme of the &#x60;Authorization&#x60; header, like:&lt;br&gt; &#x60;Authorization: Bearer {JWT token value}&#x60; 
+Use this operation to generate a new JWT token.&lt;br&gt; JWT tokens can be used to authenticate to the API, using the &#x60;Bearer&#x60; scheme of the &#x60;Authorization&#x60; header, like:&lt;br&gt; &#x60;Authorization: Bearer {JWT token}&#x60; 
 
 ### Example
 ```javascript
@@ -25,7 +25,6 @@ var defaultClient = WoleetApi.ApiClient.instance;
 var BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
-
 // Configure API key authorization: JWTAuth
 var JWTAuth = defaultClient.authentications['JWTAuth'];
 JWTAuth.apiKey = 'YOUR API KEY';
@@ -33,11 +32,9 @@ JWTAuth.apiKey = 'YOUR API KEY';
 //JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.TokenApi();
-
-var opts = { 
+var opts = {
   'cdata': "cdata_example" // String | Client data to inject into the generated JWT token (64 characters max).<br> This data is not processed by the platform, and can be easily retrieved from the token by BASE64 decoding its `payload`. 
 };
-
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -64,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="revokeToken"></a>
@@ -84,7 +81,6 @@ var defaultClient = WoleetApi.ApiClient.instance;
 var BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
-
 // Configure API key authorization: JWTAuth
 var JWTAuth = defaultClient.authentications['JWTAuth'];
 JWTAuth.apiKey = 'YOUR API KEY';
@@ -92,10 +88,7 @@ JWTAuth.apiKey = 'YOUR API KEY';
 //JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.TokenApi();
-
-var token = "token_example"; // String | Token to revoke.
-
-
+var token = "token_example"; // String | JWT token to revoke.
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -110,7 +103,7 @@ apiInstance.revokeToken(token, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **token** | **String**| Token to revoke. | 
+ **token** | **String**| JWT token to revoke. | 
 
 ### Return type
 
@@ -122,6 +115,6 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
 

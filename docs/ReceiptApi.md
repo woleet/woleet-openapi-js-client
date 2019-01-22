@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 <a name="getOTSReceipt"></a>
 # **getOTSReceipt**
-> OtsReceipt getOTSReceipt(anchorid)
+> File getOTSReceipt(anchorid)
 
 Get the proof receipt of an anchor (OpenTimestamps proof format).
 
@@ -20,12 +20,20 @@ Use this operation to retrieve the OpenTimestamps proof receipt associated to a 
 ### Example
 ```javascript
 var WoleetApi = require('woleet_api');
+var defaultClient = WoleetApi.ApiClient.instance;
+
+// Configure HTTP basic authorization: BasicAuth
+var BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
+// Configure API key authorization: JWTAuth
+var JWTAuth = defaultClient.authentications['JWTAuth'];
+JWTAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.ReceiptApi();
-
 var anchorid = "anchorid_example"; // String | Identifier of the anchor for which to build the proof receipt.
-
-
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -44,15 +52,15 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OtsReceipt**](OtsReceipt.md)
+**File**
 
 ### Authorization
 
-No authorization required
+[BasicAuth](../README.md#BasicAuth), [JWTAuth](../README.md#JWTAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getReceipt"></a>
@@ -66,12 +74,20 @@ Use this operation to retrieve the Chainpoint proof receipt associated to a give
 ### Example
 ```javascript
 var WoleetApi = require('woleet_api');
+var defaultClient = WoleetApi.ApiClient.instance;
+
+// Configure HTTP basic authorization: BasicAuth
+var BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
+// Configure API key authorization: JWTAuth
+var JWTAuth = defaultClient.authentications['JWTAuth'];
+JWTAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.ReceiptApi();
-
 var anchorid = "anchorid_example"; // String | Identifier of the anchor for which to build the proof receipt.
-
-
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -94,11 +110,11 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[BasicAuth](../README.md#BasicAuth), [JWTAuth](../README.md#JWTAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="verifyReceipt"></a>
@@ -112,12 +128,20 @@ Use this operation to verify a Chainpoint proof receipt and get the timestamp of
 ### Example
 ```javascript
 var WoleetApi = require('woleet_api');
+var defaultClient = WoleetApi.ApiClient.instance;
+
+// Configure HTTP basic authorization: BasicAuth
+var BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
+// Configure API key authorization: JWTAuth
+var JWTAuth = defaultClient.authentications['JWTAuth'];
+JWTAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.ReceiptApi();
-
 var receipt = new WoleetApi.Receipt(); // Receipt | Chainpoint proof receipt to verify.
-
-
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -140,7 +164,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[BasicAuth](../README.md#BasicAuth), [JWTAuth](../README.md#JWTAuth)
 
 ### HTTP request headers
 

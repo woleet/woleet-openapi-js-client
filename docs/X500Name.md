@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**C** | **String** | Country/region | [optional] 
+**C** | **String** | Country code | [optional] 
 **ST** | **String** | State or Province | [optional] 
 **L** | **String** | Locality | [optional] 
 **O** | **String** | Organization | [optional] 

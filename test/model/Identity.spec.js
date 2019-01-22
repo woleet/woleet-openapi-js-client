@@ -31,7 +31,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new WoleetApi.Token();
+    instance = new WoleetApi.Identity();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,16 +50,40 @@
       object[property] = value;
   }
 
-  describe('Token', function() {
-    it('should create an instance of Token', function() {
-      // uncomment below and update the code to test Token
-      //var instance = new WoleetApi.Token();
-      //expect(instance).to.be.a(WoleetApi.Token);
+  describe('Identity', function() {
+    it('should create an instance of Identity', function() {
+      // uncomment below and update the code to test Identity
+      //var instance = new WoleetApi.Identity();
+      //expect(instance).to.be.a(WoleetApi.Identity);
     });
 
-    it('should have the property token (base name: "token")', function() {
-      // uncomment below and update the code to test the property token
-      //var instance = new WoleetApi.Token();
+    it('should have the property commonName (base name: "commonName")', function() {
+      // uncomment below and update the code to test the property commonName
+      //var instance = new WoleetApi.Identity();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property organization (base name: "organization")', function() {
+      // uncomment below and update the code to test the property organization
+      //var instance = new WoleetApi.Identity();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property organizationalUnit (base name: "organizationalUnit")', function() {
+      // uncomment below and update the code to test the property organizationalUnit
+      //var instance = new WoleetApi.Identity();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property locality (base name: "locality")', function() {
+      // uncomment below and update the code to test the property locality
+      //var instance = new WoleetApi.Identity();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property country (base name: "country")', function() {
+      // uncomment below and update the code to test the property country
+      //var instance = new WoleetApi.Identity();
       //expect(instance).to.be();
     });
 
