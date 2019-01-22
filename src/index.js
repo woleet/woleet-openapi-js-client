@@ -1,6 +1,6 @@
 /**
  * Woleet API
- * Welcome to **Woleet API reference documentation**.<br> It is highly recommanded to read the chapters **[introducing Woleet API concepts](https://doc.woleet.io/v1.5.1/reference)** before reading this documentation. 
+ * Welcome to **Woleet API reference documentation**.<br> It is highly recommanded to read the chapters **[introducing Woleet API concepts](https://doc.woleet.io/reference)** before reading this documentation. 
  *
  * OpenAPI spec version: 1.5.3
  * Contact: contact@woleet.com
@@ -26,7 +26,7 @@
   'use strict';
 
   /**
-   * Welcome_to_Woleet_API_reference_documentation_brIt_is_highly_recommanded_to_read_the_chapters__introducing_Woleet_API_concepts_httpsdoc_woleet_iov1_5_1reference_before_reading_this_documentation_.<br>
+   * Welcome_to_Woleet_API_reference_documentation_brIt_is_highly_recommanded_to_read_the_chapters__introducing_Woleet_API_concepts_httpsdoc_woleet_ioreference_before_reading_this_documentation_.<br>
    * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
    * <p>
    * An AMD (recommended!) or CommonJS application will generally do something equivalent to the following:

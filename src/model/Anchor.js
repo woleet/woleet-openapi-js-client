@@ -1,6 +1,6 @@
 /**
  * Woleet API
- * Welcome to **Woleet API reference documentation**.<br> It is highly recommanded to read the chapters **[introducing Woleet API concepts](https://doc.woleet.io/v1.5.1/reference)** before reading this documentation. 
+ * Welcome to **Woleet API reference documentation**.<br> It is highly recommanded to read the chapters **[introducing Woleet API concepts](https://doc.woleet.io/reference)** before reading this documentation. 
  *
  * OpenAPI spec version: 1.5.3
  * Contact: contact@woleet.com
@@ -187,7 +187,7 @@
    */
   exports.prototype['metadata'] = undefined;
   /**
-   * Web hook to be called by the platform whenever the anchor status change: the platform does a POST request on this URL with the anchor as a JSON object in the request body. Verifying the authenticity of the callback can be done by checking the HMAC-SHA1 signature of the request body provided by Woleet in the `x-woleet-signature` header. For more information see the <a target=\"_blank\" href=\"https://doc.woleet.io/v1.5.1/reference#verifying-callback-authenticity\">documentation</a>. 
+   * Web hook to be called by the platform whenever the anchor status change: the platform does a POST request on this URL with the anchor as a JSON object in the request body. Verifying the authenticity of the callback can be done by checking the HMAC-SHA1 signature of the request body provided by Woleet in the `x-woleet-signature` header. For more information see the <a target=\"_blank\" href=\"https://doc.woleet.io/reference#verifying-callback-authenticity\">documentation</a>. 
    * @member {String} callbackURL
    */
   exports.prototype['callbackURL'] = undefined;
