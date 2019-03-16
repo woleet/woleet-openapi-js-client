@@ -5,11 +5,11 @@ All URIs are relative to *https://api.woleet.io/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createAnchor**](AnchorApi.md#createAnchor) | **POST** /anchor | Create a new anchor.
-[**deleteAnchor**](AnchorApi.md#deleteAnchor) | **DELETE** /anchor/{anchorid} | Delete an anchor.
-[**getAnchor**](AnchorApi.md#getAnchor) | **GET** /anchor/{anchorid} | Get an anchor by its identifier.
+[**deleteAnchor**](AnchorApi.md#deleteAnchor) | **DELETE** /anchor/{anchorId} | Delete an anchor.
+[**getAnchor**](AnchorApi.md#getAnchor) | **GET** /anchor/{anchorId} | Get an anchor by its identifier.
 [**searchAnchorIds**](AnchorApi.md#searchAnchorIds) | **GET** /anchorids | Search for public anchors&#39; identifiers.
 [**searchAnchors**](AnchorApi.md#searchAnchors) | **GET** /anchors | Search for anchors.
-[**updateAnchor**](AnchorApi.md#updateAnchor) | **PUT** /anchor/{anchorid} | Update an anchor.
+[**updateAnchor**](AnchorApi.md#updateAnchor) | **PUT** /anchor/{anchorId} | Update an anchor.
 
 
 <a name="createAnchor"></a>
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteAnchor"></a>
 # **deleteAnchor**
-> deleteAnchor(anchorid)
+> deleteAnchor(anchorId)
 
 Delete an anchor.
 
@@ -90,7 +90,7 @@ JWTAuth.apiKey = 'YOUR API KEY';
 //JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.AnchorApi();
-var anchorid = "anchorid_example"; // String | Identifier of the anchor to delete.
+var anchorId = "anchorId_example"; // String | Identifier of the anchor to delete.
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -98,14 +98,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.deleteAnchor(anchorid, callback);
+apiInstance.deleteAnchor(anchorId, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **anchorid** | **String**| Identifier of the anchor to delete. | 
+ **anchorId** | **String**| Identifier of the anchor to delete. | 
 
 ### Return type
 
@@ -122,7 +122,7 @@ null (empty response body)
 
 <a name="getAnchor"></a>
 # **getAnchor**
-> Anchor getAnchor(anchorid)
+> Anchor getAnchor(anchorId)
 
 Get an anchor by its identifier.
 
@@ -144,7 +144,7 @@ JWTAuth.apiKey = 'YOUR API KEY';
 //JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.AnchorApi();
-var anchorid = "anchorid_example"; // String | Identifier of the anchor to retrieve.
+var anchorId = "anchorId_example"; // String | Identifier of the anchor to retrieve.
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -152,14 +152,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getAnchor(anchorid, callback);
+apiInstance.getAnchor(anchorId, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **anchorid** | **String**| Identifier of the anchor to retrieve. | 
+ **anchorId** | **String**| Identifier of the anchor to retrieve. | 
 
 ### Return type
 
@@ -265,7 +265,7 @@ var opts = {
   'size': 20, // Number | Number of anchors per page.
   'direction': "'ASC'", // String | Sorting direction: ASC for ascending DESC for descending. 
   'sort': "'created'", // String | Sorting property: possible values are limited to `id`, `created`, `hash` and `signedHash`. 
-  'name': "name_example", // String | `name` to search for: all anchors whose `name` property contains this sub-string are returned.<br> **WARNING: searching by name can timeout on a large anchor set.** 
+  'name': "name_example", // String | `name` to search for: all anchors whose `name` property contains this sub-string are returned.<br> **WARNING: Searching by name can timeout on a large anchor set.** 
   'hash': "hash_example", // String | `hash` to search for: all anchors whose `hash` property is equal are returned. 
   'signedHash': "signedHash_example", // String | `signedHash` to search for: all anchors whose `signedHash` property is equal are returned. 
   'tags': ["null"] // [String] | `tags` to search for: all anchors having all of these tags sets are returned. 
@@ -288,7 +288,7 @@ Name | Type | Description  | Notes
  **size** | **Number**| Number of anchors per page. | [optional] [default to 20]
  **direction** | **String**| Sorting direction: ASC for ascending DESC for descending.  | [optional] [default to &#39;ASC&#39;]
  **sort** | **String**| Sorting property: possible values are limited to &#x60;id&#x60;, &#x60;created&#x60;, &#x60;hash&#x60; and &#x60;signedHash&#x60;.  | [optional] [default to &#39;created&#39;]
- **name** | **String**| &#x60;name&#x60; to search for: all anchors whose &#x60;name&#x60; property contains this sub-string are returned.&lt;br&gt; **WARNING: searching by name can timeout on a large anchor set.**  | [optional] 
+ **name** | **String**| &#x60;name&#x60; to search for: all anchors whose &#x60;name&#x60; property contains this sub-string are returned.&lt;br&gt; **WARNING: Searching by name can timeout on a large anchor set.**  | [optional] 
  **hash** | **String**| &#x60;hash&#x60; to search for: all anchors whose &#x60;hash&#x60; property is equal are returned.  | [optional] 
  **signedHash** | **String**| &#x60;signedHash&#x60; to search for: all anchors whose &#x60;signedHash&#x60; property is equal are returned.  | [optional] 
  **tags** | [**[String]**](String.md)| &#x60;tags&#x60; to search for: all anchors having all of these tags sets are returned.  | [optional] 
@@ -308,7 +308,7 @@ Name | Type | Description  | Notes
 
 <a name="updateAnchor"></a>
 # **updateAnchor**
-> Anchor updateAnchor(anchorid, anchor)
+> Anchor updateAnchor(anchorId, anchor)
 
 Update an anchor.
 
@@ -330,7 +330,7 @@ JWTAuth.apiKey = 'YOUR API KEY';
 //JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.AnchorApi();
-var anchorid = "anchorid_example"; // String | Identifier of anchor to update.
+var anchorId = "anchorId_example"; // String | Identifier of anchor to update.
 var anchor = new WoleetApi.Anchor(); // Anchor | Anchor object to update.
 var callback = function(error, data, response) {
   if (error) {
@@ -339,14 +339,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.updateAnchor(anchorid, anchor, callback);
+apiInstance.updateAnchor(anchorId, anchor, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **anchorid** | **String**| Identifier of anchor to update. | 
+ **anchorId** | **String**| Identifier of anchor to update. | 
  **anchor** | [**Anchor**](Anchor.md)| Anchor object to update. | 
 
 ### Return type

@@ -5,10 +5,10 @@ All URIs are relative to *https://api.woleet.io/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createDomainUser**](DomainApi.md#createDomainUser) | **POST** /domain/admin/user | Create a new domain user.
-[**deleteDomainUser**](DomainApi.md#deleteDomainUser) | **DELETE** /domain/admin/user/{userid} | Delete a domain user.
-[**getDomainUser**](DomainApi.md#getDomainUser) | **GET** /domain/admin/user/{userid} | Get a domain user by its identifier.
+[**deleteDomainUser**](DomainApi.md#deleteDomainUser) | **DELETE** /domain/admin/user/{userId} | Delete a domain user.
+[**getDomainUser**](DomainApi.md#getDomainUser) | **GET** /domain/admin/user/{userId} | Get a domain user by its identifier.
 [**searchDomainUsers**](DomainApi.md#searchDomainUsers) | **GET** /domain/admin/users | Search for domain users.
-[**updateDomainUser**](DomainApi.md#updateDomainUser) | **PUT** /domain/admin/user/{userid} | Update a domain user.
+[**updateDomainUser**](DomainApi.md#updateDomainUser) | **PUT** /domain/admin/user/{userId} | Update a domain user.
 
 
 <a name="createDomainUser"></a>
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteDomainUser"></a>
 # **deleteDomainUser**
-> deleteDomainUser(userid)
+> deleteDomainUser(userId)
 
 Delete a domain user.
 
@@ -89,7 +89,7 @@ JWTAuth.apiKey = 'YOUR API KEY';
 //JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.DomainApi();
-var userid = "userid_example"; // String | Identifier of the domain user to delete.
+var userId = "userId_example"; // String | Identifier of the domain user to delete.
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -97,14 +97,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.deleteDomainUser(userid, callback);
+apiInstance.deleteDomainUser(userId, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userid** | **String**| Identifier of the domain user to delete. | 
+ **userId** | **String**| Identifier of the domain user to delete. | 
 
 ### Return type
 
@@ -121,7 +121,7 @@ null (empty response body)
 
 <a name="getDomainUser"></a>
 # **getDomainUser**
-> User getDomainUser(userid)
+> User getDomainUser(userId)
 
 Get a domain user by its identifier.
 
@@ -143,7 +143,7 @@ JWTAuth.apiKey = 'YOUR API KEY';
 //JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.DomainApi();
-var userid = "userid_example"; // String | Identifier of the domain user to retrieve.
+var userId = "userId_example"; // String | Identifier of the domain user to retrieve.
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -151,14 +151,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getDomainUser(userid, callback);
+apiInstance.getDomainUser(userId, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userid** | **String**| Identifier of the domain user to retrieve. | 
+ **userId** | **String**| Identifier of the domain user to retrieve. | 
 
 ### Return type
 
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 
 <a name="updateDomainUser"></a>
 # **updateDomainUser**
-> User updateDomainUser(userid, user)
+> User updateDomainUser(userId, user)
 
 Update a domain user.
 
@@ -261,7 +261,7 @@ JWTAuth.apiKey = 'YOUR API KEY';
 //JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.DomainApi();
-var userid = "userid_example"; // String | Identifier of the domain user to update.
+var userId = "userId_example"; // String | Identifier of the domain user to update.
 var user = new WoleetApi.User(); // User | User object to update.
 var callback = function(error, data, response) {
   if (error) {
@@ -270,14 +270,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.updateDomainUser(userid, user, callback);
+apiInstance.updateDomainUser(userId, user, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userid** | **String**| Identifier of the domain user to update. | 
+ **userId** | **String**| Identifier of the domain user to update. | 
  **user** | [**User**](User.md)| User object to update. | 
 
 ### Return type

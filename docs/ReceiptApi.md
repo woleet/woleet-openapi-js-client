@@ -4,14 +4,14 @@ All URIs are relative to *https://api.woleet.io/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getOTSReceipt**](ReceiptApi.md#getOTSReceipt) | **GET** /receipt/{anchorid}/ots | Get the proof receipt of an anchor (OpenTimestamps proof format).
-[**getReceipt**](ReceiptApi.md#getReceipt) | **GET** /receipt/{anchorid} | Get the proof receipt of an anchor (Chainpoint proof format).
+[**getOTSReceipt**](ReceiptApi.md#getOTSReceipt) | **GET** /receipt/{anchorId}/ots | Get the proof receipt of an anchor (OpenTimestamps proof format).
+[**getReceipt**](ReceiptApi.md#getReceipt) | **GET** /receipt/{anchorId} | Get the proof receipt of an anchor (Chainpoint proof format).
 [**verifyReceipt**](ReceiptApi.md#verifyReceipt) | **POST** /receipt/verify | Verify a proof receipt.
 
 
 <a name="getOTSReceipt"></a>
 # **getOTSReceipt**
-> File getOTSReceipt(anchorid)
+> File getOTSReceipt(anchorId)
 
 Get the proof receipt of an anchor (OpenTimestamps proof format).
 
@@ -33,7 +33,7 @@ JWTAuth.apiKey = 'YOUR API KEY';
 //JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.ReceiptApi();
-var anchorid = "anchorid_example"; // String | Identifier of the anchor for which to build the proof receipt.
+var anchorId = "anchorId_example"; // String | Identifier of the anchor for which to build the proof receipt.
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -41,14 +41,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getOTSReceipt(anchorid, callback);
+apiInstance.getOTSReceipt(anchorId, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **anchorid** | **String**| Identifier of the anchor for which to build the proof receipt. | 
+ **anchorId** | **String**| Identifier of the anchor for which to build the proof receipt. | 
 
 ### Return type
 
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 <a name="getReceipt"></a>
 # **getReceipt**
-> Receipt getReceipt(anchorid)
+> Receipt getReceipt(anchorId)
 
 Get the proof receipt of an anchor (Chainpoint proof format).
 
@@ -87,7 +87,7 @@ JWTAuth.apiKey = 'YOUR API KEY';
 //JWTAuth.apiKeyPrefix = 'Token';
 
 var apiInstance = new WoleetApi.ReceiptApi();
-var anchorid = "anchorid_example"; // String | Identifier of the anchor for which to build the proof receipt.
+var anchorId = "anchorId_example"; // String | Identifier of the anchor for which to build the proof receipt.
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -95,14 +95,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getReceipt(anchorid, callback);
+apiInstance.getReceipt(anchorId, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **anchorid** | **String**| Identifier of the anchor for which to build the proof receipt. | 
+ **anchorId** | **String**| Identifier of the anchor for which to build the proof receipt. | 
 
 ### Return type
 

@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** | Chainpoint 2.x only. Type of Chainpoint 2.x receipt. | [optional] [default to &#39;ChainpointSHA256v2&#39;]
+**type** | **String** | Chainpoint 2.x only. Type of Chainpoint 2.x receipt. | [optional] 
 **targetHash** | **String** | Chainpoint 2.x only. SHA256 hash of the proven data or signature. | [optional] 
 **merkleRoot** | **String** | Chainpoint 2.x only. Root of the Merkle tree. | [optional] 
 **proof** | [**[ReceiptProofNode]**](ReceiptProofNode.md) | Chainpoint 2.x only. Merkle proof: path from &#x60;targetHash&#x60; to &#x60;merkleRoot&#x60; in the Merkle tree.  | [optional] 
