@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 
 Revoke a JWT token.
 
-Use this operation to revoke a JWT token.&lt;br&gt; JWT tokens have no expiration date so are always valid: if you need to invalidate a token (eg. because you think it is compromised) you need to use this endpoint to inform the platform that this token should no longer be accepted. 
+Use this operation to revoke a JWT token.&lt;br&gt; JWT tokens have no expiration date so are always valid: if you need to invalidate a token (eg. because you think it is compromised) you need to use this endpoint to inform the platform that this token must no longer be accepted. 
 
 ### Example
 ```javascript

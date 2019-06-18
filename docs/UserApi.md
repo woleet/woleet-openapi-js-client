@@ -5,7 +5,7 @@ All URIs are relative to *https://api.woleet.io/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getCallbackSecret**](UserApi.md#getCallbackSecret) | **GET** /user/callbackSecret | Get the currently used callback secret (null if not set).
-[**getCredits**](UserApi.md#getCredits) | **GET** /user/credits | Get user&#39;s anchoriong credits.
+[**getCredits**](UserApi.md#getCredits) | **GET** /user/credits | Get user&#39;s credits.
 [**getTokens**](UserApi.md#getTokens) | **GET** /user/tokens | Get user&#39;s registered JWT tokens.
 [**putTokens**](UserApi.md#putTokens) | **PUT** /user/tokens | Update user&#39;s registered JWT tokens.
 [**updateCallbackSecret**](UserApi.md#updateCallbackSecret) | **PUT** /user/callbackSecret | Generates a new callback secret.
@@ -65,9 +65,9 @@ This endpoint does not need any parameter.
 # **getCredits**
 > Credits getCredits()
 
-Get user&#39;s anchoriong credits.
+Get user&#39;s credits.
 
-Use this operation to get the remaining anchoring credits of the authenticated user.&lt;br&gt; 
+Use this operation to get the remaining signature and anchoring credits of the authenticated user.&lt;br&gt; 
 
 ### Example
 ```javascript
