@@ -9,5 +9,6 @@ Name | Type | Description | Notes
 **O** | **String** | Organization | [optional] 
 **OU** | **String** | Organizational Unit | [optional] 
 **CN** | **String** | Common Name | [optional] 
+**EMAILADDRESS** | **String** | Email address | [optional] 
 
 
