@@ -1,6 +1,7 @@
 # WoleetApi.SignatureRequests
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **content** | [**[SignatureRequest]**](SignatureRequest.md) | Array of signature requests matching the search criteria.  | [optional] 

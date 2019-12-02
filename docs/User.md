@@ -1,19 +1,20 @@
 # WoleetApi.User
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | User identifier. It is allocated by the platform, and so must not be provided at creation time.  | [optional] 
-**created** | **Number** | Date of creation (in milliseconds since Unix epoch).  | [optional] 
-**lastModified** | **Number** | Date of last modification (in milliseconds since Unix epoch).  | [optional] 
+**id** | **String** | User identifier. It is allocated by the platform, and so must not be provided at creation time.  | [optional] [readonly] 
+**created** | **Number** | Date of creation (in milliseconds since Unix epoch).  | [optional] [readonly] 
+**lastModified** | **Number** | Date of last modification (in milliseconds since Unix epoch).  | [optional] [readonly] 
 **email** | **String** | Email of the user.  | 
 **password** | **String** | Password of the user (it must be provided at creation time).  | 
 **roles** | **[String]** | The roles of the user:&lt;br&gt; - ROLE_USER: regular user&lt;br&gt; - ROLE_DOMAIN_ADMIN: domain administrator.  | 
-**info** | **{String: Object}** | Object storing meta data about the user. Some property names are reserved, but properties are not limitted to the one listed here.  | 
+**info** | [**Info**](Info.md) |  | 
 **status** | **String** | The status of the user:&lt;br&gt; - PENDING: the user email need to be validated&lt;br&gt; - APPROVED: the user can loging&lt;br&gt; - DISABLED: the user cannot login  | [default to &#39;PENDING&#39;]
 
 
-<a name="[RolesEnum]"></a>
+
 ## Enum: [RolesEnum]
 
 
@@ -24,7 +25,7 @@ Name | Type | Description | Notes
 
 
 
-<a name="StatusEnum"></a>
+
 ## Enum: StatusEnum
 
 

@@ -1,6 +1,7 @@
 # WoleetApi.Users
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **content** | [**[User]**](User.md) | Array of users matching the search criteria. | [optional] 

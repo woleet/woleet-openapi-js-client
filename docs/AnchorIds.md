@@ -1,6 +1,7 @@
 # WoleetApi.AnchorIds
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **content** | **[String]** | Array of identifiers of anchors matching the search criteria. | [optional] 

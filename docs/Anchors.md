@@ -1,6 +1,7 @@
 # WoleetApi.Anchors
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **content** | [**[Anchor]**](Anchor.md) | Array of anchors matching the search criteria. | [optional] 

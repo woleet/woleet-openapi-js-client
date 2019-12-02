@@ -11,8 +11,9 @@ Method | HTTP request | Description
 [**updateCallbackSecret**](UserApi.md#updateCallbackSecret) | **PUT** /user/callbackSecret | Generates a new callback secret.
 
 
-<a name="getCallbackSecret"></a>
-# **getCallbackSecret**
+
+## getCallbackSecret
+
 > CallbackSecret getCallbackSecret()
 
 Get the currently used callback secret (null if not set).
@@ -20,32 +21,32 @@ Get the currently used callback secret (null if not set).
 Use this operation to get the api callback secret.&lt;br&gt; 
 
 ### Example
-```javascript
-var WoleetApi = require('woleet_api');
-var defaultClient = WoleetApi.ApiClient.instance;
 
+```javascript
+import WoleetApi from 'woleet_api';
+let defaultClient = WoleetApi.ApiClient.instance;
 // Configure HTTP basic authorization: BasicAuth
-var BasicAuth = defaultClient.authentications['BasicAuth'];
+let BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 // Configure API key authorization: JWTAuth
-var JWTAuth = defaultClient.authentications['JWTAuth'];
+let JWTAuth = defaultClient.authentications['JWTAuth'];
 JWTAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //JWTAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new WoleetApi.UserApi();
-var callback = function(error, data, response) {
+let apiInstance = new WoleetApi.UserApi();
+apiInstance.getCallbackSecret((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getCallbackSecret(callback);
+});
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -58,11 +59,12 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getCredits"></a>
-# **getCredits**
+
+## getCredits
+
 > Credits getCredits()
 
 Get user&#39;s credits.
@@ -70,32 +72,32 @@ Get user&#39;s credits.
 Use this operation to get the remaining signature and anchoring credits of the authenticated user.&lt;br&gt; 
 
 ### Example
-```javascript
-var WoleetApi = require('woleet_api');
-var defaultClient = WoleetApi.ApiClient.instance;
 
+```javascript
+import WoleetApi from 'woleet_api';
+let defaultClient = WoleetApi.ApiClient.instance;
 // Configure HTTP basic authorization: BasicAuth
-var BasicAuth = defaultClient.authentications['BasicAuth'];
+let BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 // Configure API key authorization: JWTAuth
-var JWTAuth = defaultClient.authentications['JWTAuth'];
+let JWTAuth = defaultClient.authentications['JWTAuth'];
 JWTAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //JWTAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new WoleetApi.UserApi();
-var callback = function(error, data, response) {
+let apiInstance = new WoleetApi.UserApi();
+apiInstance.getCredits((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getCredits(callback);
+});
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -108,11 +110,12 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getTokens"></a>
-# **getTokens**
+
+## getTokens
+
 > [String] getTokens()
 
 Get user&#39;s registered JWT tokens.
@@ -120,32 +123,32 @@ Get user&#39;s registered JWT tokens.
 Use this operation to list all JWT tokens registered for the authenticated user. 
 
 ### Example
-```javascript
-var WoleetApi = require('woleet_api');
-var defaultClient = WoleetApi.ApiClient.instance;
 
+```javascript
+import WoleetApi from 'woleet_api';
+let defaultClient = WoleetApi.ApiClient.instance;
 // Configure HTTP basic authorization: BasicAuth
-var BasicAuth = defaultClient.authentications['BasicAuth'];
+let BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 // Configure API key authorization: JWTAuth
-var JWTAuth = defaultClient.authentications['JWTAuth'];
+let JWTAuth = defaultClient.authentications['JWTAuth'];
 JWTAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //JWTAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new WoleetApi.UserApi();
-var callback = function(error, data, response) {
+let apiInstance = new WoleetApi.UserApi();
+apiInstance.getTokens((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getTokens(callback);
+});
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -158,51 +161,50 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="putTokens"></a>
-# **putTokens**
-> putTokens(opts)
+
+## putTokens
+
+> putTokens(tokens)
 
 Update user&#39;s registered JWT tokens.
 
 Use this operation to update the list of JWT tokens registered for the authenticated user. 
 
 ### Example
-```javascript
-var WoleetApi = require('woleet_api');
-var defaultClient = WoleetApi.ApiClient.instance;
 
+```javascript
+import WoleetApi from 'woleet_api';
+let defaultClient = WoleetApi.ApiClient.instance;
 // Configure HTTP basic authorization: BasicAuth
-var BasicAuth = defaultClient.authentications['BasicAuth'];
+let BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 // Configure API key authorization: JWTAuth
-var JWTAuth = defaultClient.authentications['JWTAuth'];
+let JWTAuth = defaultClient.authentications['JWTAuth'];
 JWTAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //JWTAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new WoleetApi.UserApi();
-var opts = {
-  'inlineObject': new WoleetApi.InlineObject() // InlineObject | 
-};
-var callback = function(error, data, response) {
+let apiInstance = new WoleetApi.UserApi();
+let tokens = new WoleetApi.InlineObject(); // InlineObject | 
+apiInstance.putTokens(tokens, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.putTokens(opts, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject** | [**InlineObject**](InlineObject.md)|  | [optional] 
+ **tokens** | [**InlineObject**](InlineObject.md)|  | 
 
 ### Return type
 
@@ -214,11 +216,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: Not defined
+- **Content-Type**: application/json
+- **Accept**: Not defined
 
-<a name="updateCallbackSecret"></a>
-# **updateCallbackSecret**
+
+## updateCallbackSecret
+
 > CallbackSecret updateCallbackSecret()
 
 Generates a new callback secret.
@@ -226,32 +229,32 @@ Generates a new callback secret.
 Use this operation to generate the api callback secret.&lt;br&gt; 
 
 ### Example
-```javascript
-var WoleetApi = require('woleet_api');
-var defaultClient = WoleetApi.ApiClient.instance;
 
+```javascript
+import WoleetApi from 'woleet_api';
+let defaultClient = WoleetApi.ApiClient.instance;
 // Configure HTTP basic authorization: BasicAuth
-var BasicAuth = defaultClient.authentications['BasicAuth'];
+let BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 // Configure API key authorization: JWTAuth
-var JWTAuth = defaultClient.authentications['JWTAuth'];
+let JWTAuth = defaultClient.authentications['JWTAuth'];
 JWTAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //JWTAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new WoleetApi.UserApi();
-var callback = function(error, data, response) {
+let apiInstance = new WoleetApi.UserApi();
+apiInstance.updateCallbackSecret((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.updateCallbackSecret(callback);
+});
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -264,6 +267,6 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 

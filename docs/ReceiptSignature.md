@@ -1,6 +1,7 @@
 # WoleetApi.ReceiptSignature
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **signedHash** | **String** | SHA256 hash (ie. the fingerprint) of the original signed data. | [optional] 

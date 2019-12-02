@@ -1,11 +1,12 @@
 # WoleetApi.Anchor
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | Anchor identifier. It is allocated by the platform, and so must not be provided at creation time.  | [optional] 
-**created** | **Number** | Date of creation (in milliseconds since Unix epoch).  | [optional] 
-**lastModified** | **Number** | Date of last modification (in milliseconds since Unix epoch).  | [optional] 
+**id** | **String** | Anchor identifier. It is allocated by the platform, and so must not be provided at creation time.  | [optional] [readonly] 
+**created** | **Number** | Date of creation (in milliseconds since Unix epoch).  | [optional] [readonly] 
+**lastModified** | **Number** | Date of last modification (in milliseconds since Unix epoch).  | [optional] [readonly] 
 **name** | **String** | Name of the anchor (doesn&#39;t need to be unique).  | 
 **hash** | **String** | SHA256 hash (ie. the fingerprint) of the original data to anchor.&lt;br&gt; The value must be provided as an hexadecimal lowercase string.&lt;br&gt; **This property must not be provided when creating a signature anchor: it is set at creation time to the SHA256 hash of the &#x60;signature&#x60; property provided (so the signature is what is actually anchored in this case).**  | 
 **signedHash** | **String** | SHA256 hash (ie. the fingerprint) of the original signed data.&lt;br&gt; The value must be provided as an hexadecimal lowercase string.&lt;br&gt; **This property must not be provided when creating a data anchor.**  | [optional] 
@@ -19,13 +20,13 @@ Name | Type | Description | Notes
 **tags** | **[String]** | Set of tags associated to the anchor. There is no restriction on tag names, except they cannot contain spaces.&lt;br&gt; Tags are aimed at classifying and searching anchors.  | [optional] 
 **metadata** | [**Object**](.md) | A JSON object containing a set of key/values to store with the anchor and giving additional information about the anchored data.&lt;br&gt; Values must be of type null, boolean, string or number: nested JSON objects are not allowed.&lt;br&gt; ex: { title: &#39;Ubik&#39;, author: &#39;Philip K. Dick&#39;, read: true, rank: 10.0, coauthor: null }  | [optional] 
 **callbackURL** | **String** | Web hook to be called by the platform whenever the anchor status change:&lt;br&gt; the platform does a POST request on this URL with the anchor as a JSON object in the request body.&lt;br&gt; Verifying the authenticity of the callback can be done by checking the HMAC-SHA1 signature of the request body provided by Woleet in the &#x60;x-woleet-signature&#x60; header.&lt;br&gt; For more information see the &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://doc.woleet.io/reference#using-callbacks\&quot;&gt;documentation&lt;/a&gt;.  | [optional] 
-**status** | **String** | Status of the anchor:&lt;br&gt; - WAIT: waiting to be processed by the platform (the proof receipt is not yet available for download)&lt;br&gt; - NEW: waiting to be sent to the blockchain (the proof receipt is not yet available for download)&lt;br&gt; - SENT: sent to the blockchain (the proof receipt can be downloaded)&lt;br&gt; - CONFIRMED: confirmed at least 6 times by the blockchain (the proof receipt can be verified)  | [optional] 
-**timestamp** | **Number** | Proven timestamp of the data (for a data anchor) or of the signature (for a signature anchor).&lt;br&gt; This is actually the time of the Bitcoin block into which the anchoring process occurred (in milliseconds since Unix epoch).&lt;br&gt; Any data whose SHA256 hash equals this anchor&#39;s hash is proven to exist at that time and has not been modified since.&lt;br&gt; This field is set when the first confirmation of the Bitcoin block occurs. Once set, the associated proof receipt can be verified (without having to wait for 6 confirmations).  | [optional] 
-**confirmations** | **Number** | Number of confirmations of the Bitcoin block into which the anchoring process occurred.&lt;br&gt; This field is set when the first confirmation of the Bitcoin block occurs, and removed once the block is confirmed at least 6 times.  | [optional] 
-**txId** | **String** | Identifier of the Bitcoin transaction where the anchoring occurred.  | [optional] 
+**status** | **String** | Status of the anchor:&lt;br&gt; - WAIT: waiting to be processed by the platform (the proof receipt is not yet available for download)&lt;br&gt; - NEW: waiting to be sent to the blockchain (the proof receipt is not yet available for download)&lt;br&gt; - SENT: sent to the blockchain (the proof receipt can be downloaded)&lt;br&gt; - CONFIRMED: confirmed at least 6 times by the blockchain (the proof receipt can be verified)  | [optional] [readonly] 
+**timestamp** | **Number** | Proven timestamp of the data (for a data anchor) or of the signature (for a signature anchor).&lt;br&gt; This is actually the time of the Bitcoin block into which the anchoring process occurred (in milliseconds since Unix epoch).&lt;br&gt; Any data whose SHA256 hash equals this anchor&#39;s hash is proven to exist at that time and has not been modified since.&lt;br&gt; This field is set when the first confirmation of the Bitcoin block occurs. Once set, the associated proof receipt can be verified (without having to wait for 6 confirmations).  | [optional] [readonly] 
+**confirmations** | **Number** | Number of confirmations of the Bitcoin block into which the anchoring process occurred.&lt;br&gt; This field is set when the first confirmation of the Bitcoin block occurs, and removed once the block is confirmed at least 6 times.  | [optional] [readonly] 
+**txId** | **String** | Identifier of the Bitcoin transaction where the anchoring occurred.  | [optional] [readonly] 
 
 
-<a name="StatusEnum"></a>
+
 ## Enum: StatusEnum
 
 

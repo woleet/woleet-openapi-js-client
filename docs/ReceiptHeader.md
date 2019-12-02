@@ -1,6 +1,7 @@
 # WoleetApi.ReceiptHeader
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **chainpointVersion** | **String** |  | [optional] [default to &#39;1.0&#39;]

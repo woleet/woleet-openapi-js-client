@@ -15,8 +15,7 @@ For more information, please visit [https://www.woleet.io/](https://www.woleet.i
 
 #### npm
 
-To publish the library as a [npm](https://www.npmjs.com/),
-please follow the procedure in ["Publishing npm packages"](https://docs.npmjs.com/getting-started/publishing-npm-packages).
+To publish the library as a [npm](https://www.npmjs.com/), please follow the procedure in ["Publishing npm packages"](https://docs.npmjs.com/getting-started/publishing-npm-packages).
 
 Then install it via:
 
@@ -24,10 +23,15 @@ Then install it via:
 npm install woleet_api --save
 ```
 
+Finally, you need to build the module:
+
+```shell
+npm run build
+```
+
 ##### Local development
 
-To use the library locally without publishing to a remote npm registry, first install the dependencies by changing 
-into the directory containing `package.json` (and this README). Let's call this `JAVASCRIPT_CLIENT_DIR`. Then run:
+To use the library locally without publishing to a remote npm registry, first install the dependencies by changing into the directory containing `package.json` (and this README). Let's call this `JAVASCRIPT_CLIENT_DIR`. Then run:
 
 ```shell
 npm install
@@ -39,19 +43,21 @@ Next, [link](https://docs.npmjs.com/cli/link) it globally in npm with the follow
 npm link
 ```
 
-Finally, switch to the directory you want to use your woleet_api from, and run:
+To use the link you just defined in your project, switch to the directory you want to use your woleet_api from, and run:
 
 ```shell
 npm link /path/to/<JAVASCRIPT_CLIENT_DIR>
 ```
 
-You should now be able to `require('woleet_api')` in javascript files from the directory you ran the last 
-command above from.
+Finally, you need to build the module:
+
+```shell
+npm run build
+```
 
 #### git
-#
-If the library is hosted at a git repository, e.g.
-https://github.com/GIT_USER_ID/GIT_REPO_ID
+
+If the library is hosted at a git repository, e.g.https://github.com/GIT_USER_ID/GIT_REPO_ID
 then install it via:
 
 ```shell
@@ -62,8 +68,7 @@ then install it via:
 
 The library also works in the browser environment via npm and [browserify](http://browserify.org/). After following
 the above steps with Node.js and installing browserify with `npm install -g browserify`,
-perform the following (assuming *main.js* is your entry file, that's to say your javascript file where you actually 
-use this library):
+perform the following (assuming *main.js* is your entry file):
 
 ```shell
 browserify main.js > bundle.js
@@ -97,12 +102,10 @@ Please follow the [installation](#installation) instruction and execute the foll
 var WoleetApi = require('woleet_api');
 
 var defaultClient = WoleetApi.ApiClient.instance;
-
 // Configure HTTP basic authorization: BasicAuth
 var BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME'
 BasicAuth.password = 'YOUR PASSWORD'
-
 // Configure API key authorization: JWTAuth
 var JWTAuth = defaultClient.authentications['JWTAuth'];
 JWTAuth.apiKey = "YOUR API KEY"
@@ -111,7 +114,6 @@ JWTAuth.apiKey = "YOUR API KEY"
 
 var api = new WoleetApi.AnchorApi()
 var anchor = new WoleetApi.Anchor(); // {Anchor} Anchor object to create.
-
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -147,7 +149,7 @@ Class | Method | HTTP request | Description
 *WoleetApi.SignatureRequestApi* | [**deleteSignatureRequest**](docs/SignatureRequestApi.md#deleteSignatureRequest) | **DELETE** /signatureRequest/{requestId} | Delete a signature request.
 *WoleetApi.SignatureRequestApi* | [**getSignatureRequest**](docs/SignatureRequestApi.md#getSignatureRequest) | **GET** /signatureRequest/{requestId} | Get a signature request by its identifier.
 *WoleetApi.SignatureRequestApi* | [**searchSignatureRequests**](docs/SignatureRequestApi.md#searchSignatureRequests) | **GET** /signatureRequests | Search for signature requests.
-*WoleetApi.SignatureRequestApi* | [**sendSignatureRequestOTP**](docs/SignatureRequestApi.md#sendSignatureRequestOTP) | **GET** /signatureRequest/{requestId}/otp/{signeeId} | Generate and send a One Time Password to a signee of a signature request.
+*WoleetApi.SignatureRequestApi* | [**sendSignatureRequestOTP**](docs/SignatureRequestApi.md#sendSignatureRequestOTP) | **GET** /signatureRequest/{requestId}/otp/{signeeId} | Generate and send an OTP to a signee of a signature request.
 *WoleetApi.SignatureRequestApi* | [**signSignatureRequest**](docs/SignatureRequestApi.md#signSignatureRequest) | **POST** /signatureRequest/{requestId}/sign | Sign a signature request.
 *WoleetApi.SignatureRequestApi* | [**updateSignatureRequest**](docs/SignatureRequestApi.md#updateSignatureRequest) | **PUT** /signatureRequest/{requestId} | Update a signature request.
 *WoleetApi.TokenApi* | [**generateToken**](docs/TokenApi.md#generateToken) | **GET** /token | Generate a JWT token.
@@ -169,7 +171,9 @@ Class | Method | HTTP request | Description
  - [WoleetApi.Credits](docs/Credits.md)
  - [WoleetApi.Identity](docs/Identity.md)
  - [WoleetApi.IdentityVerificationStatus](docs/IdentityVerificationStatus.md)
+ - [WoleetApi.Info](docs/Info.md)
  - [WoleetApi.InlineObject](docs/InlineObject.md)
+ - [WoleetApi.Key](docs/Key.md)
  - [WoleetApi.Receipt](docs/Receipt.md)
  - [WoleetApi.ReceiptAnchorsNode](docs/ReceiptAnchorsNode.md)
  - [WoleetApi.ReceiptHeader](docs/ReceiptHeader.md)
@@ -192,11 +196,15 @@ Class | Method | HTTP request | Description
 ## Documentation for Authorization
 
 
+
 ### BasicAuth
 
 - **Type**: HTTP basic authentication
 
+
+
 ### JWTAuth
+
 
 - **Type**: API key
 - **API key parameter name**: Authorization

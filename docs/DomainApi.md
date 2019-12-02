@@ -11,42 +11,43 @@ Method | HTTP request | Description
 [**updateDomainUser**](DomainApi.md#updateDomainUser) | **PUT** /domain/admin/user/{userId} | Update a domain user.
 
 
-<a name="createDomainUser"></a>
-# **createDomainUser**
+
+## createDomainUser
+
 > User createDomainUser(user)
 
 Create a new domain user.
 
-Use this operation to create a new domain user.&lt;br&gt; The properties &#x60;id&#x60;, &#x60;created&#x60;, &#x60;lastModified&#x60;, &#x60;info&#x60; and &#x60;status&#x60; are read-only and so must not be provided: they are managed by the platform and added to the returned anchor. 
+Use this operation to create a new domain user.&lt;br&gt; The properties &#x60;id&#x60;, &#x60;created&#x60;, &#x60;lastModified&#x60;, &#x60;info&#x60; and &#x60;status&#x60; are read-only and so must not be provided: they are managed by the platform and added to the returned user. 
 
 ### Example
-```javascript
-var WoleetApi = require('woleet_api');
-var defaultClient = WoleetApi.ApiClient.instance;
 
+```javascript
+import WoleetApi from 'woleet_api';
+let defaultClient = WoleetApi.ApiClient.instance;
 // Configure HTTP basic authorization: BasicAuth
-var BasicAuth = defaultClient.authentications['BasicAuth'];
+let BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 // Configure API key authorization: JWTAuth
-var JWTAuth = defaultClient.authentications['JWTAuth'];
+let JWTAuth = defaultClient.authentications['JWTAuth'];
 JWTAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //JWTAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new WoleetApi.DomainApi();
-var user = new WoleetApi.User(); // User | User object to create (password must be provided).
-var callback = function(error, data, response) {
+let apiInstance = new WoleetApi.DomainApi();
+let user = new WoleetApi.User(); // User | User object to create (password must be provided).
+apiInstance.createDomainUser(user, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.createDomainUser(user, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -62,11 +63,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="deleteDomainUser"></a>
-# **deleteDomainUser**
+
+## deleteDomainUser
+
 > deleteDomainUser(userId)
 
 Delete a domain user.
@@ -74,33 +76,33 @@ Delete a domain user.
 Use this operation to delete a domain user.
 
 ### Example
-```javascript
-var WoleetApi = require('woleet_api');
-var defaultClient = WoleetApi.ApiClient.instance;
 
+```javascript
+import WoleetApi from 'woleet_api';
+let defaultClient = WoleetApi.ApiClient.instance;
 // Configure HTTP basic authorization: BasicAuth
-var BasicAuth = defaultClient.authentications['BasicAuth'];
+let BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 // Configure API key authorization: JWTAuth
-var JWTAuth = defaultClient.authentications['JWTAuth'];
+let JWTAuth = defaultClient.authentications['JWTAuth'];
 JWTAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //JWTAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new WoleetApi.DomainApi();
-var userId = "userId_example"; // String | Identifier of the domain user to delete.
-var callback = function(error, data, response) {
+let apiInstance = new WoleetApi.DomainApi();
+let userId = "userId_example"; // String | Identifier of the domain user to delete.
+apiInstance.deleteDomainUser(userId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.deleteDomainUser(userId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -116,11 +118,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-<a name="getDomainUser"></a>
-# **getDomainUser**
+
+## getDomainUser
+
 > User getDomainUser(userId)
 
 Get a domain user by its identifier.
@@ -128,33 +131,33 @@ Get a domain user by its identifier.
 Use this operation to retrieve a domain user by its identifier.
 
 ### Example
-```javascript
-var WoleetApi = require('woleet_api');
-var defaultClient = WoleetApi.ApiClient.instance;
 
+```javascript
+import WoleetApi from 'woleet_api';
+let defaultClient = WoleetApi.ApiClient.instance;
 // Configure HTTP basic authorization: BasicAuth
-var BasicAuth = defaultClient.authentications['BasicAuth'];
+let BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 // Configure API key authorization: JWTAuth
-var JWTAuth = defaultClient.authentications['JWTAuth'];
+let JWTAuth = defaultClient.authentications['JWTAuth'];
 JWTAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //JWTAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new WoleetApi.DomainApi();
-var userId = "userId_example"; // String | Identifier of the domain user to retrieve.
-var callback = function(error, data, response) {
+let apiInstance = new WoleetApi.DomainApi();
+let userId = "userId_example"; // String | Identifier of the domain user to retrieve.
+apiInstance.getDomainUser(userId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getDomainUser(userId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -170,11 +173,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="searchDomainUsers"></a>
-# **searchDomainUsers**
+
+## searchDomainUsers
+
 > Users searchDomainUsers(opts)
 
 Search for domain users.
@@ -182,39 +186,39 @@ Search for domain users.
 Use this operation to list all domain users or search for domain users given their email.&lt;br&gt; Paging and sorting is supported. 
 
 ### Example
-```javascript
-var WoleetApi = require('woleet_api');
-var defaultClient = WoleetApi.ApiClient.instance;
 
+```javascript
+import WoleetApi from 'woleet_api';
+let defaultClient = WoleetApi.ApiClient.instance;
 // Configure HTTP basic authorization: BasicAuth
-var BasicAuth = defaultClient.authentications['BasicAuth'];
+let BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 // Configure API key authorization: JWTAuth
-var JWTAuth = defaultClient.authentications['JWTAuth'];
+let JWTAuth = defaultClient.authentications['JWTAuth'];
 JWTAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //JWTAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new WoleetApi.DomainApi();
-var opts = {
+let apiInstance = new WoleetApi.DomainApi();
+let opts = {
   'page': 0, // Number | Index of the page to retrieve (from 0).
   'size': 20, // Number | Number of users per page.
   'direction': "'ASC'", // String | Sorting direction: ASC for ascending DESC for descending. 
   'sort': "'created'", // String | Sorting property: possible values are `email`, `created`, `roles`, `info.firstName`, `info.lastName`, `status`. 
   'email': "email_example" // String | email to search for: a sub-string of the email. 
 };
-var callback = function(error, data, response) {
+apiInstance.searchDomainUsers(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.searchDomainUsers(opts, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -234,11 +238,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="updateDomainUser"></a>
-# **updateDomainUser**
+
+## updateDomainUser
+
 > User updateDomainUser(userId, user)
 
 Update a domain user.
@@ -246,34 +251,34 @@ Update a domain user.
 Use this operation to update a domain user.
 
 ### Example
-```javascript
-var WoleetApi = require('woleet_api');
-var defaultClient = WoleetApi.ApiClient.instance;
 
+```javascript
+import WoleetApi from 'woleet_api';
+let defaultClient = WoleetApi.ApiClient.instance;
 // Configure HTTP basic authorization: BasicAuth
-var BasicAuth = defaultClient.authentications['BasicAuth'];
+let BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 // Configure API key authorization: JWTAuth
-var JWTAuth = defaultClient.authentications['JWTAuth'];
+let JWTAuth = defaultClient.authentications['JWTAuth'];
 JWTAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //JWTAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new WoleetApi.DomainApi();
-var userId = "userId_example"; // String | Identifier of the domain user to update.
-var user = new WoleetApi.User(); // User | User object to update.
-var callback = function(error, data, response) {
+let apiInstance = new WoleetApi.DomainApi();
+let userId = "userId_example"; // String | Identifier of the domain user to update.
+let user = new WoleetApi.User(); // User | User object to update.
+apiInstance.updateDomainUser(userId, user, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.updateDomainUser(userId, user, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -290,6 +295,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
