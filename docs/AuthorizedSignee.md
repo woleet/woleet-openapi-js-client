@@ -4,15 +4,23 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**pubKey** | **String** | The public key the authorized signee must use to sign.&lt;br&gt; **Currently only Bitcoin addresses are supported.**&lt;br&gt; If not set, the authorized signee can sign using any key.  | [optional] 
-**device** | **String** | The type of device the authorized signee should use to sign:&lt;br&gt; - SERVER: Woleet.ID Server or equivalent - MOBILE: Woleet.ID Mobile or equivalent - NANO: Ledger Nano S or equivalent If set, the signature web application could only offer the corresponding signature mode.  | [optional] 
-**email** | **String** | The email of the authorized signee.&lt;br&gt; If set, an email is sent by the platform to the authorized signee, and &#x60;commonName&#x60; must also be set.&lt;br&gt; If set, &#x60;pubKey&#x60; is not mandatory, to allow the authorized signee to sign using any key.  | [optional] 
-**countryCallingCode** | **String** | The country calling code of the authorized signee.  | [optional] 
-**phone** | **String** | The phone of the authorized signee (not including the country calling code).&lt;br&gt; This phone must be able to receive an OTP by SMS.  | [optional] 
-**requiresOTP** | **Boolean** | &#x60;true&#x60; if the signee must provide an OTP to sign.&lt;br&gt; If &#x60;true&#x60;, &#x60;phone&#x60; must be set, since the OTP is sent by SMS.  | [optional] 
-**commonName** | **String** | The full name of the authorized signee.  | [optional] 
-**identityURL** | **String** | Web hook to use to verify the signee&#39;s identity.&lt;br&gt; If set, it is used to verify signee&#39;s identity at signature registration time.  | [optional] 
-**anchorId** | **String** | If the authorized signee has signed, identifier of the signature anchor created.  | [optional] 
+**email** | **String** | The email of the signer.&lt;br&gt; If set, an email is sent by the platform to the signer, and &#x60;commonName&#x60; must also be set.&lt;br&gt; If set, &#x60;pubKey&#x60; is not mandatory, to allow the signer to sign using any key.  | [optional] 
+**vars** | [**Object**](.md) | A set of variables (key/value pairs) that can be used to customize the signature request workflow for this signer.&lt;br&gt; Values must be of type null, boolean, string or number: nested JSON objects are not allowed.&lt;br&gt; Variables defined here overwrites the ones defined at signature request level when emailing the signer.&lt;br&gt; **This property is only available to the owner and the signers of the signature request.**  | [optional] 
+**lang** | **String** | The preferred language (provided as an ISO 639-1 string) to use when emailing the signer.&lt;br&gt; If set, this property overwrites the &#x60;lang&#x60; property defined at signature request level.  | [optional] 
+**pubKey** | **String** | The public key the signer must use to sign.&lt;br&gt; **Currently only Bitcoin addresses are supported.**&lt;br&gt; If not set, the signer can sign using any key.  | [optional] 
+**device** | **String** | The type of device the signer should use to sign:&lt;br&gt; - SERVER: Woleet.ID Server or equivalent&lt;br&gt; - MOBILE: Woleet.ID Mobile or equivalent&lt;br&gt; - NANO: Ledger Nano S or equivalent&lt;br&gt; If set, the signature application can use it to propose only the corresponding signature mode.  | [optional] 
+**countryCallingCode** | **String** | The country calling code of the signer (numbers only, no white space). | [optional] 
+**phone** | **String** | The phone of the signer (not including the country calling code, numbers only, no white spaces).&lt;br&gt; This phone must be able to receive an OTP by SMS.  | [optional] 
+**requiresOTP** | **Boolean** | &#x60;true&#x60; if the signer must provide an OTP to sign.&lt;br&gt; If &#x60;true&#x60;, &#x60;phone&#x60; must be set, since the OTP is sent by SMS.  | [optional] 
+**commonName** | **String** | The full name of the signer. | [optional] 
+**identityURL** | **String** | Web hook to use to verify the signer&#39;s identity.&lt;br&gt; If set, this property overwrites the &#x60;identityURL&#x60; property defined at signature request level.  | [optional] 
+**feedbackSubject** | **String** | Last feedback subject reported by the signer to the owner of the signature request.&lt;br&gt; **This property is only available to the owner of the signature request.**  | [optional] [readonly] 
+**feedbackMessage** | **String** | Last feedback message reported by the signer to the owner of the signature request.&lt;br&gt; **This property is only available to the owner of the signature request.**  | [optional] [readonly] 
+**anchorId** | **String** | If the signer has signed, identifier of the signature anchor created. | [optional] [readonly] 
+**signedOn** | **Number** | If the signer has signed, date of signature (in milliseconds since Unix epoch). | [optional] [readonly] 
+**auditTrailId** | **String** | Identifier of the signer in the audit trail. | [optional] [readonly] 
+**id** | **String** | **WARNING: Do not use (test purpose only).**  | [optional] [readonly] 
+**OTP** | **String** | **WARNING: Do not use (test purpose only).**  | [optional] [readonly] 
 
 
 

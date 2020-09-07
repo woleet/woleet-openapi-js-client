@@ -12,21 +12,20 @@
  */
 
 import ApiClient from '../ApiClient';
-import User from './User';
 
 /**
- * The Users model module.
- * @module model/Users
+ * The SignatureRequestIds model module.
+ * @module model/SignatureRequestIds
  * @version 1.7.5
  */
-class Users {
+class SignatureRequestIds {
     /**
-     * Constructs a new <code>Users</code>.
-     * @alias module:model/Users
+     * Constructs a new <code>SignatureRequestIds</code>.
+     * @alias module:model/SignatureRequestIds
      */
     constructor() { 
         
-        Users.initialize(this);
+        SignatureRequestIds.initialize(this);
     }
 
     /**
@@ -38,24 +37,30 @@ class Users {
     }
 
     /**
-     * Constructs a <code>Users</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>SignatureRequestIds</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/Users} obj Optional instance to populate.
-     * @return {module:model/Users} The populated <code>Users</code> instance.
+     * @param {module:model/SignatureRequestIds} obj Optional instance to populate.
+     * @return {module:model/SignatureRequestIds} The populated <code>SignatureRequestIds</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new Users();
+            obj = obj || new SignatureRequestIds();
 
             if (data.hasOwnProperty('content')) {
-                obj['content'] = ApiClient.convertToType(data['content'], [User]);
+                obj['content'] = ApiClient.convertToType(data['content'], ['String']);
             }
             if (data.hasOwnProperty('first')) {
                 obj['first'] = ApiClient.convertToType(data['first'], 'Boolean');
             }
             if (data.hasOwnProperty('last')) {
                 obj['last'] = ApiClient.convertToType(data['last'], 'Boolean');
+            }
+            if (data.hasOwnProperty('totalPages')) {
+                obj['totalPages'] = ApiClient.convertToType(data['totalPages'], 'Number');
+            }
+            if (data.hasOwnProperty('totalElements')) {
+                obj['totalElements'] = ApiClient.convertToType(data['totalElements'], 'Number');
             }
             if (data.hasOwnProperty('numberOfElements')) {
                 obj['numberOfElements'] = ApiClient.convertToType(data['numberOfElements'], 'Number');
@@ -74,45 +79,57 @@ class Users {
 }
 
 /**
- * Array of users matching the search criteria.
- * @member {Array.<module:model/User>} content
+ * Array of identifiers of signature requests matching the search criteria.
+ * @member {Array.<String>} content
  */
-Users.prototype['content'] = undefined;
+SignatureRequestIds.prototype['content'] = undefined;
 
 /**
  * `true` if this is the first page. 
  * @member {Boolean} first
  */
-Users.prototype['first'] = undefined;
+SignatureRequestIds.prototype['first'] = undefined;
 
 /**
  * `true` if this is the last page. 
  * @member {Boolean} last
  */
-Users.prototype['last'] = undefined;
+SignatureRequestIds.prototype['last'] = undefined;
 
 /**
- * Number of users in the retrieved page.
+ * Total number of pages available.
+ * @member {Number} totalPages
+ */
+SignatureRequestIds.prototype['totalPages'] = undefined;
+
+/**
+ * Total number of signature requests matching the search criteria.
+ * @member {Number} totalElements
+ */
+SignatureRequestIds.prototype['totalElements'] = undefined;
+
+/**
+ * Number of signature requests in the retrieved page.
  * @member {Number} numberOfElements
  */
-Users.prototype['numberOfElements'] = undefined;
+SignatureRequestIds.prototype['numberOfElements'] = undefined;
 
 /**
- * Number of users per page.
+ * Number of signature requests per page.
  * @member {Number} size
  */
-Users.prototype['size'] = undefined;
+SignatureRequestIds.prototype['size'] = undefined;
 
 /**
  * Index of the retrieved page (from 0).
  * @member {Number} number
  */
-Users.prototype['number'] = undefined;
+SignatureRequestIds.prototype['number'] = undefined;
 
 
 
 
 
 
-export default Users;
+export default SignatureRequestIds;
 

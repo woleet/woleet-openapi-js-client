@@ -34,7 +34,7 @@ JWTAuth.apiKey = 'YOUR API KEY';
 
 let apiInstance = new WoleetApi.TokenApi();
 let opts = {
-  'cdata': "cdata_example" // String | Client data to inject into the generated JWT token (64 characters max).<br> This data is not processed by the platform, and can be easily retrieved from the token by BASE64 decoding its `payload`. 
+  'cdata': "cdata_example" // String | Client data to inject into the generated JWT token (64 characters max).<br> This data is not processed by the platform, and can be easily retrieved from the token by Base64 decoding its `payload`. 
 };
 apiInstance.generateToken(opts, (error, data, response) => {
   if (error) {
@@ -50,7 +50,7 @@ apiInstance.generateToken(opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cdata** | **String**| Client data to inject into the generated JWT token (64 characters max).&lt;br&gt; This data is not processed by the platform, and can be easily retrieved from the token by BASE64 decoding its &#x60;payload&#x60;.  | [optional] 
+ **cdata** | **String**| Client data to inject into the generated JWT token (64 characters max).&lt;br&gt; This data is not processed by the platform, and can be easily retrieved from the token by Base64 decoding its &#x60;payload&#x60;.  | [optional] 
 
 ### Return type
 

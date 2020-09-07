@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 Get the currently used callback secret (null if not set).
 
-Use this operation to get the api callback secret.&lt;br&gt; 
+Use this operation to get the api callback secret.
 
 ### Example
 
@@ -69,7 +69,7 @@ This endpoint does not need any parameter.
 
 Get user&#39;s credits.
 
-Use this operation to get the remaining signature and anchoring credits of the authenticated user.&lt;br&gt; 
+Use this operation to get the remaining signature and anchoring credits of the authenticated user.
 
 ### Example
 
@@ -120,7 +120,7 @@ This endpoint does not need any parameter.
 
 Get user&#39;s registered JWT tokens.
 
-Use this operation to list all JWT tokens registered for the authenticated user. 
+Use this operation to list all JWT tokens registered for the authenticated user.
 
 ### Example
 
@@ -171,7 +171,7 @@ This endpoint does not need any parameter.
 
 Update user&#39;s registered JWT tokens.
 
-Use this operation to update the list of JWT tokens registered for the authenticated user. 
+Use this operation to update the list of JWT tokens registered for the authenticated user.
 
 ### Example
 
@@ -226,7 +226,7 @@ null (empty response body)
 
 Generates a new callback secret.
 
-Use this operation to generate the api callback secret.&lt;br&gt; 
+Use this operation to generate the api callback secret.
 
 ### Example
 

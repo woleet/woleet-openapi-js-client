@@ -5,7 +5,7 @@ All URIs are relative to *https://api.woleet.io/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getOTSReceipt**](ReceiptApi.md#getOTSReceipt) | **GET** /receipt/{anchorId}/ots | Get the proof receipt of an anchor (OpenTimestamps proof format).
-[**getReceipt**](ReceiptApi.md#getReceipt) | **GET** /receipt/{anchorId} | Get the proof receipt of an anchor (Chainpoint proof format).
+[**getReceipt**](ReceiptApi.md#getReceipt) | **GET** /receipt/{anchorId} | Get the proof receipt of an anchor (Chainpoint 2.x proof format).
 [**verifyReceipt**](ReceiptApi.md#verifyReceipt) | **POST** /receipt/verify | Verify a proof receipt.
 
 
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 Get the proof receipt of an anchor (OpenTimestamps proof format).
 
-Use this operation to retrieve the OpenTimestamps proof receipt associated to a given anchor. This is a publicly accessible endpoint: authentication is not required to retrieve a proof receipt (but the anchor identifier need to be known). 
+Use this operation to retrieve the OpenTimestamps proof receipt associated to a given anchor.&lt;br&gt; This binary file is available only once the anchor status is SENT.&lt;br&gt; This is a publicly accessible endpoint: authentication is not required to retrieve a proof receipt (but the anchor identifier need to be known). 
 
 ### Example
 
@@ -69,9 +69,9 @@ Name | Type | Description  | Notes
 
 > Receipt getReceipt(anchorId)
 
-Get the proof receipt of an anchor (Chainpoint proof format).
+Get the proof receipt of an anchor (Chainpoint 2.x proof format).
 
-Use this operation to retrieve the Chainpoint proof receipt associated to a given anchor. This is a publicly accessible endpoint: authentication is not required to retrieve a proof receipt (but the anchor identifier need to be known). 
+Use this operation to retrieve the Chainpoint 2.x proof receipt associated to a given anchor.&lt;br&gt; This JSON file is available only once the anchor status is SENT.&lt;br&gt; This is a publicly accessible endpoint: authentication is not required to retrieve a proof receipt (but the anchor identifier need to be known). 
 
 ### Example
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 Verify a proof receipt.
 
-Use this operation to verify a Chainpoint proof receipt and get the timestamp of the proof.&lt;br&gt; For proof of signature receipts including an identity URL, this operation also verify and returns information about the signee&#39;s identity.&lt;br&gt; This is a publicly accessible endpoint: authentication is not required to verify a proof receipt. 
+Use this operation to verify a Chainpoint 2.x proof receipt and get the timestamp of the proof.&lt;br&gt; For proof of signature receipts including an identity URL, this operation also verify and returns information about the signer&#39;s identity.&lt;br&gt; This is a publicly accessible endpoint: authentication is not required to verify a proof receipt. 
 
 ### Example
 
@@ -144,7 +144,7 @@ JWTAuth.apiKey = 'YOUR API KEY';
 //JWTAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new WoleetApi.ReceiptApi();
-let receipt = new WoleetApi.Receipt(); // Receipt | Chainpoint proof receipt to verify.
+let receipt = new WoleetApi.Receipt(); // Receipt | Chainpoint 2.x proof receipt to verify.
 apiInstance.verifyReceipt(receipt, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -159,7 +159,7 @@ apiInstance.verifyReceipt(receipt, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **receipt** | [**Receipt**](Receipt.md)| Chainpoint proof receipt to verify. | 
+ **receipt** | [**Receipt**](Receipt.md)| Chainpoint 2.x proof receipt to verify. | 
 
 ### Return type
 
