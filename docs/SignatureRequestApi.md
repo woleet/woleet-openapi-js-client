@@ -7,12 +7,14 @@ Method | HTTP request | Description
 [**createSignatureRequest**](SignatureRequestApi.md#createSignatureRequest) | **POST** /signatureRequest | Create a new signature request.
 [**delegateSignatureRequest**](SignatureRequestApi.md#delegateSignatureRequest) | **POST** /signatureRequest/{requestId}/delegate | Sign a signature request by delegating the signature.
 [**deleteSignatureRequest**](SignatureRequestApi.md#deleteSignatureRequest) | **DELETE** /signatureRequest/{requestId} | Delete a signature request.
-[**feedbackSignatureRequest**](SignatureRequestApi.md#feedbackSignatureRequest) | **POST** /signatureRequest/{requestId}/feedback | Report feedback about a signature request.
 [**getSignatureRequest**](SignatureRequestApi.md#getSignatureRequest) | **GET** /signatureRequest/{requestId} | Get a signature request by its identifier.
 [**getSignatureRequestAttestation**](SignatureRequestApi.md#getSignatureRequestAttestation) | **GET** /signatureRequest/{requestId}/attestation | Download the Signature Attestation document of a signature request.
+[**getSignatureRequestProofBundle**](SignatureRequestApi.md#getSignatureRequestProofBundle) | **GET** /signatureRequest/{requestId}/proofbundle | Get the proof bundle of a signature request.
+[**reportSignatureRequestFeedback**](SignatureRequestApi.md#reportSignatureRequestFeedback) | **POST** /signatureRequest/{requestId}/feedback | Report feedback about a signature request.
 [**searchSignatureRequestIds**](SignatureRequestApi.md#searchSignatureRequestIds) | **GET** /signatureRequestIds | Search for public signature request identifiers.
 [**searchSignatureRequests**](SignatureRequestApi.md#searchSignatureRequests) | **GET** /signatureRequests | Search for signature requests.
 [**sendSignatureRequestOTP**](SignatureRequestApi.md#sendSignatureRequestOTP) | **GET** /signatureRequest/{requestId}/otp/{signeeId} | Generate and send an OTP to a signer of a signature request.
+[**sendSignatureRequestReminder**](SignatureRequestApi.md#sendSignatureRequestReminder) | **POST** /signatureRequest/{requestId}/remind | Send a reminder email to a set of signers of a signature request.
 [**signSignatureRequest**](SignatureRequestApi.md#signSignatureRequest) | **POST** /signatureRequest/{requestId}/sign | Sign a signature request by registering a signature.
 [**transitionSignatureRequest**](SignatureRequestApi.md#transitionSignatureRequest) | **POST** /signatureRequest/{requestId}/transition | Change the state of a signature request.
 [**updateSignatureRequest**](SignatureRequestApi.md#updateSignatureRequest) | **PUT** /signatureRequest/{requestId} | Update a signature request.
@@ -186,63 +188,6 @@ null (empty response body)
 - **Accept**: Not defined
 
 
-## feedbackSignatureRequest
-
-> feedbackSignatureRequest(requestId, feedback)
-
-Report feedback about a signature request.
-
-A signer can use this operation to report a feedback to the owner of a signature request.&lt;br&gt; This operation is only available when the email of the signer is set: since the secret identifier is sent by email to the signer, he/she can provide it back to authenticate.&lt;br&gt; This is a publicly accessible endpoint: authentication is not required to report feedback (authentication of the signers, when required, rely on their knowledge of their secret identifier). 
-
-### Example
-
-```javascript
-import WoleetApi from 'woleet_api';
-let defaultClient = WoleetApi.ApiClient.instance;
-// Configure HTTP basic authorization: BasicAuth
-let BasicAuth = defaultClient.authentications['BasicAuth'];
-BasicAuth.username = 'YOUR USERNAME';
-BasicAuth.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWTAuth
-let JWTAuth = defaultClient.authentications['JWTAuth'];
-JWTAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWTAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new WoleetApi.SignatureRequestApi();
-let requestId = "requestId_example"; // String | Identifier of the signature request.
-let feedback = new WoleetApi.SignatureRequestFeedback(); // SignatureRequestFeedback | Feedback to report.
-apiInstance.feedbackSignatureRequest(requestId, feedback, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-});
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **requestId** | **String**| Identifier of the signature request. | 
- **feedback** | [**SignatureRequestFeedback**](SignatureRequestFeedback.md)| Feedback to report. | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[BasicAuth](../README.md#BasicAuth), [JWTAuth](../README.md#JWTAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: Not defined
-
-
 ## getSignatureRequest
 
 > SignatureRequest getSignatureRequest(requestId, opts)
@@ -308,7 +253,7 @@ Name | Type | Description  | Notes
 
 Download the Signature Attestation document of a signature request.
 
-Use this operation to retrieve the Signature Attestation document of a signature request.&lt;br&gt; This PDF file is only available once all the following conditions are met:&lt;br&gt; - the signature request is COMPLETED (by the platform) or CLOSED (by the requester)&lt;br&gt; - the audit trail of the signature request is generated and signed by the platform and its proof receipt is available&lt;br&gt; Once these conditions are met, the platform generates and signs the signature attestation and set the &#x60;attestationAnchorId&#x60; property.&lt;br&gt; This is a publicly accessible endpoint: authentication is not required to retrieve a signature attestation (but the signature request identifier need to be known). 
+Use this operation to retrieve the Signature Attestation document of a signature request.&lt;br&gt; This PDF file summarizes the signature request and includes the proof bundle attached.&lt;br&gt; The proof bundle is a JSON file containing all the pieces of evidence:&lt;br&gt; - the audit trail&lt;br&gt; - the proof receipt of the signature of the audit trail by the platform&lt;br&gt; - the proof receipts of the signature of the file by the signers&lt;br&gt; Consequently, the Signature Attestation is only available once all the following conditions are met:&lt;br&gt; - the signature request is COMPLETED (by the platform) or CLOSED (by the requester)&lt;br&gt; - all the proofs receipts are available (ie. have been anchored)&lt;br&gt; - the audit trail is generated and signed by the platform and its proof receipt is available (ie. is anchored)&lt;br&gt; Once these conditions are met, the platform generates and signs the signature attestation and set the &#x60;attestationAnchorId&#x60; property.&lt;br&gt; This is a publicly accessible endpoint: authentication is not required to retrieve the signature attestation of a signature request (but its identifier need to be known). 
 
 ### Example
 
@@ -355,6 +300,118 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+
+## getSignatureRequestProofBundle
+
+> GetSignatureRequestProofBundle getSignatureRequestProofBundle(requestId)
+
+Get the proof bundle of a signature request.
+
+Use this operation to retrieve the proof bundle of a signature request.&lt;br&gt; The proof bundle is a JSON file containing all the pieces of evidence:&lt;br&gt; - the audit trail&lt;br&gt; - the proof receipt of the signature of the audit trail by the platform&lt;br&gt; - the proof receipts of the signature of the file by the signers&lt;br&gt; Consequently, the proof bundle is only available once all the following conditions are met:&lt;br&gt; - the signature request is COMPLETED (by the platform) or CLOSED (by the requester)&lt;br&gt; - all the proofs receipts are available (ie. have been anchored)&lt;br&gt; - the audit trail is generated and signed by the platform and its proof receipt is available (ie. is anchored)&lt;br&gt; If this endpoint is called before all these conditions are met, it returns only the available proof receipts (with a 202 status).&lt;br&gt; This is a publicly accessible endpoint: authentication is not required to retrieve the proof receipts of a signature request (but its identifier need to be known). 
+
+### Example
+
+```javascript
+import WoleetApi from 'woleet_api';
+let defaultClient = WoleetApi.ApiClient.instance;
+// Configure HTTP basic authorization: BasicAuth
+let BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
+// Configure API key authorization: JWTAuth
+let JWTAuth = defaultClient.authentications['JWTAuth'];
+JWTAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWTAuth.apiKeyPrefix = 'Token';
+
+let apiInstance = new WoleetApi.SignatureRequestApi();
+let requestId = "requestId_example"; // String | Identifier of the signature request.
+apiInstance.getSignatureRequestProofBundle(requestId, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **requestId** | **String**| Identifier of the signature request. | 
+
+### Return type
+
+[**GetSignatureRequestProofBundle**](GetSignatureRequestProofBundle.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [JWTAuth](../README.md#JWTAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## reportSignatureRequestFeedback
+
+> reportSignatureRequestFeedback(requestId, feedback)
+
+Report feedback about a signature request.
+
+A signer can use this operation to report a feedback to the owner of a signature request.&lt;br&gt; This operation is only available when the email of the signer is set: since the secret identifier is sent by email to the signer, he/she can provide it back to authenticate.&lt;br&gt; This is a publicly accessible endpoint: authentication is not required to report feedback (authentication of the signers, when required, rely on their knowledge of their secret identifier). 
+
+### Example
+
+```javascript
+import WoleetApi from 'woleet_api';
+let defaultClient = WoleetApi.ApiClient.instance;
+// Configure HTTP basic authorization: BasicAuth
+let BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
+// Configure API key authorization: JWTAuth
+let JWTAuth = defaultClient.authentications['JWTAuth'];
+JWTAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWTAuth.apiKeyPrefix = 'Token';
+
+let apiInstance = new WoleetApi.SignatureRequestApi();
+let requestId = "requestId_example"; // String | Identifier of the signature request.
+let feedback = new WoleetApi.SignatureRequestFeedback(); // SignatureRequestFeedback | Feedback to report.
+apiInstance.reportSignatureRequestFeedback(requestId, feedback, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **requestId** | **String**| Identifier of the signature request. | 
+ **feedback** | [**SignatureRequestFeedback**](SignatureRequestFeedback.md)| Feedback to report. | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [JWTAuth](../README.md#JWTAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
 
 
 ## searchSignatureRequestIds
@@ -544,6 +601,63 @@ null (empty response body)
 - **Accept**: Not defined
 
 
+## sendSignatureRequestReminder
+
+> sendSignatureRequestReminder(requestId, signeeEmails)
+
+Send a reminder email to a set of signers of a signature request.
+
+Use this operation to send a reminder email to a set of signers of a signature request.&lt;br&gt; This email reminds them that they have a document to sign. 
+
+### Example
+
+```javascript
+import WoleetApi from 'woleet_api';
+let defaultClient = WoleetApi.ApiClient.instance;
+// Configure HTTP basic authorization: BasicAuth
+let BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
+// Configure API key authorization: JWTAuth
+let JWTAuth = defaultClient.authentications['JWTAuth'];
+JWTAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWTAuth.apiKeyPrefix = 'Token';
+
+let apiInstance = new WoleetApi.SignatureRequestApi();
+let requestId = "requestId_example"; // String | Identifier of the signature request.
+let signeeEmails = ["john.doe@acme.com"]; // [String] | The list of emails of the authorized signers who will receive the reminder email. 
+apiInstance.sendSignatureRequestReminder(requestId, signeeEmails, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **requestId** | **String**| Identifier of the signature request. | 
+ **signeeEmails** | [**[String]**](String.md)| The list of emails of the authorized signers who will receive the reminder email.  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [JWTAuth](../README.md#JWTAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+
 ## signSignatureRequest
 
 > SignatureRequestSignResult signSignatureRequest(requestId, signature)
@@ -607,7 +721,7 @@ Name | Type | Description  | Notes
 
 Change the state of a signature request.
 
-Use this operation to transition a signature request to a new state.&lt;br&gt; Possible transitions are:&lt;br&gt; - from DRAFT to PENDING: start the signature request: the platform wait for the activation date (if any) and transition to IN_PROGRESS&lt;br&gt; - from PENDING to DRAFT: suspend the signature request: allow it to be updated&lt;br&gt; - from PENDING to CANCELED: cancel the signature request without waiting for the  activation date&lt;br&gt; - from IN_PROGRESS to CLOSED: close the signature request without waiting for all signatures to be colleted&lt;br&gt; - from IN_PROGRESS to CANCELED: cancel the signature request before all signatures get colleted 
+Use this operation to transition a **stateful** signature request to a new state.&lt;br&gt; Possible transitions are:&lt;br&gt; - from DRAFT to PENDING: start the signature request: the platform wait for the activation date (if any) and transition to IN_PROGRESS&lt;br&gt; - from PENDING to DRAFT: suspend the signature request: allow it to be updated&lt;br&gt; - from PENDING to CANCELED: cancel the signature request without waiting for the  activation date&lt;br&gt; - from IN_PROGRESS to CLOSED: close the signature request without waiting for all signatures to be colleted&lt;br&gt; - from IN_PROGRESS to CANCELED: cancel the signature request before all signatures get colleted&lt;br&gt; Note that **stateless** signature requests can only be transitioned to CLOSED (TODO: explain) 
 
 ### Example
 

@@ -4,7 +4,7 @@ All URIs are relative to *https://api.woleet.io/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getCallbackSecret**](UserApi.md#getCallbackSecret) | **GET** /user/callbackSecret | Get the currently used callback secret (null if not set).
+[**getCallbackSecret**](UserApi.md#getCallbackSecret) | **GET** /user/callbackSecret | Get the current callback secret (null if not set).
 [**getCredits**](UserApi.md#getCredits) | **GET** /user/credits | Get user&#39;s credits.
 [**getTokens**](UserApi.md#getTokens) | **GET** /user/tokens | Get user&#39;s registered JWT tokens.
 [**putTokens**](UserApi.md#putTokens) | **PUT** /user/tokens | Update user&#39;s registered JWT tokens.
@@ -16,9 +16,9 @@ Method | HTTP request | Description
 
 > CallbackSecret getCallbackSecret()
 
-Get the currently used callback secret (null if not set).
+Get the current callback secret (null if not set).
 
-Use this operation to get the api callback secret.
+Use this operation to get the API callback secret.
 
 ### Example
 
@@ -226,7 +226,7 @@ null (empty response body)
 
 Generates a new callback secret.
 
-Use this operation to generate the api callback secret.
+Use this operation to generate the API callback secret.
 
 ### Example
 
