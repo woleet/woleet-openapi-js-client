@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**createSignatureRequest**](SignatureRequestApi.md#createSignatureRequest) | **POST** /signatureRequest | Create a new signature request.
 [**delegateSignatureRequest**](SignatureRequestApi.md#delegateSignatureRequest) | **POST** /signatureRequest/{requestId}/delegate | Sign a signature request by delegating the signature.
 [**deleteSignatureRequest**](SignatureRequestApi.md#deleteSignatureRequest) | **DELETE** /signatureRequest/{requestId} | Delete a signature request.
+[**downloadSignatureRequestFile**](SignatureRequestApi.md#downloadSignatureRequestFile) | **GET** /signatureRequest/{requestId}/file | Download the file to sign.
 [**getSignatureRequest**](SignatureRequestApi.md#getSignatureRequest) | **GET** /signatureRequest/{requestId} | Get a signature request by its identifier.
 [**getSignatureRequestAttestation**](SignatureRequestApi.md#getSignatureRequestAttestation) | **GET** /signatureRequest/{requestId}/attestation | Download the Signature Attestation document of a signature request.
 [**getSignatureRequestProofBundle**](SignatureRequestApi.md#getSignatureRequestProofBundle) | **GET** /signatureRequest/{requestId}/proofbundle | Get the proof bundle of a signature request.
@@ -18,6 +19,7 @@ Method | HTTP request | Description
 [**signSignatureRequest**](SignatureRequestApi.md#signSignatureRequest) | **POST** /signatureRequest/{requestId}/sign | Sign a signature request by registering a signature.
 [**transitionSignatureRequest**](SignatureRequestApi.md#transitionSignatureRequest) | **POST** /signatureRequest/{requestId}/transition | Change the state of a signature request.
 [**updateSignatureRequest**](SignatureRequestApi.md#updateSignatureRequest) | **PUT** /signatureRequest/{requestId} | Update a signature request.
+[**uploadSignatureRequestFile**](SignatureRequestApi.md#uploadSignatureRequestFile) | **POST** /signatureRequest/{requestId}/file | Upload the file to sign.
 
 
 
@@ -188,6 +190,61 @@ null (empty response body)
 - **Accept**: Not defined
 
 
+## downloadSignatureRequestFile
+
+> File downloadSignatureRequestFile(requestId)
+
+Download the file to sign.
+
+Use this operation to download the file to be signed for a signature request.&lt;br&gt; The name of the file is included in the &#x60;Content-Disposition&#x60; header (see https://www.ietf.org/rfc/rfc6266.txt). 
+
+### Example
+
+```javascript
+import WoleetApi from 'woleet_api';
+let defaultClient = WoleetApi.ApiClient.instance;
+// Configure HTTP basic authorization: BasicAuth
+let BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
+// Configure API key authorization: JWTAuth
+let JWTAuth = defaultClient.authentications['JWTAuth'];
+JWTAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWTAuth.apiKeyPrefix = 'Token';
+
+let apiInstance = new WoleetApi.SignatureRequestApi();
+let requestId = "requestId_example"; // String | Identifier of the signature request.
+apiInstance.downloadSignatureRequestFile(requestId, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **requestId** | **String**| Identifier of the signature request. | 
+
+### Return type
+
+**File**
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [JWTAuth](../README.md#JWTAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/octet-stream
+
+
 ## getSignatureRequest
 
 > SignatureRequest getSignatureRequest(requestId, opts)
@@ -253,7 +310,7 @@ Name | Type | Description  | Notes
 
 Download the Signature Attestation document of a signature request.
 
-Use this operation to retrieve the Signature Attestation document of a signature request.&lt;br&gt; This PDF file summarizes the signature request and includes the proof bundle attached.&lt;br&gt; The proof bundle is a JSON file containing all the pieces of evidence:&lt;br&gt; - the audit trail&lt;br&gt; - the proof receipt of the signature of the audit trail by the platform&lt;br&gt; - the proof receipts of the signature of the file by the signers&lt;br&gt; Consequently, the Signature Attestation is only available once all the following conditions are met:&lt;br&gt; - the signature request is COMPLETED (by the platform) or CLOSED (by the requester)&lt;br&gt; - all the proofs receipts are available (ie. have been anchored)&lt;br&gt; - the audit trail is generated and signed by the platform and its proof receipt is available (ie. is anchored)&lt;br&gt; Once these conditions are met, the platform generates and signs the signature attestation and set the &#x60;attestationAnchorId&#x60; property.&lt;br&gt; This is a publicly accessible endpoint: authentication is not required to retrieve the signature attestation of a signature request (but its identifier need to be known). 
+Use this operation to retrieve the Signature Attestation document of a signature request.&lt;br&gt; This PDF file summarizes the signature request and includes the proof bundle attached.&lt;br&gt; The proof bundle is a JSON file containing all the pieces of evidence:&lt;br&gt; - the audit trail&lt;br&gt; - the proof receipt of the signature of the audit trail by the platform&lt;br&gt; - the proof receipts of the signature of the file by the signers&lt;br&gt; Consequently, the signature attestation is only available once all the following conditions are met:&lt;br&gt; - the signature request is COMPLETED (by the platform) or CLOSED (by the requester)&lt;br&gt; - all the proofs receipts are available (ie. have been anchored)&lt;br&gt; - the audit trail is generated and signed by the platform and its proof receipt is available (ie. is anchored)&lt;br&gt; Once these conditions are met, the platform generates and signs the signature attestation and set the &#x60;attestationAnchorId&#x60; property.&lt;br&gt; This is a publicly accessible endpoint: authentication is not required to retrieve the signature attestation of a signature request (but its identifier need to be known). 
 
 ### Example
 
@@ -503,7 +560,7 @@ let opts = {
   'page': 0, // Number | Index of the page to retrieve (from 0).
   'size': 20, // Number | Number of anchors per page.
   'direction': "'ASC'", // String | Sorting direction: ASC for ascending DESC for descending. 
-  'sort': "'created'", // String | Sorting property: possible values are limited to `id`, `created` and `hashToSign`. 
+  'sort': "'created'", // String | Sorting property: possible values are limited to `created` and `hashToSign`. 
   'name': "name_example", // String | `name` to search for: all signature requests whose `name` property contains this sub-string are returned.<br> **WARNING: Searching by name can timeout on a large signature request set.** 
   'hashToSign': "hashToSign_example", // String | `hashToSign` to search for: all signature requests whose `hashToSign` property is equal are returned. 
   'state': ["null"] // [String] | `state` to search for: all signature requests having one of those state are returned. 
@@ -525,7 +582,7 @@ Name | Type | Description  | Notes
  **page** | **Number**| Index of the page to retrieve (from 0). | [optional] [default to 0]
  **size** | **Number**| Number of anchors per page. | [optional] [default to 20]
  **direction** | **String**| Sorting direction: ASC for ascending DESC for descending.  | [optional] [default to &#39;ASC&#39;]
- **sort** | **String**| Sorting property: possible values are limited to &#x60;id&#x60;, &#x60;created&#x60; and &#x60;hashToSign&#x60;.  | [optional] [default to &#39;created&#39;]
+ **sort** | **String**| Sorting property: possible values are limited to &#x60;created&#x60; and &#x60;hashToSign&#x60;.  | [optional] [default to &#39;created&#39;]
  **name** | **String**| &#x60;name&#x60; to search for: all signature requests whose &#x60;name&#x60; property contains this sub-string are returned.&lt;br&gt; **WARNING: Searching by name can timeout on a large signature request set.**  | [optional] 
  **hashToSign** | **String**| &#x60;hashToSign&#x60; to search for: all signature requests whose &#x60;hashToSign&#x60; property is equal are returned.  | [optional] 
  **state** | [**[String]**](String.md)| &#x60;state&#x60; to search for: all signature requests having one of those state are returned.  | [optional] 
@@ -721,7 +778,7 @@ Name | Type | Description  | Notes
 
 Change the state of a signature request.
 
-Use this operation to transition a **stateful** signature request to a new state.&lt;br&gt; Possible transitions are:&lt;br&gt; - from DRAFT to PENDING: start the signature request: the platform wait for the activation date (if any) and transition to IN_PROGRESS&lt;br&gt; - from PENDING to DRAFT: suspend the signature request: allow it to be updated&lt;br&gt; - from PENDING to CANCELED: cancel the signature request without waiting for the  activation date&lt;br&gt; - from IN_PROGRESS to CLOSED: close the signature request without waiting for all signatures to be colleted&lt;br&gt; - from IN_PROGRESS to CANCELED: cancel the signature request before all signatures get colleted&lt;br&gt; Note that **stateless** signature requests can only be transitioned to CLOSED (TODO: explain) 
+Use this operation to transition a **stateful** signature request to a new state.&lt;br&gt; Possible transitions are:&lt;br&gt; - from DRAFT to PENDING: start the signature request: the platform wait for the activation date (if any) and transition to IN_PROGRESS&lt;br&gt; - from PENDING to DRAFT: suspend the signature request: allow it to be updated&lt;br&gt; - from PENDING to CANCELED: cancel the signature request without waiting for the  activation date&lt;br&gt; - from IN_PROGRESS to CLOSED: close the signature request without waiting for all signatures to be colleted&lt;br&gt; - from IN_PROGRESS to CANCELED: cancel the signature request before all signatures get colleted&lt;br&gt; Note that **stateless** signature requests can only be transitioned to CLOSED, allowing to trigger the generation of the audit trail and the signature attestation. 
 
 ### Example
 
@@ -778,7 +835,7 @@ Name | Type | Description  | Notes
 
 Update a signature request.
 
-Use this operation to update a signature request.&lt;br&gt; Only the properties &#x60;name&#x60;, &#x60;public&#x60;, &#x60;callbackURL&#x60;, &#x60;activation&#x60;, &#x60;deadline&#x60;, &#x60;identityURL&#x60;, &#x60;fileName&#x60;, &#x60;fileURL&#x60;, &#x60;lang&#x60;, &#x60;vars&#x60;, &#x60;maxSignatures&#x60; and &#x60;authorizedSignees&#x60; can be modified. 
+Use this operation to update a signature request.&lt;br&gt; Only the properties &#x60;name&#x60;, &#x60;public&#x60;, &#x60;callbackURL&#x60;, &#x60;activation&#x60;, &#x60;deadline&#x60;, &#x60;identityURL&#x60;, &#x60;fileName&#x60;, &#x60;fileURL&#x60;, &#x60;lang&#x60;, &#x60;vars&#x60;, &#x60;maxSignatures&#x60; and &#x60;authorizedSignees&#x60; can be modified.&lt;br&gt; Only **stateless** signature requests or **stateful** signature request in &#39;DRAFT&#39; state can be updated. 
 
 ### Example
 
@@ -826,5 +883,62 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## uploadSignatureRequestFile
+
+> SignatureRequest uploadSignatureRequestFile(requestId, file)
+
+Upload the file to sign.
+
+Use this operation to upload the file to be signed for a signature request.&lt;br&gt; The SHA256 hash of the uploaded file must be equal to the &#x60;hashToSign&#x60; property of the signature request or the upload fails.&lt;br&gt; Once uploaded, the file is stored and the &#x60;fileURL&#x60; property of the signature request is set, so that it can be used by a signature application to download and present the file to the signers.&lt;br&gt; Only **stateless** signature requests or **stateful** signature request in &#39;DRAFT&#39; state can be updated. **WARNING: the storage of the file to be signed is provided for convenience only: it is not required, and you should never upload a file if you have any concern about its privacy.** 
+
+### Example
+
+```javascript
+import WoleetApi from 'woleet_api';
+let defaultClient = WoleetApi.ApiClient.instance;
+// Configure HTTP basic authorization: BasicAuth
+let BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
+// Configure API key authorization: JWTAuth
+let JWTAuth = defaultClient.authentications['JWTAuth'];
+JWTAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//JWTAuth.apiKeyPrefix = 'Token';
+
+let apiInstance = new WoleetApi.SignatureRequestApi();
+let requestId = "requestId_example"; // String | Identifier of the signature request.
+let file = "/path/to/file"; // File | The file to sign.
+apiInstance.uploadSignatureRequestFile(requestId, file, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **requestId** | **String**| Identifier of the signature request. | 
+ **file** | **File**| The file to sign. | 
+
+### Return type
+
+[**SignatureRequest**](SignatureRequest.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [JWTAuth](../README.md#JWTAuth)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
 - **Accept**: application/json
 
