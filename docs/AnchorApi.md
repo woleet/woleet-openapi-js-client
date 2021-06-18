@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 Create a new anchor.
 
-Use this operation to create a new anchor of one of these two types:&lt;br&gt;  - a data anchor (generating a proof of existence receipt) allows to prove the existence of some data at some point in time.&lt;br&gt; - a signature anchor (generating a proof of signature receipt) allows to prove the existence of the signature of some data at some point in time, the validity of the signature and the signer&#39;s identity.&lt;br&gt;  The properties &#x60;id&#x60;, &#x60;created&#x60;, &#x60;lastModified&#x60;, &#x60;status&#x60;, &#x60;timestamp&#x60; and &#x60;confirmations&#x60; are read-only and so must not be provided: they are managed by the platform and added to the returned anchor.&lt;br&gt; For data anchors, only the properties &#x60;name&#x60; and &#x60;hash&#x60; are required: the &#x60;hash&#x60; property must be the SHA256 hash of the data to anchor, and must be computed caller side. This allows not to leak the original data.&lt;br&gt; For signature anchors, only the properties &#x60;name&#x60;, &#x60;signedHash&#x60;, &#x60;signature&#x60; and &#x60;pubKey&#x60; are required (though the &#x60;identityURL&#x60; property is highly recommended): the &#x60;signedHash&#x60; property must be the SHA256 hash of the data to sign. This allows not to leak the original data and to keep the actual signed data small (signing the digest is equivalent to signing the original data).&lt;br&gt; Be sure to have at least 1 anchoring credit on your account. The &#x60;signature&#x60; property must contain a valid signature of the &#x60;data&#x60; property using the private key paired with the &#x60;pubKey&#x60; public key. 
+Use this operation to create a new anchor of one of these two types:&lt;br&gt; - a data anchor (generating a proof of existence receipt) allows to prove the existence of some data at some point in time.&lt;br&gt; - a signature anchor (generating a proof of signature receipt) allows to prove the existence of the signature of some data at some point in time, the validity of the signature and the signer&#39;s identity.&lt;br&gt; The properties &#x60;id&#x60;, &#x60;created&#x60;, &#x60;lastModified&#x60;, &#x60;status&#x60;, &#x60;timestamp&#x60; and &#x60;confirmations&#x60; are read-only and so must not be provided: they are managed by the platform and added to the returned anchor.&lt;br&gt; For data anchors, only the properties &#x60;name&#x60; and &#x60;hash&#x60; are required: the &#x60;hash&#x60; property must be the SHA256 hash of the data to anchor, and must be computed caller side. This allows not to leak the original data.&lt;br&gt; For signature anchors, only the properties &#x60;name&#x60;, &#x60;signedHash&#x60;, &#x60;signature&#x60; and &#x60;pubKey&#x60; are required (though the &#x60;identityURL&#x60; property is highly recommended).&lt;br&gt; Be sure to have at least 1 anchoring credit on your account. 
 
 ### Example
 
@@ -185,7 +185,7 @@ Name | Type | Description  | Notes
 
 Download the Proof Attestation document of an anchor.
 
-Use this operation to retrieve the Proof Attestation document of an anchor.&lt;br&gt; This PDF file is available only once the anchor is CONFIRMED. 
+Use this operation to retrieve the Proof Attestation document of an anchor.&lt;br&gt; This PDF file is only available once the anchor is CONFIRMED. 
 
 ### Example
 
@@ -329,7 +329,7 @@ let opts = {
   'name': "name_example", // String | `name` to search for: all anchors whose `name` property contains this sub-string are returned.<br> **WARNING: Searching by name can timeout on a large anchor set.** 
   'hash': "hash_example", // String | `hash` to search for: all anchors whose `hash` property is equal are returned. 
   'signedHash': "signedHash_example", // String | `signedHash` to search for: all anchors whose `signedHash` property is equal are returned. 
-  'tags': ["null"] // [String] | `tags` to search for: all anchors having all of these tags sets are returned. 
+  'tags': ["null"] // [String] | Tags to search for: all anchors having all of these tags sets are returned. 
 };
 apiInstance.searchAnchors(opts, (error, data, response) => {
   if (error) {
@@ -352,7 +352,7 @@ Name | Type | Description  | Notes
  **name** | **String**| &#x60;name&#x60; to search for: all anchors whose &#x60;name&#x60; property contains this sub-string are returned.&lt;br&gt; **WARNING: Searching by name can timeout on a large anchor set.**  | [optional] 
  **hash** | **String**| &#x60;hash&#x60; to search for: all anchors whose &#x60;hash&#x60; property is equal are returned.  | [optional] 
  **signedHash** | **String**| &#x60;signedHash&#x60; to search for: all anchors whose &#x60;signedHash&#x60; property is equal are returned.  | [optional] 
- **tags** | [**[String]**](String.md)| &#x60;tags&#x60; to search for: all anchors having all of these tags sets are returned.  | [optional] 
+ **tags** | [**[String]**](String.md)| Tags to search for: all anchors having all of these tags sets are returned.  | [optional] 
 
 ### Return type
 

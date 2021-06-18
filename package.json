@@ -1,6 +1,6 @@
 {
   "name": "woleet_api",
-  "version": "1.8.0",
+  "version": "1.10.0",
   "description": "Welcome_to_Woleet_API_reference_documentation_brIt_is_highly_recommanded_to_read_the_chapters__introducing_Woleet_API_concepts_https__doc_woleet_io_reference_before_reading_this_documentation_",
   "license": "Unlicense",
   "main": "dist/index.js",

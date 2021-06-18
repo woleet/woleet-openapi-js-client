@@ -4,10 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **String** | Proof receipt verification status code:&lt;br&gt; - VERIFIED: success: the proof receipt is verified&lt;br&gt; The receipt format is valid, the transaction is present in the Bitcoin blockchain and confirmed at least once, the receipt contains a valid Merkle proof linking its &#x60;targetHash&#x60; property to the transaction&#39;s &#x60;OP_RETURN&#x60; field.&lt;br&gt; The creation time and the number of confirmation of the block containing the transaction is returned in the &#x60;timestamp&#x60; and &#x60;confirmations&#x60; properties.&lt;br&gt; Any data whose SHA256 hash matches the proof receipt&#39;s &#x60;targetHash&#x60; is proven to exist at that time and has not been modified since.&lt;br&gt; - TX_NOT_CONFIRMED: warning: the transaction is not yet confirmed by the blockchain (ie. not yet included in a block)&lt;br&gt; - TX_NOT_FOUND: error: the receipt&#39;s &#x60;anchors&#x60; property does not include a valid Bitcoin transaction&lt;br&gt; - INVALID_PROOF: error: the receipt&#39;s &#x60;proof&#x60; property is not a valid Merkle proof&lt;br&gt; - TX_MISMATCH_RECEIPT: error: the receipt&#39;s &#x60;merkleRoot&#x60; property does not match the transaction&#39;s &#x60;OP_RETURN&#x60; field&lt;br&gt; - INVALID_SIGNATURE: error: the receipt&#39;s &#x60;signature&#x60; property is not a valid signature  | [optional] 
+**code** | **String** | Proof receipt verification status code:&lt;br&gt; - VERIFIED: success: the proof receipt is verified: both the proof of timestamp AND the proof of signature (if applicable) are valid&lt;br&gt; - INVALID_SIGNATURE: error: the proof of signature is invalid&lt;br&gt; - any other verification status code: the proof of timestamp is not ready or invalid  | [optional] 
 **text** | **String** | Proof receipt verification status text giving more insight about verification errors. | [optional] 
-**timestamp** | **Number** | Proven timestamp of the data (for a data anchor) or of the signature (for a signature anchor).&lt;br&gt; This is actually the time of the Bitcoin block into which the anchoring process occurred (in milliseconds since Unix epoch).&lt;br&gt; Any data whose SHA256 hash equals this proof receipt&#39;s target hash property is proven to exist at that time and has not been modified since.  | [optional] 
+**timestamp** | **Number** | Proven timestamp of the data (for a data anchor) or of the signature (for a signature anchor).&lt;br&gt; This is actually the time of the Bitcoin block into which the anchoring process occurred (in milliseconds since Unix epoch).  | [optional] 
 **confirmations** | **Number** | Number of confirmations of the Bitcoin block into which the anchoring process occurred. | [optional] 
+**timestampVerificationStatus** | [**TimestampVerificationStatus**](TimestampVerificationStatus.md) |  | [optional] 
+**signatureVerificationStatus** | [**SignatureVerificationStatus**](SignatureVerificationStatus.md) |  | [optional] 
 **identityVerificationStatus** | [**IdentityVerificationStatus**](IdentityVerificationStatus.md) |  | [optional] 
 
 
@@ -16,6 +18,8 @@ Name | Type | Description | Notes
 
 
 * `VERIFIED` (value: `"VERIFIED"`)
+
+* `TX_NOT_SENT` (value: `"TX_NOT_SENT"`)
 
 * `TX_NOT_CONFIRMED` (value: `"TX_NOT_CONFIRMED"`)
 

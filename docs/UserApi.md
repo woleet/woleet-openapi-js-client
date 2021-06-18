@@ -116,7 +116,7 @@ This endpoint does not need any parameter.
 
 ## getTokens
 
-> [String] getTokens()
+> Tokens getTokens()
 
 Get user&#39;s registered JWT tokens.
 
@@ -153,7 +153,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**[String]**
+[**Tokens**](Tokens.md)
 
 ### Authorization
 
@@ -189,7 +189,7 @@ JWTAuth.apiKey = 'YOUR API KEY';
 //JWTAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new WoleetApi.UserApi();
-let tokens = new WoleetApi.InlineObject(); // InlineObject | 
+let tokens = new WoleetApi.Tokens(); // Tokens | The list of JWT tokens to update.
 apiInstance.putTokens(tokens, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -204,7 +204,7 @@ apiInstance.putTokens(tokens, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tokens** | [**InlineObject**](InlineObject.md)|  | 
+ **tokens** | [**Tokens**](Tokens.md)| The list of JWT tokens to update. | 
 
 ### Return type
 

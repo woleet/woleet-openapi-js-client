@@ -206,7 +206,7 @@ let opts = {
   'size': 20, // Number | Number of users per page.
   'direction': "'ASC'", // String | Sorting direction: ASC for ascending DESC for descending. 
   'sort': "'created'", // String | Sorting property: possible values are `email`, `created`, `roles`, `info.firstName`, `info.lastName`, `status`. 
-  'email': "email_example" // String | email to search for: a sub-string of the email. 
+  'email': "email_example" // String | `email` to search for: a sub-string of the email. 
 };
 apiInstance.searchDomainUsers(opts, (error, data, response) => {
   if (error) {
@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
  **size** | **Number**| Number of users per page. | [optional] [default to 20]
  **direction** | **String**| Sorting direction: ASC for ascending DESC for descending.  | [optional] [default to &#39;ASC&#39;]
  **sort** | **String**| Sorting property: possible values are &#x60;email&#x60;, &#x60;created&#x60;, &#x60;roles&#x60;, &#x60;info.firstName&#x60;, &#x60;info.lastName&#x60;, &#x60;status&#x60;.  | [optional] [default to &#39;created&#39;]
- **email** | **String**| email to search for: a sub-string of the email.  | [optional] 
+ **email** | **String**| &#x60;email&#x60; to search for: a sub-string of the email.  | [optional] 
 
 ### Return type
 
