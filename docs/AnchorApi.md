@@ -246,23 +246,14 @@ Use this operation to retrieve the identifiers of all public anchors having a gi
 
 ```javascript
 import WoleetApi from 'woleet_api';
-let defaultClient = WoleetApi.ApiClient.instance;
-// Configure HTTP basic authorization: BasicAuth
-let BasicAuth = defaultClient.authentications['BasicAuth'];
-BasicAuth.username = 'YOUR USERNAME';
-BasicAuth.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWTAuth
-let JWTAuth = defaultClient.authentications['JWTAuth'];
-JWTAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWTAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new WoleetApi.AnchorApi();
 let opts = {
   'page': 0, // Number | Index of the page to retrieve (from 0).
   'size': 20, // Number | Number of anchor identifiers per page.
   'hash': "hash_example", // String | `hash` to search for: all public anchors whose `hash` property is equal are returned. 
-  'signedHash': "signedHash_example" // String | `signedHash` to search for: all public anchors whose `signedHash` property is equal are returned. 
+  'signedHash': "signedHash_example", // String | `signedHash` to search for: all public anchors whose `signedHash` property is equal are returned. 
+  'userId': "userId_example" // String | User identifier to use to filter out results: only public anchors belonging to this user are returned. 
 };
 apiInstance.searchAnchorIds(opts, (error, data, response) => {
   if (error) {
@@ -282,6 +273,7 @@ Name | Type | Description  | Notes
  **size** | **Number**| Number of anchor identifiers per page. | [optional] [default to 20]
  **hash** | **String**| &#x60;hash&#x60; to search for: all public anchors whose &#x60;hash&#x60; property is equal are returned.  | [optional] 
  **signedHash** | **String**| &#x60;signedHash&#x60; to search for: all public anchors whose &#x60;signedHash&#x60; property is equal are returned.  | [optional] 
+ **userId** | **String**| User identifier to use to filter out results: only public anchors belonging to this user are returned.  | [optional] 
 
 ### Return type
 
@@ -289,7 +281,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[BasicAuth](../README.md#BasicAuth), [JWTAuth](../README.md#JWTAuth)
+No authorization required
 
 ### HTTP request headers
 

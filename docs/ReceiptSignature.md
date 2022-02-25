@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**signedHash** | **String** | SHA256 hash (ie. the fingerprint) of the signed file. | [optional] 
+**signedHash** | **String** | SHA256 hash of the signed file. | [optional] 
 **signedIdentity** | **String** | X500 Distinguished Name representing the signed identity. | [optional] 
 **signedIssuerDomain** | **String** | Domain name of the identity issuer (ie. of the organization who verified the identity). | [optional] 
 **pubKey** | **String** | Public key of the signer.&lt;br&gt; **Currently only Bitcoin addresses are supported.**  | [optional] 

@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tokens** | **[String]** | Array of users matching the search criteria. | 
+**tokens** | **[String]** | Array of tokens. | 
 
 
