@@ -110,7 +110,7 @@ No authorization required
 
 Verify a proof receipt.
 
-Use this operation to verify a proof receipt and get the timestamp of the proof.&lt;br&gt; For proof of signature receipts including an identity URL, this operation also verifies and returns information about the signer&#39;s identity.&lt;br&gt; This is a publicly accessible endpoint: authentication is not required to verify a proof receipt. 
+Use this operation to verify a proof receipt and get the timestamp of the proof.&lt;br&gt; For a proof of seal/signaure receipt, this operation also verifies the signature.&lt;br&gt; If the proof of seal/signature receipt includes an identity URL, this operation also verifies the identity of the signer.&lt;br&gt; This is a publicly accessible endpoint: authentication is not required to verify a proof receipt. 
 
 ### Example
 

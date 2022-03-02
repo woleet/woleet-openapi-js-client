@@ -30,7 +30,7 @@ Method | HTTP request | Description
 
 Create a new signature request.
 
-Use this operation to create a new signature request.&lt;br&gt; The properties &#x60;id&#x60;, &#x60;created&#x60; and &#x60;lastModified&#x60; are read-only and so must not be provided: they are managed by the platform and added to the returned request.&lt;br&gt; Only the properties &#x60;name&#x60; and &#x60;hashToSign&#x60; are required: the &#x60;hashToSign&#x60; property must be the SHA256 hash of the file to sign.&lt;br&gt; Be sure to have enough signature and anchoring credits on your account to fulfill the signature request (each registered signature costs you 1 signature and 1 anchoring credit).&lt;br&gt; 
+Use this operation to create a new signature request.&lt;br&gt; The properties &#x60;id&#x60;, &#x60;created&#x60; and &#x60;lastModified&#x60; are read-only and so must not be provided: they are managed by the platform and added to the returned request.&lt;br&gt; Only the properties &#x60;name&#x60; and &#x60;hashToSign&#x60; are required: the &#x60;hashToSign&#x60; property must be the SHA256 hash of the file to sign.&lt;br&gt; Be sure to have at least 1 signature request credit and enough signature and anchoring credits on your account to fulfill the signature request (each registered signature costs you 1 signature and 1 anchoring credit).&lt;br&gt; 
 
 ### Example
 
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 ## delegateSignSignatureRequest
 
-> SignatureRequestSignResult delegateSignSignatureRequest(requestId, delegate)
+> SignatureRequestSignResult delegateSignSignatureRequest(requestId, signatureRequestDelegate)
 
 Sign a signature request by delegating the signature.
 
@@ -104,8 +104,8 @@ JWTAuth.apiKey = 'YOUR API KEY';
 
 let apiInstance = new WoleetApi.SignatureRequestApi();
 let requestId = "requestId_example"; // String | Identifier of the signature request.
-let delegate = new WoleetApi.SignatureRequestDelegate(); // SignatureRequestDelegate | Authentication information about the signer.
-apiInstance.delegateSignSignatureRequest(requestId, delegate, (error, data, response) => {
+let signatureRequestDelegate = new WoleetApi.SignatureRequestDelegate(); // SignatureRequestDelegate | Authentication information about the signer.
+apiInstance.delegateSignSignatureRequest(requestId, signatureRequestDelegate, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -120,7 +120,7 @@ apiInstance.delegateSignSignatureRequest(requestId, delegate, (error, data, resp
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **requestId** | **String**| Identifier of the signature request. | 
- **delegate** | [**SignatureRequestDelegate**](SignatureRequestDelegate.md)| Authentication information about the signer. | 
+ **signatureRequestDelegate** | [**SignatureRequestDelegate**](SignatureRequestDelegate.md)| Authentication information about the signer. | 
 
 ### Return type
 
@@ -391,7 +391,7 @@ No authorization required
 
 ## reportSignatureRequestEvent
 
-> reportSignatureRequestEvent(requestId, event)
+> reportSignatureRequestEvent(requestId, signatureRequestEvent)
 
 Report an event on a signature request.
 
@@ -404,8 +404,8 @@ import WoleetApi from 'woleet_api';
 
 let apiInstance = new WoleetApi.SignatureRequestApi();
 let requestId = "requestId_example"; // String | Identifier of the signature request.
-let event = new WoleetApi.SignatureRequestEvent(); // SignatureRequestEvent | Event to report.
-apiInstance.reportSignatureRequestEvent(requestId, event, (error, data, response) => {
+let signatureRequestEvent = new WoleetApi.SignatureRequestEvent(); // SignatureRequestEvent | Event to report.
+apiInstance.reportSignatureRequestEvent(requestId, signatureRequestEvent, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -420,7 +420,7 @@ apiInstance.reportSignatureRequestEvent(requestId, event, (error, data, response
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **requestId** | **String**| Identifier of the signature request. | 
- **event** | [**SignatureRequestEvent**](SignatureRequestEvent.md)| Event to report. | 
+ **signatureRequestEvent** | [**SignatureRequestEvent**](SignatureRequestEvent.md)| Event to report. | 
 
 ### Return type
 
@@ -438,7 +438,7 @@ No authorization required
 
 ## reportSignatureRequestFeedback
 
-> reportSignatureRequestFeedback(requestId, feedback)
+> reportSignatureRequestFeedback(requestId, signatureRequestFeedback)
 
 Report a feedback about a signature request.
 
@@ -451,8 +451,8 @@ import WoleetApi from 'woleet_api';
 
 let apiInstance = new WoleetApi.SignatureRequestApi();
 let requestId = "requestId_example"; // String | Identifier of the signature request.
-let feedback = new WoleetApi.SignatureRequestFeedback(); // SignatureRequestFeedback | Feedback to report.
-apiInstance.reportSignatureRequestFeedback(requestId, feedback, (error, data, response) => {
+let signatureRequestFeedback = new WoleetApi.SignatureRequestFeedback(); // SignatureRequestFeedback | Feedback to report.
+apiInstance.reportSignatureRequestFeedback(requestId, signatureRequestFeedback, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -467,7 +467,7 @@ apiInstance.reportSignatureRequestFeedback(requestId, feedback, (error, data, re
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **requestId** | **String**| Identifier of the signature request. | 
- **feedback** | [**SignatureRequestFeedback**](SignatureRequestFeedback.md)| Feedback to report. | 
+ **signatureRequestFeedback** | [**SignatureRequestFeedback**](SignatureRequestFeedback.md)| Feedback to report. | 
 
 ### Return type
 
@@ -654,7 +654,7 @@ No authorization required
 
 ## sendSignatureRequestReminder
 
-> sendSignatureRequestReminder(requestId, signeeEmails)
+> sendSignatureRequestReminder(requestId, requestBody)
 
 Send a reminder email to a set of signers of a signature request.
 
@@ -677,8 +677,8 @@ JWTAuth.apiKey = 'YOUR API KEY';
 
 let apiInstance = new WoleetApi.SignatureRequestApi();
 let requestId = "requestId_example"; // String | Identifier of the signature request.
-let signeeEmails = ["null"]; // [String] | The list of emails of the authorized signers who will receive the reminder email. 
-apiInstance.sendSignatureRequestReminder(requestId, signeeEmails, (error, data, response) => {
+let requestBody = ["null"]; // [String] | The list of emails of the authorized signers who will receive the reminder email. 
+apiInstance.sendSignatureRequestReminder(requestId, requestBody, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -693,7 +693,7 @@ apiInstance.sendSignatureRequestReminder(requestId, signeeEmails, (error, data, 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **requestId** | **String**| Identifier of the signature request. | 
- **signeeEmails** | [**[String]**](String.md)| The list of emails of the authorized signers who will receive the reminder email.  | 
+ **requestBody** | [**[String]**](String.md)| The list of emails of the authorized signers who will receive the reminder email.  | 
 
 ### Return type
 
@@ -711,7 +711,7 @@ null (empty response body)
 
 ## signSignatureRequest
 
-> SignatureRequestSignResult signSignatureRequest(requestId, signature)
+> SignatureRequestSignResult signSignatureRequest(requestId, signatureRequestSign)
 
 Sign a signature request by registering a signature.
 
@@ -724,8 +724,8 @@ import WoleetApi from 'woleet_api';
 
 let apiInstance = new WoleetApi.SignatureRequestApi();
 let requestId = "requestId_example"; // String | Identifier of the signature request.
-let signature = new WoleetApi.SignatureRequestSign(); // SignatureRequestSign | Signature to register.
-apiInstance.signSignatureRequest(requestId, signature, (error, data, response) => {
+let signatureRequestSign = new WoleetApi.SignatureRequestSign(); // SignatureRequestSign | Signature to register.
+apiInstance.signSignatureRequest(requestId, signatureRequestSign, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -740,7 +740,7 @@ apiInstance.signSignatureRequest(requestId, signature, (error, data, response) =
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **requestId** | **String**| Identifier of the signature request. | 
- **signature** | [**SignatureRequestSign**](SignatureRequestSign.md)| Signature to register. | 
+ **signatureRequestSign** | [**SignatureRequestSign**](SignatureRequestSign.md)| Signature to register. | 
 
 ### Return type
 
@@ -758,7 +758,7 @@ No authorization required
 
 ## transitionSignatureRequest
 
-> SignatureRequest transitionSignatureRequest(requestId, state)
+> SignatureRequest transitionSignatureRequest(requestId, body)
 
 Change the state of a signature request.
 
@@ -781,8 +781,8 @@ JWTAuth.apiKey = 'YOUR API KEY';
 
 let apiInstance = new WoleetApi.SignatureRequestApi();
 let requestId = "requestId_example"; // String | Identifier of the signature request.
-let state = "state_example"; // String | New state of the signature request.
-apiInstance.transitionSignatureRequest(requestId, state, (error, data, response) => {
+let body = null; // String | New state of the signature request.
+apiInstance.transitionSignatureRequest(requestId, body, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -797,7 +797,7 @@ apiInstance.transitionSignatureRequest(requestId, state, (error, data, response)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **requestId** | **String**| Identifier of the signature request. | 
- **state** | **String**| New state of the signature request. | 
+ **body** | **String**| New state of the signature request. | 
 
 ### Return type
 
@@ -815,7 +815,7 @@ Name | Type | Description  | Notes
 
 ## updateSignatureRequest
 
-> SignatureRequest updateSignatureRequest(requestId, request)
+> SignatureRequest updateSignatureRequest(requestId, signatureRequest)
 
 Update a signature request.
 
@@ -838,8 +838,8 @@ JWTAuth.apiKey = 'YOUR API KEY';
 
 let apiInstance = new WoleetApi.SignatureRequestApi();
 let requestId = "requestId_example"; // String | Identifier of signature request to update.
-let request = new WoleetApi.SignatureRequest(); // SignatureRequest | SignatureRequest object to update.
-apiInstance.updateSignatureRequest(requestId, request, (error, data, response) => {
+let signatureRequest = new WoleetApi.SignatureRequest(); // SignatureRequest | SignatureRequest object to update.
+apiInstance.updateSignatureRequest(requestId, signatureRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -854,7 +854,7 @@ apiInstance.updateSignatureRequest(requestId, request, (error, data, response) =
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **requestId** | **String**| Identifier of signature request to update. | 
- **request** | [**SignatureRequest**](SignatureRequest.md)| SignatureRequest object to update. | 
+ **signatureRequest** | [**SignatureRequest**](SignatureRequest.md)| SignatureRequest object to update. | 
 
 ### Return type
 

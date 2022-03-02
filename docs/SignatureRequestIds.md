@@ -11,6 +11,6 @@ Name | Type | Description | Notes
 **totalElements** | **Number** | Total number of signature requests matching the search criteria. | [optional] 
 **numberOfElements** | **Number** | Number of signature requests in the retrieved page. | [optional] 
 **size** | **Number** | Number of signature requests per page. | [optional] 
-**_number** | **Number** | Index of the retrieved page (from 0). | [optional] 
+**number** | **Number** | Index of the retrieved page (from 0). | [optional] 
 
 

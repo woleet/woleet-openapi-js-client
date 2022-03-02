@@ -8,8 +8,7 @@ Name | Type | Description | Notes
 **text** | **String** | Identity verification status text (gives more insights about the verification process). | [optional] 
 **certificates** | [**[X509SubjectIssuer]**](X509SubjectIssuer.md) | Array of subjects and issuers of the certificates extracted from the identity URL&#39;s TLS certificate. | [optional] 
 **identity** | [**Identity**](Identity.md) |  | [optional] 
-**signedIdentity** | [**Identity**](Identity.md) |  | [optional] 
-**signedIssuerDomain** | **String** | Domain name of the identity issuer (ie. of the organization who verified the identity). | [optional] 
+**signedIdentity** | [**SignedIdentity**](SignedIdentity.md) |  | [optional] 
 **key** | [**Key**](Key.md) |  | [optional] 
 
 
