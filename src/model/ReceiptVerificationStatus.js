@@ -79,7 +79,7 @@ class ReceiptVerificationStatus {
 }
 
 /**
- * Proof receipt verification status code:<br> - VERIFIED: success: the proof receipt is verified: both the proof of timestamp AND the proof of signature (if applicable) are valid (but the proof of identity may be invalid)<br> - INVALID_SIGNATURE: error: the proof of signature is invalid<br> - any other verification status code: the proof of timestamp is not ready or invalid 
+ * Proof receipt verification status code: - VERIFIED: success: the proof receipt is verified: both the proof of timestamp AND the proof of signature (if applicable) are valid (but the proof of identity may be invalid) - INVALID_SIGNATURE: error: the proof of signature is invalid - any other verification status code: the proof of timestamp is not ready or invalid 
  * @member {module:model/ReceiptVerificationStatus.CodeEnum} code
  */
 ReceiptVerificationStatus.prototype['code'] = undefined;

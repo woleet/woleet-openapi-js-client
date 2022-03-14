@@ -86,7 +86,7 @@ SignatureRequestProofBundle.prototype['auditTrailReceipt'] = undefined;
 SignatureRequestProofBundle.prototype['auditTrailData'] = undefined;
 
 /**
- * `true` if all pieces of evidence are present in the proof bundle, or `false` if not<br> All the following conditions must be met:<br> - the signature request is COMPLETED (by the platform) or CLOSED (by the requester)<br> - the audit trail is generated and signed by the platform<br> - all the proof receipts are available 
+ * `true` if all pieces of evidence are present in the proof bundle, or `false` if not.<br> All the following conditions must be met: - the signature request is COMPLETED (by the platform) or CLOSED (by the requester) - the audit trail is generated and signed by the platform - all the proof receipts are available 
  * @member {Boolean} complete
  */
 SignatureRequestProofBundle.prototype['complete'] = undefined;

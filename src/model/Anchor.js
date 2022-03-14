@@ -216,13 +216,13 @@ Anchor.prototype['tags'] = undefined;
 Anchor.prototype['metadata'] = undefined;
 
 /**
- * Web hook to be called by the platform whenever the `status` property of the anchor changes:<br> the platform does a POST request on this URL with the anchor as a JSON object in the request body.<br> Verifying the authenticity of the callback can be done by checking the HMAC-SHA1 signature of the request body provided by the platform in the `x-woleet-signature` header.<br> Please refer to <a target=\"_blank\" href=\"https://doc.woleet.io/reference/using-callbacks\">this documentation</a> for more details. 
+ * Web hook to be called by the platform whenever the `status` property of the anchor changes: the platform does a POST request on this URL with the anchor as a JSON object in the request body.<br> Verifying the authenticity of the callback can be done by checking the HMAC-SHA1 signature of the request body provided by the platform in the `x-woleet-signature` header.<br> Please refer to <a target=\"_blank\" href=\"https://doc.woleet.io/reference/using-callbacks\">this documentation</a> for more details. 
  * @member {String} callbackURL
  */
 Anchor.prototype['callbackURL'] = undefined;
 
 /**
- * Status of the anchor:<br> - WAIT: waiting to be processed by the platform (the proof receipt is not yet available for download)<br> - NEW: waiting to be sent to the blockchain (the proof receipt is not yet available for download)<br> - SENT: sent to the blockchain (the proof receipt is ready to download)<br> - CONFIRMED: confirmed at least 6 times by the blockchain (the proof receipt can be verified) 
+ * Status of the anchor: - WAIT: waiting to be processed by the platform (the proof receipt is not yet available for download) - NEW: waiting to be sent to the blockchain (the proof receipt is not yet available for download) - SENT: sent to the blockchain (the proof receipt is ready to download) - CONFIRMED: confirmed at least 6 times by the blockchain (the proof receipt can be verified) 
  * @member {module:model/Anchor.StatusEnum} status
  */
 Anchor.prototype['status'] = undefined;

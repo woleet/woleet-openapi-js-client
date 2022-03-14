@@ -83,7 +83,7 @@ Key.prototype['name'] = undefined;
 Key.prototype['pubKey'] = undefined;
 
 /**
- * Key status:<br> `valid`: the key is valid and can be used to sign<br> `expired`: the key expired at `expiration`<br> `revoked`: the key was revoked at `revokedAt` 
+ * Key status: - `valid`: the key is valid and can be used to sign - `expired`: the key expired at `expiration` - `revoked`: the key was revoked at `revokedAt` 
  * @member {module:model/Key.StatusEnum} status
  */
 Key.prototype['status'] = undefined;

@@ -113,7 +113,7 @@ SignatureRequestSign.prototype['signedIssuerDomain'] = undefined;
 SignatureRequestSign.prototype['identityURL'] = undefined;
 
 /**
- * Type of device used to sign:<br> - SERVER: Woleet.ID Server or equivalent<br> - MOBILE: Woleet.ID Mobile or equivalent<br> - NANO: Ledger Nano S or equivalent 
+ * Type of device used to sign: - SERVER: Woleet.ID Server or equivalent - MOBILE: Woleet.ID Mobile or equivalent - NANO: Ledger Nano S or equivalent 
  * @member {module:model/SignatureRequestSign.DeviceEnum} device
  */
 SignatureRequestSign.prototype['device'] = undefined;

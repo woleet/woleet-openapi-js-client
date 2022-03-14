@@ -167,7 +167,7 @@ SignatureRequest.prototype['name'] = undefined;
 SignatureRequest.prototype['state'] = undefined;
 
 /**
- * Web hook to be called by the platform whenever:<br> - the `state` property changes<br> - a new signature is registered<br> - the `proofBundleComplete` property is set to `true` by the platform (which means that the proof bundle and the Signature Attestation document are ready to download)<br> The platform does a POST request on this URL with the signature request as a JSON object in the request body.<br> Verifying the authenticity of the callback can be done by checking the HMAC-SHA1 signature of the request body provided by the platform in the `x-woleet-signature` header.<br> Please refer to <a target=\"_blank\" href=\"https://doc.woleet.io/reference/using-callbacks\">this documentation</a> for more details. 
+ * Web hook to be called by the platform whenever: - the `state` property changes - a new signature is registered - the `proofBundleComplete` property is set to `true` by the platform (which means that the proof bundle and the Signature Attestation document are ready to download)  The platform does a POST request on this URL with the signature request as a JSON object in the request body.<br> Verifying the authenticity of the callback can be done by checking the HMAC-SHA1 signature of the request body provided by the platform in the `x-woleet-signature` header.<br> Please refer to <a target=\"_blank\" href=\"https://doc.woleet.io/reference/using-callbacks\">this documentation</a> for more details. 
  * @member {String} callbackURL
  */
 SignatureRequest.prototype['callbackURL'] = undefined;
@@ -245,7 +245,7 @@ SignatureRequest.prototype['maxSignatures'] = undefined;
 SignatureRequest.prototype['authorizedSignees'] = undefined;
 
 /**
- * List of all watchers to notify by email about the progress of the signature request.<br> The set of events being notified are:<br> - the signature request is activated<br> - a signer signs the signature request<br> - the signature request is canceled<br> - the signature request is closed or completed and the Signature Attestation document is ready **This property is only available to the owner of the signature request.** 
+ * List of all watchers to notify by email about the progress of the signature request.<br> The set of events being notified are: - the signature request is activated - a signer signs the signature request - the signature request is canceled - the signature request is closed or completed and the Signature Attestation document is ready  **This property is only available to the owner of the signature request.** 
  * @member {Array.<module:model/Watcher>} watchers
  */
 SignatureRequest.prototype['watchers'] = undefined;

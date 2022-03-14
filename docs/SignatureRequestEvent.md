@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **signeeId** | **String** | Secret identifier of the signer (provided by email). | 
-**type** | **String** | Type of the event to report:&lt;br&gt; - DATA_VERIFIED: the signer verified the integrity (ie. hash) of the data to sign - DATA_REVIEWED: the signer reviewed and acceted the data to sign - TCU_ACCEPTED: the signer reviewed and accepted the TCU - TCU_REFUSED: the signer refused the TCU - SIGN_ACCEPTED: the signer accepted to sign the data - SIGN_REFUSED: the signer refused to sign the data  | 
+**type** | **String** | Type of the event to report: - DATA_VERIFIED: the signer verified the integrity (ie. hash) of the data to sign - DATA_REVIEWED: the signer reviewed and acceted the data to sign - TCU_ACCEPTED: the signer reviewed and accepted the TCU - TCU_REFUSED: the signer refused the TCU - SIGN_ACCEPTED: the signer accepted to sign the data - SIGN_REFUSED: the signer refused to sign the data  | 
 **comment** | **String** | Comment related to the event to report. | [optional] 
 
 

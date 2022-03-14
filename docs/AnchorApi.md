@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 Create a new anchor.
 
-Use this operation to create a new anchor of one of these two types:&lt;br&gt; - a **data anchor** (to generate a *proof of timestamp* allowing to prove the existence of a data at some point in time).&lt;br&gt; - a **signature anchor** (to generate a *proof of seal* allowing to prove the existence of the signature of a data at some point in time, the validity of the signature and the identity of the signer).&lt;br&gt; The properties &#x60;id&#x60;, &#x60;created&#x60;, &#x60;lastModified&#x60;, &#x60;status&#x60;, &#x60;timestamp&#x60; and &#x60;confirmations&#x60; are read-only and so must not be provided: they are managed by the platform and added to the returned anchor.&lt;br&gt; For data anchors, only the properties &#x60;name&#x60; and &#x60;hash&#x60; are required: the &#x60;hash&#x60; property must be the SHA256 hash of the data to anchor, and must be computed caller side. This allows not to leak the original data.&lt;br&gt; For signature anchors, only the properties &#x60;name&#x60;, &#x60;signedHash&#x60;, &#x60;signature&#x60; and &#x60;pubKey&#x60; are required.&lt;br&gt; Be sure to have at least 1 anchoring credit on your account. 
+Use this operation to create a new anchor of one of these two types: - a **data anchor** (to generate a *proof of timestamp* allowing to prove the existence of a data at some point in time) - a **signature anchor** (to generate a *proof of seal* allowing to prove the existence of the signature of a data at some point in time, the validity of the signature and the identity of the signer)  The properties &#x60;id&#x60;, &#x60;created&#x60;, &#x60;lastModified&#x60;, &#x60;status&#x60;, &#x60;timestamp&#x60; and &#x60;confirmations&#x60; are read-only and so must not be provided: they are managed by the platform and added to the returned anchor.&lt;br&gt; For data anchors, only the properties &#x60;name&#x60; and &#x60;hash&#x60; are required: the &#x60;hash&#x60; property must be the SHA256 hash of the data to anchor, and must be computed caller side. This allows not to leak the original data.&lt;br&gt; For signature anchors, only the properties &#x60;name&#x60;, &#x60;signedHash&#x60;, &#x60;signature&#x60; and &#x60;pubKey&#x60; are required.&lt;br&gt; Be sure to have at least 1 anchoring credit on your account. 
 
 ### Example
 
@@ -185,7 +185,7 @@ Name | Type | Description  | Notes
 
 Download the Proof Attestation document of an anchor.
 
-Use this operation to retrieve the Proof Attestation document of an anchor.&lt;br&gt; This PDF file is only available once the anchor is CONFIRMED. 
+Use this operation to retrieve the Proof Attestation document of an anchor.&lt;br&gt; This PDF file is only available once the anchor status is CONFIRMED. 
 
 ### Example
 

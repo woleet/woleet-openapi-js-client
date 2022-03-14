@@ -61,7 +61,7 @@ class SignatureVerificationStatus {
 }
 
 /**
- * Signature verification status code:<br> - VERIFIED: success: the receipt's `signature` property is a valid signature of `signedHash`, or, if any of `signedIdentity` or `signedIssuerDomain` is provided, a valid signature of SHA256(`signedHash` + `signedIdentity` + `signedIssuerDomain`) using the public key `pubKey`.<br> - SIGNATURE_MISMATCH_RECEIPT: error: the receipt's `targetHash` does not match the SHA256 hash of `signature`.<br> - INVALID_SIGNATURE: error: the receipt's `signature` property is invalid. 
+ * Signature verification status code: - VERIFIED: success: the receipt's `signature` property is a valid signature of `signedHash`, or, if any of `signedIdentity` or `signedIssuerDomain` is provided, a valid signature of SHA256(`signedHash` + `signedIdentity` + `signedIssuerDomain`) using the public key `pubKey` - SIGNATURE_MISMATCH_RECEIPT: error: the receipt's `targetHash` does not match the SHA256 hash of `signature` - INVALID_SIGNATURE: error: the receipt's `signature` property is invalid 
  * @member {module:model/SignatureVerificationStatus.CodeEnum} code
  */
 SignatureVerificationStatus.prototype['code'] = undefined;

@@ -46,7 +46,7 @@ export default class AnchorApi {
 
     /**
      * Create a new anchor.
-     * Use this operation to create a new anchor of one of these two types:<br> - a **data anchor** (to generate a *proof of timestamp* allowing to prove the existence of a data at some point in time).<br> - a **signature anchor** (to generate a *proof of seal* allowing to prove the existence of the signature of a data at some point in time, the validity of the signature and the identity of the signer).<br> The properties `id`, `created`, `lastModified`, `status`, `timestamp` and `confirmations` are read-only and so must not be provided: they are managed by the platform and added to the returned anchor.<br> For data anchors, only the properties `name` and `hash` are required: the `hash` property must be the SHA256 hash of the data to anchor, and must be computed caller side. This allows not to leak the original data.<br> For signature anchors, only the properties `name`, `signedHash`, `signature` and `pubKey` are required.<br> Be sure to have at least 1 anchoring credit on your account. 
+     * Use this operation to create a new anchor of one of these two types: - a **data anchor** (to generate a *proof of timestamp* allowing to prove the existence of a data at some point in time) - a **signature anchor** (to generate a *proof of seal* allowing to prove the existence of the signature of a data at some point in time, the validity of the signature and the identity of the signer)  The properties `id`, `created`, `lastModified`, `status`, `timestamp` and `confirmations` are read-only and so must not be provided: they are managed by the platform and added to the returned anchor.<br> For data anchors, only the properties `name` and `hash` are required: the `hash` property must be the SHA256 hash of the data to anchor, and must be computed caller side. This allows not to leak the original data.<br> For signature anchors, only the properties `name`, `signedHash`, `signature` and `pubKey` are required.<br> Be sure to have at least 1 anchoring credit on your account. 
      * @param {module:model/Anchor} anchor Anchor object to create.
      * @param {module:api/AnchorApi~createAnchorCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Anchor}
@@ -173,7 +173,7 @@ export default class AnchorApi {
 
     /**
      * Download the Proof Attestation document of an anchor.
-     * Use this operation to retrieve the Proof Attestation document of an anchor.<br> This PDF file is only available once the anchor is CONFIRMED. 
+     * Use this operation to retrieve the Proof Attestation document of an anchor.<br> This PDF file is only available once the anchor status is CONFIRMED. 
      * @param {String} anchorId Identifier of the anchor.
      * @param {module:api/AnchorApi~getAnchorAttestationCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link File}
