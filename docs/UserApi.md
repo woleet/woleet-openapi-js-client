@@ -69,7 +69,7 @@ This endpoint does not need any parameter.
 
 Get user&#39;s credits.
 
-Use this operation to get the remaining signature and anchoring credits of the authenticated user.
+Use this operation to get the remaining credits of the authenticated user.
 
 ### Example
 
